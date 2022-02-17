@@ -73,7 +73,7 @@ nav {
 }
 
 .left-container {
-  margin-top: 100px;
+  margin-top: 10rem;
   padding-left: 70px;
   width: 60%;
   display: flex;
@@ -95,16 +95,17 @@ nav {
 }
 
 .verify-btn {
-  width: 10%;
-  height: 70%;
+  font-size: 14px;
+  width: 20%;
+  height: 80%;
   position: absolute;
-  right: 4px;
-  top: 9px;
+  right: 2px;
+  top: 7px;
   border: none;
   padding-left: 3px;
   padding-right: 3px;
-  background-color: transparent;
-  color: var(--color-purple-primary);
+  background-color: var(--color-purple-primary);
+  color: white;
   border-radius: 40px;
 }
 

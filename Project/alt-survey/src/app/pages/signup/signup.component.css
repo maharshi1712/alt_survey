@@ -76,10 +76,10 @@ nav {
 
 .main-container {
   height: 100%;
+  margin-top: 70px;
 }
 
 .left-container {
-  margin-top: 2rem;
   padding-left: 70px;
   width: 60%;
   display: flex;

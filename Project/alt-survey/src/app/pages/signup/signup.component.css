@@ -1,154 +1,151 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
-
 label,
 input,
 a {
-  font-family: inherit;
-  text-decoration: none;
+    font-family: inherit;
+    text-decoration: none;
 }
 
 a {
-  color: var(--color-blue-primary);
+    color: var(--color-blue-primary);
 }
 
 label {
-  margin-top: 15px;
+    margin-top: 15px;
 }
 
 p {
-  margin: 0px;
+    margin: 0px;
 }
 
 input {
-  margin-top: 5px;
-  max-width: 400px;
-  height: 40px;
-  padding: 15px;
-  padding-left: 20px;
-  border-radius: 40px;
-  border: 1px solid var(--color-dark-light);
+    margin-top: 5px;
+    max-width: 400px;
+    height: 40px;
+    padding: 15px;
+    padding-left: 20px;
+    border-radius: 40px;
+    border: 1px solid var(--color-dark-light);
 }
 
 input:focus {
-  outline: none;
-  border: 1px solid var(--color-blue-primary);
+    outline: none;
+    border: 1px solid var(--color-blue-primary);
 }
 
 nav {
-  padding-left: 70px;
-  padding-right: 70px;
-  margin-bottom: 10px;
+    padding-left: 70px;
+    padding-right: 70px;
+    margin-bottom: 10px;
 }
 
 .list-items {
-  list-style: none;
+    list-style: none;
 }
 
-.list-items > li > button {
-  font-size: 20px;
-  margin-right: 20px;
+.list-items>li>button {
+    font-size: 20px;
+    margin-right: 20px;
 }
 
 .signup-btn {
-  background-color: var(--color-purple-primary);
-  border-radius: 30px;
-  font-weight: 500;
-  color: white;
-  width: 100%;
+    background-color: var(--color-purple-primary);
+    border-radius: 30px;
+    font-weight: 500;
+    color: white;
+    width: 100%;
 }
 
 .signup-btn:hover {
-  background-color: transparent;
-  border: 1px solid var(--color-purple-primary);
-  color: var(--color-purple-primary);
+    background-color: transparent;
+    border: 1px solid var(--color-purple-primary);
+    color: var(--color-purple-primary);
 }
 
 .section-1 {
-  height: calc(100vh - 190px);
-  margin-bottom: 100px;
+    height: calc(100vh - 190px);
+    margin-bottom: 100px;
 }
 
 .main-container {
-  height: 100%;
+    height: 100%;
 }
 
 .left-container {
-  margin-top: 10rem;
-  padding-left: 70px;
-  width: 60%;
-  display: flex;
-  align-items: center;
+    margin-top: 2rem;
+    padding-left: 70px;
+    width: 60%;
+    display: flex;
+    align-items: center;
 }
 
 .username-row div {
-  width: 47%;
+    width: 47%;
 }
 
 .username-row {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
-.verify-email-div {
-}
+.verify-email-div {}
 
-.verify-email {
-}
+.verify-email {}
 
 .verify-btn {
-  font-size: 14px;
-  width: 20%;
-  height: 80%;
-  position: absolute;
-  right: 2px;
-  top: 7px;
-  border: none;
-  padding-left: 3px;
-  padding-right: 3px;
-  background-color: var(--color-purple-primary);
-  color: white;
-  border-radius: 40px;
+    font-size: 14px;
+    width: 20%;
+    height: 80%;
+    position: absolute;
+    right: 2px;
+    top: 7px;
+    border: none;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: var(--color-purple-primary);
+    color: white;
+    border-radius: 40px;
 }
 
 .illu-image {
-  width: 80%;
+    width: 80%;
 }
 
 .right-container {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .login-inner-container {
-  width: 400px;
-  padding: 10px;
+    width: 400px;
+    padding: 10px;
 }
 
 .login-btn {
-  border: 1px solid var(--color-purple-primary);
-  background-color: var(--color-purple-primary);
-  color: white;
-  font-size: 20px;
-  font-weight: 600;
-  border-radius: 40px;
-  padding: 10px;
-  transition: 0.3s;
+    border: 1px solid var(--color-purple-primary);
+    background-color: var(--color-purple-primary);
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 40px;
+    padding: 10px;
+    transition: 0.3s;
 }
 
 .signup-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .signup-bottom-btn {
-  color: var(--color-blue-primary);
-  font-weight: 600;
-  margin-left: 10px;
+    color: var(--color-blue-primary);
+    font-weight: 600;
+    margin-left: 10px;
 }
 
 .login-btn:hover {
-  background-color: transparent;
-  border-color: var(--color-purple-primary);
-  border: 1px solid;
-  color: var(--color-purple-primary);
+    background-color: transparent;
+    border-color: var(--color-purple-primary);
+    border: 1px solid;
+    color: var(--color-purple-primary);
 }

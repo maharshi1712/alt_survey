@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class SignupComponent implements OnInit {
   isLoading = false;
-  constructor(private userService: UserService, private _snack: MatSnackBar) {}
+  constructor(private userService: UserService, private _snack: MatSnackBar, private router: Router) {}
 
   public user = {
     firstName: '',
@@ -29,7 +30,6 @@ export class SignupComponent implements OnInit {
   formSubmit() {
     console.log(this.user);
     if (this.user.email == '' || this.user.email == null ||this.user.password!=this.user.confirmpassword) {
-      //alert("User is required!")
       this._snack.open('Password and Confirm password donot match', 'ok', {
         duration: 2000,
       });
@@ -48,6 +48,10 @@ export class SignupComponent implements OnInit {
           'User is Registered with userid ' + data.id,
           'success'
         );
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 1500);
+        
       },
       (error) => {
         console.log(error);

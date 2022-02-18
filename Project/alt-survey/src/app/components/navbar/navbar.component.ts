@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LoginComponent } from 'src/app/pages/login/login.component';
+import { SignupComponent } from 'src/app/pages/signup/signup.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +11,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   @Input() navItem1: String = '';
   @Input() navItem2: String = '';
-  constructor() {}
-
-  ngOnInit(): void {}
+  constructor(private route: Router) {}
+  
+  
+  
+  ngOnInit(){
+    
+  }
 }

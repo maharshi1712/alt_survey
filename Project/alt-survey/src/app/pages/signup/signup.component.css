@@ -115,6 +115,22 @@ nav {
   border-radius: 40px;
 }
 
+.verify-tik-btn{
+  font-size: 14px;
+  width: 10%;
+  height: 80%;
+  position: absolute;
+  right: 2px;
+  top: 10px;
+  border: none;
+  padding-left: 3px;
+  padding-right: 3px;
+  background-color: transparent;
+  color: var(--color-purple-primary);
+  border-radius: 40px;
+  text-align: center;
+}
+
 .illu-image {
   width: 80%;
 }

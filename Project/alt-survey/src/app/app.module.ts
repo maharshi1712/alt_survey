@@ -17,7 +17,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component'
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     SignupComponent,
     ForgotPasswordComponent,
     NavbarComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,9 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     MatSnackBarModule,
     MatCardModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

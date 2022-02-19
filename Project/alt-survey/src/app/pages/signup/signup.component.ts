@@ -65,11 +65,27 @@ export class SignupComponent implements OnInit {
 
   onVerifyUser() {
     this.isLoading = true;
+    if(this.user.email==null)
+    {
+      this._snack.open('Email cannot be empty!', 'ok', {
+        duration: 2000,
+      });
+      return;
+    }
+    
     this.userService.verifySignUpUser(this.user.email).subscribe(
       (respone) => {
         this.isLoading = false;
         console.log('NOT ERROR  :  ' + respone);
-        this.OtpResponse = respone.body;
+
+        if(respone.status == 208) {
+          this._snack.open('User already found with tis email!', 'ok', {
+            duration: 2000,
+          });
+        }
+        else if (respone.status == 200){
+          this.OtpResponse = respone.body;
+        }
       },
       (error) => {
         console.log('ERROR   :    ' + error);

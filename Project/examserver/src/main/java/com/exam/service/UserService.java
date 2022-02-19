@@ -32,4 +32,6 @@ public interface UserService {
 
 
     public User loginUser(String email, String password);
+
+    public void forgotPassword(String email, String password);
 }

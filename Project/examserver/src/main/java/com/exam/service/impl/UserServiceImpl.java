@@ -97,4 +97,11 @@ public class UserServiceImpl implements UserService {
 
         return null;
     }
+
+    @Override
+    public void forgotPassword(String email, String password) {
+        User user = this.userRepository.findByEmail(email);
+        user.setPassword(password);
+        this.userRepository.save(user);
+    }
 }

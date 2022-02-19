@@ -22,4 +22,14 @@ export class UserService {
   public loginUser(user : any){
     return this.http.post(`${baseUrl}login`,user);
   }
+
+  public verifyForgotPasswordOtp(email:any){
+    return this.http.get(`${baseUrl}forgot-password/sendotp/` + email, {
+      observe: 'response',
+    })}
+
+    public forgotPassword(user:any){
+      return this.http.post(`${baseUrl}forgot-password`,user);
+    
+  }
 }

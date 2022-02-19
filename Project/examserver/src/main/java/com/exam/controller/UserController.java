@@ -8,6 +8,7 @@ import com.exam.service.SendEmailService;
 import com.exam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class UserController {
     private SendEmailService sendEmailService;
 
     @GetMapping("/signup/sendotp/{email}")
-    public ResponseEntity<String> sendSignUpOTP(@PathVariable("email") String email) {
+    public ResponseEntity<String>sendSignUpOTP(@PathVariable("email") String email) {
         /*
          * If User is not present with given emailId, this method will return OTP with status code 200.
          * If User is already present with given emailId, this method will return null with status code 208 (Already reported).
@@ -48,6 +49,35 @@ public class UserController {
         if(flag) return ResponseEntity.ok(OTP);
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
+
+
+    //SENDING OTP FOR FORGOT-PASSWORD
+
+    @GetMapping("/forgot-password/sendotp/{email}")
+    public ResponseEntity<String> sendForgotPasswordOTP(@PathVariable("email") String email) {
+        /*
+         * If User is already present with given emailId If User is not present with given emailId, this method will return OTP with status code 200.
+         * If User is not present with given emailId , this method will return null with status code 500 (Not Present).
+         */
+
+
+        // Check if user is not present with given emailId.
+        User user = this.userService.findByEmail(email);
+        if(user == null) return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
+
+        else {
+            String OTP = "";
+            // Generating 4 digits OTP
+            for (int i = 0; i < 6; i++) OTP += Integer.toString((int) (Math.random() * 10));
+
+            boolean flag = sendEmailService.sendEmail(email, "Please verify OTP", "One Time Password(OTP) is : " + OTP);
+
+            if (flag) return ResponseEntity.ok(OTP);
+
+            return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).build();
+        }
     }
 
     //Creating user
@@ -75,6 +105,14 @@ public class UserController {
     public User loginUser(@RequestBody emailPasswordTemplate user) throws Exception{
         System.out.println("Logged In");
         return this.userService.loginUser(user.getEmail(), user.getPassword());
+    }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<?> forgotPassword(@RequestBody emailPasswordTemplate user){
+//        System.out.println("Forgot password " + user.getEmail() +"\t"+user.getPassword() );
+        this.userService.forgotPassword(user.getEmail(), user.getPassword());
+
+        return ResponseEntity.ok().build();
     }
 
     //Fetching the user by userName;

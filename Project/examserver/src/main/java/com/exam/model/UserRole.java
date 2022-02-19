@@ -9,7 +9,7 @@ public class UserRole
 {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private  long userId;
 
     //User

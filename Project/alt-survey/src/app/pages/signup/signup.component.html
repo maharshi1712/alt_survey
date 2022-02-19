@@ -34,12 +34,14 @@
               <input
                 required
                 [(ngModel)]="user.email"
+                ng-model= "email"
+                ng-maxlength="100"
                 name="email"
                 type="email"
                 placeholder="Email"
                 style="width: 100%"
               />
-              <button type="button" class="verify-btn text-center" (click)="onVerifyUser()" *ngIf="!OtpResponse">
+              <button type="button" class="verify-btn text-center" (click)="onVerifyUser()" [disabled]="!user.email" *ngIf="!OtpResponse">
                 Verify
               </button>
               <button type="button" class="verify-tik-btn" *ngIf="OtpResponse">
@@ -106,7 +108,7 @@
         </form>
         <div style="margin-top: 25px" class="signup-row">
           <p>Already have an account?</p>
-          <a href="/login" class="signup-bottom-btn">Login</a>
+          <a routerLink="/login" class="signup-bottom-btn">Login</a>
         </div>
       </div>
     </div>

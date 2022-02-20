@@ -11,14 +11,18 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   isLoading = false;
-  constructor(private userService: UserService, private _snack: MatSnackBar, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private _snack: MatSnackBar,
+    private router: Router
+  ) {}
 
   public user = {
     firstName: '',
     lastName: '',
     email: '',
     password: '',
-    confirmpassword: ''
+    confirmpassword: '',
   };
 
   OtpEntered: any;
@@ -29,7 +33,14 @@ export class SignupComponent implements OnInit {
 
   formSubmit() {
     console.log(this.user);
-    if (this.user.email == '' || this.user.email == null ||this.user.password!=this.user.confirmpassword) {
+    if (this.user.email == '' || this.user.email == null) {
+      this._snack.open('Please Enter Correct Email', 'ok', {
+        duration: 2000,
+      });
+      return;
+    }
+
+    if (this.user.password != this.user.confirmpassword) {
       this._snack.open('Password and Confirm password donot match', 'ok', {
         duration: 2000,
       });
@@ -51,7 +62,6 @@ export class SignupComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 1500);
-        
       },
       (error) => {
         console.log(error);
@@ -65,37 +75,50 @@ export class SignupComponent implements OnInit {
 
   onVerifyUser() {
     this.isLoading = true;
-    if(this.user.email==null)
-    {
+    if (this.user.email == null) {
       this._snack.open('Email cannot be empty!', 'ok', {
         duration: 2000,
       });
       return;
     }
-    
+
     this.userService.verifySignUpUser(this.user.email).subscribe(
       (respone) => {
         this.isLoading = false;
-        console.log('NOT ERROR  :  ' + respone);
+        console.log('NOT ERROR  :  ' + respone.body);
 
-        if(respone.status == 208) {
-          this._snack.open('User already found with tis email!', 'ok', {
+        if (respone.status == 208) {
+          this._snack.open('User already found with this email!', 'ok', {
             duration: 2000,
           });
-        }
-        else if (respone.status == 200){
+        } else if (respone.status == 200) {
           this.OtpResponse = respone.body;
         }
       },
       (error) => {
-        console.log('ERROR   :    ' + error);
+        console.log(error);
       }
     );
   }
 
+  // onVerifyOtp() {
+  //   if (this.OtpResponse === this.OtpEntered) {
+  //     this.OtpVerified = true;
+  //     console.log('verified');
+  //   }
+  // }
+
   onVerifyOtp() {
-    if (this.OtpResponse === this.OtpEntered) {
+    if (this.OtpEntered != this.OtpResponse) {
+      this._snack.open('Enter Correct Otp', 'ok', {
+        duration: 2000,
+      });
+      return;
+    }
+
+    if (this.OtpResponse == this.OtpEntered) {
       this.OtpVerified = true;
+      Swal.fire('Otp verification Successful', 'Proceed to Register');
       console.log('verified');
     }
   }

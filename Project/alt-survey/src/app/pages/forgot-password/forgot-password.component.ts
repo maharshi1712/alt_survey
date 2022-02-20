@@ -14,6 +14,7 @@ export class ForgotPasswordComponent implements OnInit {
   user = {
     email: '',
     password: '',
+    confirmpassword: ''
   };
 
   isLoading = false;
@@ -41,6 +42,14 @@ public displaySwal(){
     if (this.user.email == '' || this.user.password == null) {
       this._snack.open('Email or Password Can not be empty', 'ok', {
         duration: 2000,
+      });
+      return;
+    }
+
+    if(this.user.password!=this.user.confirmpassword)
+    {
+      this._snack.open('Passsword and Confirm Password do not match', 'ok',{
+        duration:2000
       });
       return;
     }
@@ -79,7 +88,7 @@ public displaySwal(){
     this.userService.verifyForgotPasswordOtp(this.user.email).subscribe(
       (respone) => {
         this.isLoading = false;
-        console.log('NOT ERROR  :  ' + respone);
+        //console.log('NOT ERROR  :  ' + respone);
 
         if (respone.status == 500) {
           this._snack.open('User not found with this email!', 'ok', {
@@ -96,8 +105,17 @@ public displaySwal(){
   }
 
   onVerifyOtp() {
-    if (this.OtpResponse === this.OtpEntered) {
+    if(this.OtpEntered!=this.OtpResponse)
+    {
+      this._snack.open('Enter Correct Otp', 'ok',{
+        duration:2000,
+      });
+      return;
+    }
+
+    if (this.OtpResponse == this.OtpEntered) {
       this.OtpVerified = true;
+      Swal.fire('Otp verification Successful','Proceed for Password Change')
       console.log('verified');
     }
   }

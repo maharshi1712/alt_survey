@@ -34,8 +34,6 @@
               <input
                 required
                 [(ngModel)]="user.email"
-                ng-model= "email"
-                ng-maxlength="100"
                 name="email"
                 type="email"
                 placeholder="Email"
@@ -64,9 +62,12 @@
               </button>
             </div>
           </div>
-          <div *ngIf="isLoading" style="text-align: center">
+          <!-- <div *ngIf="isLoading" style="text-align: center">
             <app-loading-spinner></app-loading-spinner>
-          </div>
+          </div> -->
+          <div *ngIf="isLoading">
+              <mat-spinner [diameter]="30" ></mat-spinner>
+              </div>
           <div class="verify-email-div d-flex flex-column" *ngIf="OtpResponse" >
             <label for="OTP" *ngIf="!OtpVerified">Verify OTP</label>
             <label for="OTP" *ngIf="OtpVerified">OTP Verified</label>

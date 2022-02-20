@@ -1,19 +1,13 @@
 package com.exam.controller;
 
-
-import com.exam.model.Role;
 import com.exam.model.User;
-import com.exam.model.UserRole;
 import com.exam.service.SendEmailService;
 import com.exam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
@@ -70,7 +64,7 @@ public class UserController {
         else {
             String OTP = "";
             // Generating 4 digits OTP
-            for (int i = 0; i < 6; i++) OTP += Integer.toString((int) (Math.random() * 10));
+            for (int i = 0; i < 4; i++) OTP += Integer.toString((int) (Math.random() * 10));
 
             boolean flag = sendEmailService.sendEmail(email, "Please verify OTP", "One Time Password(OTP) is : " + OTP);
 
@@ -87,18 +81,7 @@ public class UserController {
         System.out.println("Posted");
         //We are not setting profile through web
         //user.setProfile("default.png");
-        Set<UserRole> roles = new HashSet<>();
-        Role role = new Role();
-        role.setRoleId(45L);
-        role.setRoleName("Normal");
-
-        UserRole userRole = new UserRole();
-        userRole.setUser(user);
-        userRole.setRole(role);
-
-        roles.add(userRole);
-
-        return this.userService.createUser(user, roles);
+        return this.userService.createUser(user);
     }
 
     @PostMapping("/login")  //ye jb chalega jb /user/login post ki request url me jayega
@@ -115,11 +98,6 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
-    //Fetching the user by userName;
-//    @GetMapping("/{username}")
-//    public User getUser(@PathVariable("username") String username){
-//        return this.userService.getUser(username);
-//    }
 
     //Fetching user by email
     @GetMapping("/{email}")

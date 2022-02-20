@@ -1,16 +1,17 @@
 package com.exam;
 
-import com.exam.model.Role;
+import java.util.Date;
+
+import com.exam.model.SurveyConfig;
 import com.exam.model.User;
-import com.exam.model.UserRole;
+import com.exam.service.SurveyService;
 import com.exam.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.HashSet;
-import java.util.Set;
 
 @SpringBootApplication
 public class ExamserverApplication implements CommandLineRunner {
@@ -22,35 +23,52 @@ public class ExamserverApplication implements CommandLineRunner {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private SurveyService surveyService;
+
 
 	@Override
 	public void run(String... args) throws Exception {
 
 		System.out.println("Strating code..");
 
-//		User user = new User();
-//
-//		user.setFirstName("Rahul");
-//		user.setLastName("Jaiswal");
-////		user.setUsername("Rjais085");
-//		user.setPassword("123456");
-//		user.setEmail("rahulvdjaiswal@gmail.com");
-////    	user.setProfile("default.png");
-//
-//		Role role1 = new Role();
-//
-//		role1.setRoleId(44L);
-//		role1.setRoleName("Admin");
-//
-//		Set<UserRole> userRoleSet = new HashSet<>();
-//		UserRole userRole = new UserRole();
-//		userRole.setRole(role1);
-//		userRole.setUser(user);
-//
-//		userRoleSet.add(userRole);
-//
-//		User user1 = this.userService.createUser(user,userRoleSet);
-//		System.out.println(user1.getEmail());
+		User user = new User();
+
+		user.setFirstName("Rahul");
+		user.setLastName("Jaiswal");
+		user.setPassword("123456");
+		user.setEmail("rahulvdjaiswal@gmail.com");
+
+
+		User user1 = this.userService.createUser(user);
+		System.out.println(user1.getEmail());
+
+
+		Date d1 = new Date();
+		SurveyConfig surveyConfig = new SurveyConfig();
+		surveyConfig.setsurveyname("Email Survey");
+		surveyConfig.setSurvey_type("Onboarding");
+		surveyConfig.setSurvey_dealy(100);
+		surveyConfig.setMessage_subject("Message Subject");
+		surveyConfig.setMessage_body("This is message body");
+		surveyConfig.setCreatedBy("Rahul");
+		surveyConfig.setActive(true);
+		surveyConfig.setCreatedDate(d1);
+		surveyConfig.setModifiedBy("Shivam");
+		surveyConfig.setModifiedDate(d1);
+
+		//SurveyConfig surveyConfig2 = this.surveyService.createSurvey(surveyConfig);
+
+		// // Set<SurveyConfig> surveyConfigsSet = new HashSet<>();
+		// // UserSurvey userSurvey = new UserSurvey();
+		// // userSurvey.setSurveyConfig(surveyConfig);
+		// // userSurvey.setUser(user);
+
+		// // surveyConfigsSet.add(surveyConfig);
+
+		SurveyConfig s = this.surveyService.createSurvey(surveyConfig);
+
+		System.out.println(s.getsurveyname());
 
 	}
 }

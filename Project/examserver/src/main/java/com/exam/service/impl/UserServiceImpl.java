@@ -1,14 +1,11 @@
 package com.exam.service.impl;
 
 import com.exam.model.User;
-import com.exam.model.UserRole;
-import com.exam.repo.RoleRepository;
 import com.exam.repo.UserRepository;
 import com.exam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -16,13 +13,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private RoleRepository roleRepository;
-
 
     //creating user
     @Override
-    public User createUser(User user, Set<UserRole> userRoles) throws Exception{
+    public User createUser(User user) throws Exception{
 
        //User local =  this.userRepository.findByUsername(user.getUsername());
         User local = this.userRepository.findByEmail(user.getEmail());
@@ -32,30 +26,10 @@ public class UserServiceImpl implements UserService {
            System.out.println("user is already there");
            throw new Exception("user already present");
        }
-       else{
-           //User create
-           for (UserRole ur:userRoles){
-               roleRepository.save(ur.getRole());
-           }
-            user.getUserRoles().addAll(userRoles);
-          local =  this.userRepository.save(user);
-       }
-       return local;
-
+       return this.userRepository.save(user);
 
     }
 
-
-
-//    @Override
-//    public User getUser(String username) {
-//        return this.userRepository.findByUsername(username);
-//    }
-
-//    @Override
-//    public User getUser(String email) {
-//        return this.userRepository.findByEmail(email);
-//    }
 
     @Override
     public void deleteUser(Long userId) {
@@ -104,4 +78,5 @@ public class UserServiceImpl implements UserService {
         user.setPassword(password);
         this.userRepository.save(user);
     }
+
 }

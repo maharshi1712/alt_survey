@@ -1,11 +1,14 @@
 package com.exam.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class SurveyConfig {
@@ -36,6 +39,17 @@ public class SurveyConfig {
 
     // @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "surveyConfig")
     // private Set<UserSurvey> userSurveys = new HashSet<>();
+
+    @ManyToMany(mappedBy = "surveyConfigsList")
+    private Collection<User> userList = new ArrayList<User>();
+
+    public Collection<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(Collection<User> userList) {
+        this.userList = userList;
+    }
 
     public SurveyConfig() {
     }

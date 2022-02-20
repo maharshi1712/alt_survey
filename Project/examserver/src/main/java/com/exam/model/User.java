@@ -1,9 +1,13 @@
 package com.exam.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +29,19 @@ public class User {
     // @JsonIgnore
     // private Set<UserSurvey> userSurveys = new HashSet<>();
 
+    @ManyToMany
+    private Collection<SurveyConfig> surveyConfigsList = new ArrayList<SurveyConfig>();
+    
 
+
+
+    public Collection<SurveyConfig> getSurveyConfigsList() {
+        return surveyConfigsList;
+    }
+
+    public void setSurveyConfigsList(Collection<SurveyConfig> surveyConfigsList) {
+        this.surveyConfigsList = surveyConfigsList;
+    }
 
     public User(Long id, String password, String firstName, String lastName, String email,  boolean enabled) {
         this.id = id;

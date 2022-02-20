@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.exam.model.SurveyConfig;
 import com.exam.model.User;
+import com.exam.repo.UserRepository;
 import com.exam.service.SurveyService;
 import com.exam.service.UserService;
 
@@ -26,6 +27,11 @@ public class ExamserverApplication implements CommandLineRunner {
 	@Autowired
 	private SurveyService surveyService;
 
+	@Autowired
+	private UserRepository userRepository;
+
+
+
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -44,31 +50,70 @@ public class ExamserverApplication implements CommandLineRunner {
 		System.out.println(user1.getEmail());
 
 
+		User user2 = new User();
+
+		user2.setFirstName("Shivam");
+		user2.setLastName("Prakash");
+		user2.setPassword("12345");
+		user2.setEmail("shivamprakash@gmail.com");
+
+		User user3 = this.userService.createUser(user2);
+		System.out.println(user3.getEmail());
+
+
 		Date d1 = new Date();
 		SurveyConfig surveyConfig = new SurveyConfig();
-		surveyConfig.setsurveyname("Email Survey");
-		surveyConfig.setSurvey_type("Onboarding");
+		surveyConfig.setsurveyname("Resignation Survey");
+		surveyConfig.setSurvey_type("Resignation");
 		surveyConfig.setSurvey_dealy(100);
 		surveyConfig.setMessage_subject("Message Subject");
 		surveyConfig.setMessage_body("This is message body");
 		surveyConfig.setCreatedBy("Rahul");
 		surveyConfig.setActive(true);
 		surveyConfig.setCreatedDate(d1);
-		surveyConfig.setModifiedBy("Shivam");
+		surveyConfig.setModifiedBy("Pushkar");
 		surveyConfig.setModifiedDate(d1);
 
-		//SurveyConfig surveyConfig2 = this.surveyService.createSurvey(surveyConfig);
-
-		// // Set<SurveyConfig> surveyConfigsSet = new HashSet<>();
-		// // UserSurvey userSurvey = new UserSurvey();
-		// // userSurvey.setSurveyConfig(surveyConfig);
-		// // userSurvey.setUser(user);
-
-		// // surveyConfigsSet.add(surveyConfig);
-
 		SurveyConfig s = this.surveyService.createSurvey(surveyConfig);
-
 		System.out.println(s.getsurveyname());
+
+
+		SurveyConfig surveyConfig1 = new SurveyConfig();
+		surveyConfig1.setsurveyname("Email Survey");
+		surveyConfig1.setSurvey_type("Onboarding");
+		surveyConfig1.setSurvey_dealy(100);
+		surveyConfig1.setMessage_subject("Message Subject");
+		surveyConfig1.setMessage_body("This is message body");
+		surveyConfig1.setCreatedBy("Rahul");
+		surveyConfig1.setActive(true);
+		surveyConfig1.setCreatedDate(d1);
+		surveyConfig1.setModifiedBy("Shivam");
+		surveyConfig1.setModifiedDate(d1);
+
+
+		
+		SurveyConfig s1 = this.surveyService.createSurvey(surveyConfig1);
+		System.out.println(s1.getsurveyname());
+
+
+
+		user.getSurveyConfigsList().add(surveyConfig);
+		user.getSurveyConfigsList().add(surveyConfig1);
+
+		surveyConfig.getUserList().add(user);
+		surveyConfig1.getUserList().add(user);
+
+		user2.getSurveyConfigsList().add(surveyConfig);
+		user2.getSurveyConfigsList().add(surveyConfig1);
+
+
+		surveyConfig.getUserList().add(user2);
+		surveyConfig1.getUserList().add(user2);
+
+		this.userRepository.save(user);
+		this.userRepository.save(user2);
+		
+
 
 	}
 }

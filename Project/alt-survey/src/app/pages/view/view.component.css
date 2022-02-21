@@ -1,0 +1,20 @@
+.create{
+    /* position: absolute; */
+    /* right: 10px; */
+    /* margin-right: 75px; */
+    background-color: #17089b;
+    height: 45px;
+    border-radius: 8px;  
+}
+.back{
+    background-color: #46A4E8;
+    
+}
+.header{
+    padding: 30px;
+    padding-left: 75px;
+}
+.content{
+    padding-top: 75px;
+    padding: 75px;
+}

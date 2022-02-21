@@ -1,0 +1,54 @@
+.view{
+    background-color: #ffb700;
+    border-radius: 35px;
+    width: 80px;
+    color: #03005E;
+}
+.view:hover{
+    background-color: #FFE9AF;
+    border: 1px solid #ffb700;
+}
+
+
+.header{
+    position: relative;
+    padding-top: 20px;
+    list-style-type: none;
+    /* padding-right: 75px; */
+}
+.create{
+    position: absolute;
+    right: 10px;
+    margin-right: 75px;
+    background-color: #17089b;
+    height: 45px;
+    border-radius: 8px;
+    
+}
+.Dropdown{
+    background-color: #F1EAFB;
+    margin-left: 75px;
+    color: #17089B;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.welcome_note{
+    padding-left: 75px;
+    padding-top: 50px;
+    text-align: left;
+    color: #F4563D;
+    font-weight: 400;
+    text-shadow: 2px 2px #eedbaa;
+    font-family: inherit;
+    font-size: 30px;
+}
+.create:hover{
+    height: 50px;
+    background-color: #46A4E8;
+    color: #17089b;
+}
+.mat-option{
+    font-family: inherit;
+    color: #03005E;
+}

@@ -1,5 +1,8 @@
 package com.exam.service.impl;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import com.exam.model.User;
 import com.exam.repo.UserRepository;
 import com.exam.service.UserService;
@@ -77,6 +80,14 @@ public class UserServiceImpl implements UserService {
         User user = this.userRepository.findByEmail(email);
         user.setPassword(password);
         this.userRepository.save(user);
+    }
+
+
+    @Override
+    public Set<User> getUsers() {
+        // TODO Auto-generated method stub
+
+        return new LinkedHashSet<User>(this.userRepository.findAll());
     }
 
 }

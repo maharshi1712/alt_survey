@@ -1,5 +1,7 @@
 package com.exam.service;
 
+import java.util.Set;
+
 import com.exam.model.User;
 
 import org.springframework.stereotype.Service;
@@ -22,6 +24,9 @@ public interface UserService {
 
     // Get user by Email
     public User findByEmail(String Email);
+
+    //Get all User
+    public Set<User> getUsers();
 
 
     public User loginUser(String email, String password);

@@ -10,8 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class SurveyConfig {
+
+    Date d1 = new Date();
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,6 +45,7 @@ public class SurveyConfig {
     // @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "surveyConfig")
     // private Set<UserSurvey> userSurveys = new HashSet<>();
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "surveyConfigsList")
     private Collection<User> userList = new ArrayList<User>();
 
@@ -151,7 +157,7 @@ public class SurveyConfig {
     }
 
     public Date getModifiedDate() {
-        return modifiedDate;
+        return d1;
     }
 
     public void setModifiedDate(Date modifiedDate) {

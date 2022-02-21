@@ -84,7 +84,7 @@ public class UserController {
         return this.userService.createUser(user);
     }
 
-    @PostMapping("/login")  //ye jb chalega jb /user/login post ki request url me jayega
+    @PostMapping("/login")  //ye tb chalega jb /user/login post ki request url me jayega
     public User loginUser(@RequestBody emailPasswordTemplate user) throws Exception{
         System.out.println("Logged In");
         return this.userService.loginUser(user.getEmail(), user.getPassword());

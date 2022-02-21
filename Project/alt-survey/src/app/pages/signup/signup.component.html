@@ -1,12 +1,12 @@
-<app-navbar navItem1="About us" navItem2="Login"> </app-navbar>
+<app-navbar navItem1="About us" navItem2="Login" routerLink="/login">
+</app-navbar>
 <section class="section-1">
   <div class="main-container d-flex">
     <div class="left-container">
       <div class="login-inner-container">
         <h2 style="font-weight: 600">Sign up</h2>
 
-        <form (ngSubmit)="formSubmit()" class="d-flex flex-column" >
-
+        <form (ngSubmit)="formSubmit()" class="d-flex flex-column">
           <div class="username-row d-flex" style="width: 100%">
             <div class="firstname d-flex flex-column">
               <label for="FirstName">First Name</label>
@@ -39,7 +39,13 @@
                 placeholder="Email"
                 style="width: 100%"
               />
-              <button type="button" class="verify-btn text-center" (click)="onVerifyUser()" [disabled]="!user.email" *ngIf="!OtpResponse">
+              <button
+                type="button"
+                class="verify-btn text-center"
+                (click)="onVerifyUser()"
+                [disabled]="!user.email"
+                *ngIf="!OtpResponse"
+              >
                 Verify
               </button>
               <button type="button" class="verify-tik-btn" *ngIf="OtpResponse">
@@ -66,25 +72,30 @@
             <app-loading-spinner></app-loading-spinner>
           </div> -->
           <div *ngIf="isLoading">
-              <mat-spinner [diameter]="30" ></mat-spinner>
-              </div>
-          <div class="verify-email-div d-flex flex-column" *ngIf="OtpResponse" >
+            <mat-spinner [diameter]="30"></mat-spinner>
+          </div>
+          <div class="verify-email-div d-flex flex-column" *ngIf="OtpResponse">
             <label for="OTP" *ngIf="!OtpVerified">Verify OTP</label>
             <label for="OTP" *ngIf="OtpVerified">OTP Verified</label>
-            <div class="verify-email-inner d-flex position-relative" *ngIf="!OtpVerified">
+            <div
+              class="verify-email-inner d-flex position-relative"
+              *ngIf="!OtpVerified"
+            >
               <input
                 required
-                [(ngModel)] ="OtpEntered"
+                [(ngModel)]="OtpEntered"
                 name="email"
                 type="number"
                 placeholder="Enter Your OTP"
                 style="width: 100%"
-                
               />
-              <button type="button" class="verify-btn text-center" (click)="onVerifyOtp()">
+              <button
+                type="button"
+                class="verify-btn text-center"
+                (click)="onVerifyOtp()"
+              >
                 Verify
               </button>
-
             </div>
           </div>
           <label for="Password">Password</label>

@@ -16,7 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component'
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
@@ -25,7 +25,6 @@ import { CardComponent } from './components/card/card.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ViewComponent } from './pages/view/view.component';
 import { CreateComponent } from './pages/create/create.component';
-
 
 @NgModule({
   declarations: [
@@ -38,7 +37,7 @@ import { CreateComponent } from './pages/create/create.component';
     HomeComponent,
     CardComponent,
     ViewComponent,
-    CreateComponent
+    CreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,9 +54,9 @@ import { CreateComponent } from './pages/create/create.component';
     MatProgressSpinnerModule,
     RouterModule,
     FlexLayoutModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

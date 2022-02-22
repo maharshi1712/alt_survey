@@ -23,7 +23,7 @@ input{
 }
 #checkbox{
     height: min-content;
-    margin-inline: 2px;
+    margin-inline: 3px;
 }
 .save{
     background-color: #17089b;
@@ -61,3 +61,19 @@ label{
     box-shadow: 1px 1px 5px #F1EAFB; 
     border-radius: 10px;
 }
+
+
+.example-h2 {
+    margin: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 0 10px;
+  }

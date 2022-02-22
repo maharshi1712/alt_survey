@@ -8,8 +8,13 @@ import { Component, OnInit,Input } from '@angular/core';
 export class HomeComponent implements OnInit {
   selected='option1'; 
   @Input() username : String='sample';
-  constructor() { }
-
+  constructor() { 
+    
+  }
+  // dropdown()
+  // {
+  //   console.log(this.selected);
+  // }
   ngOnInit(): void {
   }
 

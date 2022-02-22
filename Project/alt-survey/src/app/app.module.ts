@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,6 +57,8 @@ import { CreateComponent } from './pages/create/create.component';
     RouterModule,
     FlexLayoutModule,
     MatSelectModule,
+    MatCheckboxModule,
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

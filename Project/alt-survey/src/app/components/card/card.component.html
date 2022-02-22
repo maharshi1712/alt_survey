@@ -1,0 +1,22 @@
+
+<div class="content">
+    
+    <div fxLayout="row wrap" fxLayoutGap="25px grid">
+        <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let num of [1,2,3,4,5]">
+            <mat-card class="mat-elevation-z8">
+                <div class="boundary">
+                    <mat-card-title style="color: #EDF8FF; font-size: 22px; font-family: inherit;">{{ surveyName }}</mat-card-title>
+                    <br>
+
+                    <mat-card-subtitle style="font-size: 15px; font-family: inherit; color:#EDF8FF">{{ surveyType }}</mat-card-subtitle>
+                    <br>
+                    <mat-card-actions>
+                        <button mat-button class="view">VIEW</button>
+                    </mat-card-actions>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,29 @@
+.content {
+  padding: 75px;
+}
+.mat-elevation-z8 {
+  border-radius: 10px;
+  background-color: #03005e;
+  opacity: 0.8;
+}
+.content > mat-card {
+  max-width: 300px;
+}
+.boundary {
+  padding-left: 25px;
+  padding-top: 25px;
+}
+.mat-elevation-z8:hover {
+  background-color: #281aa6;
+  color: #0b006d;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0, 10px 10px rgba(0, 0, 0, 0.22);
+}
+.view {
+  background-color: #ffb700;
+  border-radius: 35px;
+  width: 80px;
+  color: #03005e;
+}
+.view:hover {
+  background-color: #ffe9af;
+}

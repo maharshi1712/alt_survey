@@ -16,11 +16,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component'
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CardComponent } from './components/card/card.component';
+import { MatSelectModule } from '@angular/material/select';
+import { ViewComponent } from './pages/view/view.component';
+import { CreateComponent } from './pages/create/create.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,10 @@ import { HomeComponent } from './pages/home/home.component';
     ForgotPasswordComponent,
     NavbarComponent,
     LoadingSpinnerComponent,
-    HomeComponent
+    HomeComponent,
+    CardComponent,
+    ViewComponent,
+    CreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +52,11 @@ import { HomeComponent } from './pages/home/home.component';
     MatIconModule,
     FormsModule,
     MatProgressSpinnerModule,
-    RouterModule
+    RouterModule,
+    FlexLayoutModule,
+    MatSelectModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

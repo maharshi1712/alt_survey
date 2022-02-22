@@ -1,4 +1,8 @@
-<app-navbar navItem1="About us" navItem2="Sign up"></app-navbar>
+<app-navbar
+  navItem1="About us"
+  navItem2="Sign up"
+  routerLink="/signup"
+></app-navbar>
 <section class="section-1">
   <div class="main-container d-flex">
     <div class="left-container">
@@ -15,11 +19,25 @@
         <h2 style="font-weight: 600">Login</h2>
         <form (ngSubmit)="formSubmit()" class="d-flex flex-column">
           <label for="Email">Email</label>
-          <input type="text" placeholder="Email" name="email" [(ngModel)]="user.email" />
+          <input
+            type="text"
+            placeholder="Email"
+            name="email"
+            [(ngModel)]="user.email"
+          />
           <label for="Password">Password</label>
-          <input type="password" placeholder="Password" name="password" [(ngModel)]="user.password" />
-          <a style="margin-top: 25px" href="forgot-password">Forget Password?</a>
-          <button type="submit" style="margin-top: 25px" class="login-btn">Login</button>
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            [(ngModel)]="user.password"
+          />
+          <a style="margin-top: 25px" href="forgot-password"
+            >Forget Password?</a
+          >
+          <button type="submit" style="margin-top: 25px" class="login-btn">
+            Login
+          </button>
           <div style="margin-top: 25px" class="signup-row">
             <p>Don't have an account yet?</p>
             <a routerLink="/signup" class="signup-bottom-btn">Sign up</a>

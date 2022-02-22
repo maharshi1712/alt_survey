@@ -1,3 +1,28 @@
 <app-navbar navItem1="Home" navItem2="Logout"></app-navbar>
+<div class="container">
+  <h1 class="welcome_note">Welcome! {{ username }}</h1>
+  <div class="header">
+    <li>
+      <mat-form-field appearance="fill" class="Dropdown">
+        <mat-label style="color: #17089b">Select Category</mat-label>
+        <mat-select class="panel" [(value)]="selected">
+          <mat-option value="Onboarding">Onboarding</mat-option>
+          <mat-option value="Resignation">Resignation</mat-option>
+          <mat-option value="Other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </li>
+    <li>
+      <button
+        mat-raised-button
+        color="primary"
+        onclick="onCreateNewSurvey()"
+        class="create"
+      >
+        Create Survey
+      </button>
+    </li>
+  </div>
 
-<h3>Welcome to Landing page !</h3>
+  <app-card surveyName="Testing survey" surveyType="Resigning"></app-card>
+</div>

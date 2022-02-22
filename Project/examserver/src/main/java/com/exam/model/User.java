@@ -13,8 +13,11 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import org.springframework.stereotype.Service;
+
 @Entity
 @Table(name = "users")
+@Service
 public class User {
 
     @Id

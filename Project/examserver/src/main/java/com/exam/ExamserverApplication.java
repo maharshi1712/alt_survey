@@ -92,7 +92,7 @@ public class ExamserverApplication implements CommandLineRunner {
 
 
 		
-		// SurveyConfig s1 = this.surveyconfigService.createSurvey(surveyConfig1);
+		// SurveyConfig s1 = this.surveyConfigService.createSurvey(surveyConfig1);
 		// System.out.println(s1.getsurveyname());
 
 

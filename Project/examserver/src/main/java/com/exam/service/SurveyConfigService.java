@@ -13,7 +13,7 @@ public interface SurveyConfigService  {
 
     public SurveyConfig addSurveyConfig(SurveyConfig surveyConfig);
 
-    public SurveyConfig updateSurveyConfig(SurveyConfig surveyConfig);
+    public SurveyConfig updateSurveyConfig(SurveyConfig surveyConfig, int survey_id);
 
     public Set<SurveyConfig> getSurveyConfigs();
 

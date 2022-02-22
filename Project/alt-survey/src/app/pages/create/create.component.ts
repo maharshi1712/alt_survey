@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { SurveyService } from '../../services/survey.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-
-
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
 })
-
-
-
 export class CreateComponent implements OnInit {
   isActive = false;
-  
+  public Editor = ClassicEditor;
+
   htmlContent = '';
 
   config: AngularEditorConfig = {
@@ -45,21 +43,22 @@ export class CreateComponent implements OnInit {
     ]
   };
 
-  constructor() { }
-  public survey={
-    surveyName :'',
-    surveyType:'',
-    subject:'',
-    content:'',
-    Rquery:'',
-    delay:'',
-    isActive:''
-  }
+  constructor(private surveyService: SurveyService) {}
+  public survey = {
+    surveyName: '',
+    surveyType: '',
+    messageSubject: '',
+    messageBody: '',
+    delay: '',
+    isActive: '',
+    createdBy: '',
+    modifiedBy: '',
+  };
+
   ngOnInit(): void {
-    //this.isActive=true;
   }
-  formSubmit(){
-    alert('Survey Details saved successfully')
+  formSubmit() {
     console.log(this.survey);
   }
+ 
 }

@@ -3,17 +3,22 @@ package com.exam.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import org.springframework.stereotype.Service;
+
+import net.bytebuddy.agent.builder.AgentBuilder.PoolStrategy.Eager;
 
 @Entity
 @Table(name = "users")
@@ -35,12 +40,10 @@ public class User {
     // @JsonIgnore
     // private Set<UserSurvey> userSurveys = new HashSet<>();
 
-    
-    @ManyToMany
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Collection<SurveyConfig> surveyConfigsList = new ArrayList<SurveyConfig>();
     
-
-
 
     public Collection<SurveyConfig> getSurveyConfigsList() {
         return surveyConfigsList;

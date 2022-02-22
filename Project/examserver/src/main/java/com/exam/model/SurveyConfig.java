@@ -5,15 +5,19 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.stereotype.Service;
+
+import net.bytebuddy.asm.Advice.This;
 
 @Entity
 @Service
@@ -47,16 +51,18 @@ public class SurveyConfig {
     // @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "surveyConfig")
     // private Set<UserSurvey> userSurveys = new HashSet<>();
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "surveyConfigsList")
-    private Collection<User> userList = new ArrayList<User>();
 
-    public Collection<User> getUserList() {
-        return userList;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+
+
+    public User getUser() {
+        return user;
     }
 
-    public void setUserList(Collection<User> userList) {
-        this.userList = userList;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public SurveyConfig() {

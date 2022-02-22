@@ -90,4 +90,11 @@ public class UserServiceImpl implements UserService {
         return new LinkedHashSet<User>(this.userRepository.findAll());
     }
 
+
+    @Override
+    public User getUser(Long userId) {
+        // TODO Auto-generated method stub
+        return this.userRepository.findById(userId).get();
+    }
+
 }

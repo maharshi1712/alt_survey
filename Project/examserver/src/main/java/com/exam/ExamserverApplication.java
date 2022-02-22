@@ -97,21 +97,18 @@ public class ExamserverApplication implements CommandLineRunner {
 
 
 
-		// user.getSurveyConfigsList().add(surveyConfig);
-		// user.getSurveyConfigsList().add(surveyConfig1);
+		// user1.getSurveyConfigsList().add(surveyConfig);
+		// user1.getSurveyConfigsList().add(surveyConfig1);
 
-		// surveyConfig.getUserList().add(user);
-		// surveyConfig1.getUserList().add(user);
+		// // surveyConfig.getUserList().add(user);
+		// // surveyConfig1.getUserList().add(user);
 
-		// user2.getSurveyConfigsList().add(surveyConfig);
-		// user2.getSurveyConfigsList().add(surveyConfig1);
+		// user3.getSurveyConfigsList().add(surveyConfig);
+		// user3.getSurveyConfigsList().add(surveyConfig1);
 
 
-		// surveyConfig.getUserList().add(user2);
-		// surveyConfig1.getUserList().add(user2);
-
-		// this.userRepository.save(user);
-		// this.userRepository.save(user2);
+		// this.userRepository.save(user1);
+		// this.userRepository.save(user3);
 		
 
 

@@ -1,12 +1,14 @@
 package com.exam.controller;
 
 import java.util.Date;
+import java.util.Set;
 
 import com.exam.model.SurveyConfig;
 import com.exam.model.User;
 import com.exam.repo.SurveyConfigRepository;
 import com.exam.repo.UserRepository;
 import com.exam.service.SurveyConfigService;
+import com.exam.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +33,9 @@ public class SurveyConfigController {
     SurveyConfig surveyConfig1 = new SurveyConfig();
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private UserRepository userRepository;
 
     @Autowired
@@ -47,15 +52,7 @@ public class SurveyConfigController {
         surveyConfig.setModifiedDate(d1);
         
        
-        SurveyConfig s1 = this.surveyConfigService.createSurvey(surveyConfig);
-        for (User user : surveyConfig1.getUserList()) {
-            user.getSurveyConfigsList().add(s1);
-            this.userRepository.save(user);
-            s1.getUserList().add(user);
-            this.surveyConfigRepository.save(s1);
-
-        }
-        return s1;
+        return this.surveyConfigService.createSurvey(surveyConfig);
     }
 
     //Getting survey by Id
@@ -69,6 +66,13 @@ public class SurveyConfigController {
     @GetMapping("/")
     public ResponseEntity<?>getSurveyConfigs(){
         return ResponseEntity.ok(this.surveyConfigService.getSurveyConfigs());
+    }
+
+    @GetMapping("/user/{user_id}")
+    public ResponseEntity<Set<SurveyConfig>> getAllJobsByCompany(@PathVariable("user_id") long user_id) {
+
+        User user = this.userService.getUser(user_id);
+        return ResponseEntity.ok(this.surveyConfigService.getAllSurveyConfigByUser(user));
     }
 
     //updating survey

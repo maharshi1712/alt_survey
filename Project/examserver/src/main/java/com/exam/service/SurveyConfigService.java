@@ -3,6 +3,7 @@ package com.exam.service;
 import java.util.Set;
 
 import com.exam.model.SurveyConfig;
+import com.exam.model.User;
 
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ public interface SurveyConfigService  {
     public SurveyConfig getSurveyConfig(int survey_id);
 
     public void deleteSurveyConfig(int survey_id);
+
+    public Set<SurveyConfig> getAllSurveyConfigByUser(User user);
 
     
 }

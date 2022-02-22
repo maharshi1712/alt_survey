@@ -4,6 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import com.exam.model.SurveyConfig;
+import com.exam.model.User;
 import com.exam.repo.SurveyConfigRepository;
 import com.exam.service.SurveyConfigService;
 
@@ -74,6 +75,12 @@ public class SurveyConfigServiceImpl implements SurveyConfigService{
         surveyConfig.setSurvey_id(survey_id);
         this.surveyConfigRepository.delete(surveyConfig);
         
+    }
+
+    @Override
+    public Set<SurveyConfig> getAllSurveyConfigByUser(User user) {
+        // TODO Auto-generated method stub
+        return new LinkedHashSet<>(this.surveyConfigRepository.findByUser(user));
     }
     
 }

@@ -10,17 +10,11 @@ import com.exam.service.SurveyConfigService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/surveyConfig")
+@CrossOrigin("*")
 public class SurveyConfigController {
 
     Date d1 = new Date();
@@ -53,7 +47,6 @@ public class SurveyConfigController {
             this.userRepository.save(user);
             s1.getUserList().add(user);
             this.surveyConfigRepository.save(s1);
-
         }
         return s1;
     }

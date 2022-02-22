@@ -115,7 +115,7 @@ nav {
   border-radius: 40px;
 }
 
-.verify-tik-btn{
+.verify-tik-btn {
   font-size: 14px;
   width: 10%;
   height: 80%;
@@ -173,4 +173,30 @@ nav {
   border-color: var(--color-purple-primary);
   border: 1px solid;
   color: var(--color-purple-primary);
+}
+
+@media only screen and (max-width: 830px) {
+  .right-container {
+    width: 0;
+    margin-top: 0;
+    padding-left: 0;
+  }
+  .left-container {
+    padding-left: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 500px) {
+  input {
+    max-width: 300px;
+  }
+  .login-btn {
+    width: 300px;
+  }
+  .signup-row {
+    width: 300px;
+  }
 }

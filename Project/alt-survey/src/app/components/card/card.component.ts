@@ -1,19 +1,25 @@
-import { Component, OnInit,Input } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { Survey } from 'src/app/models/survey.model';
+import { SurveyService } from '../../services/survey.service';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
-  @Input() surveyName:String='';
-  @Input() surveyType:String='';
-  
- 
-  constructor() { }
+  surveys: Survey[] = [];
+  @Input() surveyName: String = '';
+  @Input() surveyType: String = '';
 
-  ngOnInit(): void {
+  constructor(private surveyService: SurveyService) {}
+
+  ngOnInit() {
+    this.surveyService.getSurvey().subscribe((response) => {
+      let res: any = response;
+      res.forEach((element: any) => {
+        this.surveys.push(element);
+      });
+    });
   }
-
 }

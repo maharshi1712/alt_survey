@@ -1,15 +1,15 @@
 export class Survey {
-  private survey_id: Number;
-  private surveyname: String;
-  private survey_type: String;
-  private message_subject: String;
-  private message_body: String;
-  private survey_dealy: Number;
-  private createdBy: String;
-  private createdDate: Date;
-  private modifiedBy: String;
-  private modifiedDate: Date;
-  private active: Boolean;
+  public survey_id: Number;
+  public surveyname: String;
+  public survey_type: String;
+  public message_subject: String;
+  public message_body: String;
+  public survey_dealy: Number;
+  public createdBy: String;
+  public createdDate: Date;
+  public modifiedBy: String;
+  public modifiedDate: Date;
+  public active: Boolean;
 
   constructor(
     survey_id: Number,

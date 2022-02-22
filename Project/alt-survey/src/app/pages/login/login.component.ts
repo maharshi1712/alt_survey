@@ -30,7 +30,10 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.userService.loginUser(this.user).subscribe((response) => {
-      //Get By localstorage
+      let userData: any = response;
+      localStorage.setItem('user_id', userData.id);
+      localStorage.setItem('first_name', userData.firstName);
+      localStorage.setItem('last_name', userData.lastName);
       if (!response) {
         this.user.email = '';
         this.user.password = '';

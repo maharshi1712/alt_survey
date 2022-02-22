@@ -51,7 +51,6 @@ public class SurveyConfig {
     // @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "surveyConfig")
     // private Set<UserSurvey> userSurveys = new HashSet<>();
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 

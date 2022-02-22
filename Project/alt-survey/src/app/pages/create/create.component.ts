@@ -20,8 +20,6 @@ export class CreateComponent implements OnInit {
     createdBy: '',
     modifiedBy: '',
   };
-  ngOnInit(): void {
-    console.log(this.surveyService.getUsername());
-  }
+  ngOnInit(): void {}
   formSubmit() {}
 }

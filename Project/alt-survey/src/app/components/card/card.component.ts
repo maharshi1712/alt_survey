@@ -20,6 +20,9 @@ export class CardComponent implements OnInit {
       res.forEach((element: any) => {
         this.surveys.push(element);
       });
+      console.log(this.surveys);
     });
   }
+
+  onViewSurvey() {}
 }

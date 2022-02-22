@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SurveyRepository  extends JpaRepository<SurveyConfig, Integer>{
+public interface SurveyConfigRepository  extends JpaRepository<SurveyConfig, Integer>{
 
     public SurveyConfig findBySurveyname(String SurveyName);
 

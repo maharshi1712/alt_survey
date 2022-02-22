@@ -105,6 +105,11 @@ public class UserController {
        return this.userService.findByEmail(email);
     }
 
+    @GetMapping("/")
+    public ResponseEntity<?> getUsers(){
+        return ResponseEntity.ok(this.userService.getUsers());
+    }
+
     //Deleting the user by userId;
     @DeleteMapping("/{userId}")
     public void deleteUser(@PathVariable("userId") Long userId){

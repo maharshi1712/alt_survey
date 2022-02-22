@@ -10,8 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import org.springframework.stereotype.Service;
+
 @Entity
+@Service
 public class SurveyConfig {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,6 +47,7 @@ public class SurveyConfig {
     // @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "surveyConfig")
     // private Set<UserSurvey> userSurveys = new HashSet<>();
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "surveyConfigsList")
     private Collection<User> userList = new ArrayList<User>();
 
@@ -135,7 +143,9 @@ public class SurveyConfig {
     }
 
     public Date getCreatedDate() {
-        return createdDate;
+        Date d1 = new Date();
+        if(createdDate==null) return d1;
+        else return createdDate;
     }
 
     public void setCreatedDate(Date createdDate) {
@@ -151,7 +161,8 @@ public class SurveyConfig {
     }
 
     public Date getModifiedDate() {
-        return modifiedDate;
+        Date d1 = new Date();
+        return d1;
     }
 
     public void setModifiedDate(Date modifiedDate) {

@@ -10,8 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import org.springframework.stereotype.Service;
+
 @Entity
 @Table(name = "users")
+@Service
 public class User {
 
     @Id
@@ -29,6 +35,7 @@ public class User {
     // @JsonIgnore
     // private Set<UserSurvey> userSurveys = new HashSet<>();
 
+    
     @ManyToMany
     private Collection<SurveyConfig> surveyConfigsList = new ArrayList<SurveyConfig>();
     

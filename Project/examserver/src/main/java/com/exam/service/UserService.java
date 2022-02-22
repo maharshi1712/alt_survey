@@ -28,6 +28,9 @@ public interface UserService {
     //Get all User
     public Set<User> getUsers();
 
+    //get user by id;
+    public User getUser(Long userId);
+
 
     public User loginUser(String email, String password);
 

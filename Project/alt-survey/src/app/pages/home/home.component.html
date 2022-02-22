@@ -16,8 +16,9 @@
       <button
         mat-raised-button
         color="primary"
-        onclick="onCreateNewSurvey()"
+        (click)="onCreateNewSurvey()"
         class="create"
+        routerLink="/create"
       >
         Create Survey
       </button>

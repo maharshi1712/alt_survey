@@ -10,26 +10,26 @@ export class UserService {
 
   //Add user through frontEnd;
   public addUser(user: any) {
-    return this.http.post(`${baseUrl}`, user);
+    return this.http.post(`${baseUrl}user`, user);
   }
 
   public verifySignUpUser(email: any) {
-    return this.http.get(`${baseUrl}signup/sendotp/` + email, {
+    return this.http.get(`${baseUrl}user/signup/sendotp/` + email, {
       observe: 'response',
     });
   }
 
-  public loginUser(user : any){
-    return this.http.post(`${baseUrl}login`,user);
+  public loginUser(user: any) {
+    return this.http.post(`${baseUrl}user/login`, user);
   }
 
-  public verifyForgotPasswordOtp(email:any){
-    return this.http.get(`${baseUrl}forgot-password/sendotp/` + email, {
+  public verifyForgotPasswordOtp(email: any) {
+    return this.http.get(`${baseUrl}user/forgot-password/sendotp/` + email, {
       observe: 'response',
-    })}
+    });
+  }
 
-    public forgotPassword(user:any){
-      return this.http.post(`${baseUrl}forgot-password`,user);
-    
+  public forgotPassword(user: any) {
+    return this.http.post(`${baseUrl}user/forgot-password`, user);
   }
 }

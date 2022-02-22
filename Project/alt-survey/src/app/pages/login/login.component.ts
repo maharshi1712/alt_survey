@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { SurveyService } from '../../services/survey.service';
+import { map } from 'rxjs';
+export interface UserData {}
 
 @Component({
   selector: 'app-login',
@@ -9,7 +12,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private surveyService: SurveyService
+  ) {}
 
   user = {
     email: '',
@@ -23,8 +30,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.userService.loginUser(this.user).subscribe((response) => {
-      console.log(response);
-
+      //Get By localstorage
       if (!response) {
         this.user.email = '';
         this.user.password = '';

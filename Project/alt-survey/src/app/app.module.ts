@@ -25,6 +25,7 @@ import { CardComponent } from './components/card/card.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ViewComponent } from './pages/view/view.component';
 import { CreateComponent } from './pages/create/create.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CreateComponent } from './pages/create/create.component';
     RouterModule,
     FlexLayoutModule,
     MatSelectModule,
+    CKEditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -6,10 +6,11 @@ export class SurveyModel {
   public message_body: String = '';
   public survey_dealy: Number = 0;
   public createdBy: String = '';
-  public createdDate: Date = new Date();
-  public modifiedBy: String = '';
-  public modifiedDate: Date = new Date();
+  public modifiedBy: any;
   public active: Boolean = false;
+  public user: any = {
+    id: 1,
+  };
 
   setValues(response: any) {
     this.survey_id = response.survey_id;
@@ -18,9 +19,8 @@ export class SurveyModel {
     this.message_subject = response.message_subject;
     this.message_body = response.message_body;
     this.survey_dealy = response.survey_dealy;
-    this.createdBy = response.createdBy;
-    this.createdDate = response.createdDate;
-    this.modifiedBy = response.modifiedBy;
     this.active = response.active;
+    this.modifiedBy = localStorage.getItem('first_name');
+    this.user.id = localStorage.getItem('user_id');
   }
 }

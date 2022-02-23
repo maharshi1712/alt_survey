@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import baseUrl from './helper';
+import { SurveyModel } from '../models/survey.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,5 +16,17 @@ export class SurveyService {
 
   public viewSurvey(survey_id: Number) {
     return this.http.get(`${baseUrl}surveyConfig/${survey_id}`);
+  }
+
+  public addSurvey(survey: any) {
+    this.http.post(`${baseUrl}surveyConfig/`, survey);
+  }
+
+  public updateSurvey(survey: SurveyModel, survey_id: Number) {
+    this.http.put(`${baseUrl}surveyConfig/${survey_id}`, survey);
+  }
+
+  public deleteSurvey(survey_id: Number) {
+    this.http.delete(`${baseUrl}surveyConfig/${survey_id}`);
   }
 }

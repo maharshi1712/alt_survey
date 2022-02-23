@@ -6,6 +6,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { HomeComponent } from './pages/home/home.component';
 import { ViewComponent } from './pages/view/view.component';
 import { CreateComponent } from './pages/create/create.component';
+import { EditComponent } from './pages/edit/edit.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'view/:id', component: ViewComponent },
   { path: 'create', component: CreateComponent },
+  { path: 'edit/:id', component: EditComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '*', redirectTo: 'login', pathMatch: 'full' },
 ];

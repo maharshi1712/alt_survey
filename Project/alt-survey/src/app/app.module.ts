@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ViewComponent } from './pages/view/view.component';
 import { CreateComponent } from './pages/create/create.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     FlexLayoutModule,
     MatSelectModule,
     CKEditorModule,
+    AngularEditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

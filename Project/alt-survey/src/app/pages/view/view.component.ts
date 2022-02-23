@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { SurveyService } from '../../services/survey.service';
+import { ActivatedRoute, Router, Routes } from '@angular/router';
+import { SurveyModel } from '../../models/survey.model';
 
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
-  styleUrls: ['./view.component.css']
+  styleUrls: ['./view.component.css'],
 })
 export class ViewComponent implements OnInit {
+  constructor(
+    private surveyService: SurveyService,
+    private route: ActivatedRoute
+  ) {}
+  survey_id: any;
+  survey: SurveyModel = new SurveyModel();
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      this.survey_id = params.get('id');
+    });
+    this.surveyService.viewSurvey(this.survey_id).subscribe((response) => {
+      let res: any = response;
+      this.survey.setValues(res);
+    });
   }
-
 }

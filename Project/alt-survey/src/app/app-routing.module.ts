@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'view', component: ViewComponent },
+  { path: 'view/:id', component: ViewComponent },
   { path: 'create', component: CreateComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '*', redirectTo: 'login', pathMatch: 'full' },

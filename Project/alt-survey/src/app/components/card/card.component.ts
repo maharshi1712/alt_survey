@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Survey } from 'src/app/models/survey.model';
 import { SurveyService } from '../../services/survey.service';
 import { Router } from '@angular/router';
+import { SurveyModel } from '../../models/survey.model';
 
 @Component({
   selector: 'app-card',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
-  surveys: Survey[] = [];
+  surveys: SurveyModel[] = [];
   @Input() surveyName: String = '';
   @Input() surveyType: String = '';
 
@@ -21,12 +21,11 @@ export class CardComponent implements OnInit {
       res.forEach((element: any) => {
         this.surveys.push(element);
       });
-      console.log(this.surveys);
     });
   }
 
   onViewSurvey(suvrey_id: Number) {
-    this.router.navigate(['/view']);
+    this.router.navigate([`view/${suvrey_id}/`]);
     this.surveyService.viewSurvey(suvrey_id);
   }
 }

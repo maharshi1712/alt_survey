@@ -10,12 +10,10 @@ export class SurveyService {
   constructor(private http: HttpClient, private _snack: MatSnackBar) {}
 
   public getSurvey() {
-    return this.http.get(
-      `${baseUrl}surveyConfig/user/${localStorage.getItem('user_id')}`
-    );
+    return this.http.get(`${baseUrl}surveyConfig/`);
   }
 
   public viewSurvey(survey_id: Number) {
-    this.http.get(`${baseUrl}surveyConfig/${survey_id}`);
+    return this.http.get(`${baseUrl}surveyConfig/${survey_id}`);
   }
 }

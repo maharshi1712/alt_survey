@@ -10,7 +10,7 @@ export class UserService {
 
   //Add user through frontEnd;
   public addUser(user: any) {
-    return this.http.post(`${baseUrl}user`, user);
+    return this.http.post(`${baseUrl}user/`, user);
   }
 
   public verifySignUpUser(email: any) {

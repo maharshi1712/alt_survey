@@ -44,6 +44,7 @@ public class SurveyConfigController {
     {
         surveyConfig.setCreatedDate(d1);
         surveyConfig.setModifiedDate(d1);
+        surveyConfig.setActive(true);
         return this.surveyConfigService.createSurvey(surveyConfig);
     }
 

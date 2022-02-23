@@ -42,13 +42,12 @@
           </div>
           <div class="form-heading">
             <label for="sruvey-name">Message Body</label>
-          </div>
-          <div class="subject-border">
-            <input
+
+            <angular-editor
               [(ngModel)]="survey.messageBody"
-              name="Content"
-              placeholder="Content"
-            />
+              name="MessageBody"
+              [config]="config"
+            ></angular-editor>
           </div>
 
           <div class="form-heading">
@@ -61,17 +60,6 @@
               />
             </div>
           </div>
-
-          <div class="form-heading">
-            <label for="sruvey-name">IsActive</label>
-          </div>
-
-          <input
-            id="checkbox"
-            type="checkbox"
-            name="SurveyName"
-            placeholder="Survey Name"
-          />
 
           <div class="button-border Centre">
             <button

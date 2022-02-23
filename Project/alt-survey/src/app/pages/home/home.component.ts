@@ -10,8 +10,8 @@ export class HomeComponent implements OnInit {
   selected = 'option1';
   @Input() username: String = 'sample';
   constructor(private router: Router) {}
-
-  ngOnInit(): void {}
+  user: any = localStorage.getItem('first_name');
+  ngOnInit() {}
 
   onCreateNewSurvey() {
     this.router.navigate(['/create']);

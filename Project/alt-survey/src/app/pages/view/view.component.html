@@ -1,9 +1,55 @@
-<div class="header">
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="25px" fxLayoutAlign="space-between" fxLayoutAlign.xs="start">
-        <div><button mat-raised-button color="primary" class="back">Back</button></div>
-        
-        <div><button mat-raised-button color="primary" class="create">Edit Survey</button></div>
+<app-navbar navItem1="Home" navItem2="Logout"></app-navbar>
+
+<div class="header" style="margin-top: 30px">
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap.xs="25px"
+    fxLayoutAlign="space-between"
+    fxLayoutAlign.xs="start"
+  >
+    <div>
+      <button mat-raised-button color="primary" class="back">Back</button>
     </div>
-    
-    
+
+    <div>
+      <button mat-raised-button color="primary" class="create">
+        Edit Survey
+      </button>
+    </div>
+  </div>
+  <div class="form-heading row">
+    <label class="col-3" for="survey-name">Survey Name</label>
+    <div class="subject-border col-9">
+      <h4>{{ survey.surveyname }}</h4>
+    </div>
+  </div>
+
+  <div class="form-heading row">
+    <label class="col-3" for="sruvey-name">Survey Type</label>
+    <div class="subject-border col-9">
+      <h4>{{ survey.survey_type }}</h4>
+    </div>
+  </div>
+
+  <div class="form-heading row">
+    <label class="col-3" for="sruvey-name">Message Subject</label>
+    <div class="subject-border col-9">
+      <h4>{{ survey.message_subject }}</h4>
+    </div>
+  </div>
+
+  <div class="form-heading row">
+    <label class="col-3" for="sruvey-name">Message Body</label>
+    <div class="subject-border col-9">
+      <h4>{{ survey.message_body }}</h4>
+    </div>
+  </div>
+
+  <div class="form-heading row">
+    <label class="col-3" for="sruvey-name">Delay</label>
+    <div class="subject-border col-9">
+      <h4>{{ survey.survey_dealy }}</h4>
+    </div>
+  </div>
 </div>

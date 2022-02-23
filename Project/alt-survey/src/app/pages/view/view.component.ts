@@ -11,7 +11,8 @@ import { SurveyModel } from '../../models/survey.model';
 export class ViewComponent implements OnInit {
   constructor(
     private surveyService: SurveyService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
   survey_id: any;
   survey: SurveyModel = new SurveyModel();
@@ -24,5 +25,8 @@ export class ViewComponent implements OnInit {
       let res: any = response;
       this.survey.setValues(res);
     });
+  }
+  onEditSurvey(survey_id: Number) {
+    this.router.navigate([`edit/${survey_id}`]);
   }
 }

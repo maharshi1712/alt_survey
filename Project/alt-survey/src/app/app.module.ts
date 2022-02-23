@@ -27,6 +27,7 @@ import { ViewComponent } from './pages/view/view.component';
 import { CreateComponent } from './pages/create/create.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { EditComponent } from './pages/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     CardComponent,
     ViewComponent,
     CreateComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,12 @@
     </div>
 
     <div>
-      <button mat-raised-button color="primary" class="create">
+      <button
+        mat-raised-button
+        color="primary"
+        class="create"
+        (click)="onEditSurvey(survey.survey_id)"
+      >
         Edit Survey
       </button>
     </div>
@@ -50,6 +55,12 @@
     <label class="col-3" for="sruvey-name">Delay</label>
     <div class="subject-border col-9">
       <h4>{{ survey.survey_dealy }}</h4>
+    </div>
+  </div>
+  <div class="form-heading row">
+    <label class="col-3" for="sruvey-name">Created By</label>
+    <div class="subject-border col-9">
+      <h4>{{ survey.createdBy }}</h4>
     </div>
   </div>
 </div>

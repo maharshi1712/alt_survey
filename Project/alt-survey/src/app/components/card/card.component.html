@@ -20,7 +20,11 @@
           >
           <br />
           <mat-card-actions>
-            <button mat-button class="view" (click)="onViewSurvey()">
+            <button
+              mat-button
+              class="view"
+              (click)="onViewSurvey(survey.survey_id)"
+            >
               VIEW
             </button>
           </mat-card-actions>

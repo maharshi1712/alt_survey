@@ -40,7 +40,7 @@ public class User {
     // @JsonIgnore
     // private Set<UserSurvey> userSurveys = new HashSet<>();
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Collection<SurveyConfig> surveyConfigsList = new ArrayList<SurveyConfig>();
     

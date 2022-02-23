@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Survey } from 'src/app/models/survey.model';
 import { SurveyService } from '../../services/survey.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -12,7 +13,7 @@ export class CardComponent implements OnInit {
   @Input() surveyName: String = '';
   @Input() surveyType: String = '';
 
-  constructor(private surveyService: SurveyService) {}
+  constructor(private surveyService: SurveyService, private router: Router) {}
 
   ngOnInit() {
     this.surveyService.getSurvey().subscribe((response) => {
@@ -24,5 +25,8 @@ export class CardComponent implements OnInit {
     });
   }
 
-  onViewSurvey() {}
+  onViewSurvey(suvrey_id: Number) {
+    this.router.navigate(['/view']);
+    this.surveyService.viewSurvey(suvrey_id);
+  }
 }

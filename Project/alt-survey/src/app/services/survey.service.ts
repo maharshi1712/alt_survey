@@ -15,5 +15,7 @@ export class SurveyService {
     );
   }
 
-  public viewSurvey() {}
+  public viewSurvey(survey_id: Number) {
+    this.http.get(`${baseUrl}surveyConfig/${survey_id}`);
+  }
 }

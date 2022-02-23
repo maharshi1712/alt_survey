@@ -17,7 +17,7 @@ export class CreateComponent implements OnInit {
     translate: 'no',
     defaultParagraphSeparator: 'p',
     defaultFontName: 'Arial',
-    toolbarHiddenButtons: [['bold']],
+    toolbarHiddenButtons: [['superscript']],
     customClasses: [
       {
         name: 'quote',

@@ -6,6 +6,7 @@ import java.util.Set;
 import com.exam.model.SurveyConfig;
 import com.exam.model.User;
 import com.exam.repo.SurveyConfigRepository;
+import com.exam.repo.UserRepository;
 import com.exam.service.SurveyConfigService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +19,32 @@ public class SurveyConfigServiceImpl implements SurveyConfigService{
     @Autowired
     private SurveyConfigRepository surveyConfigRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public SurveyConfig createSurvey(SurveyConfig surveyConfig) throws Exception {
 
         // SurveyConfig local = null;
         // local =
         // this.surveyRepository.findBySurveyName(surveyConfig.getSurvey_name());
+        long id = surveyConfig.getUser().getId();
 
-        return this.surveyConfigRepository.save(surveyConfig);
+        surveyConfig.setCreatedBy(this.userRepository.findById(id).get().getFirstName());
+
+        SurveyConfig surveyConfig2 = this.surveyConfigRepository.save(surveyConfig);
+       surveyConfig2.setCreatedBy(this.userRepository.findById(id).get().getFirstName());
+       surveyConfig2.setModifiedBy(this.userRepository.findById(id).get().getFirstName());
+
+       this.surveyConfigRepository.save(surveyConfig2);
+
+
+
+        // 
+
+        // surveyConfig2.setCreatedBy(this.userRepository.findById(id).get().getFirstName());
+
+        return surveyConfig2;
     }
 
     @Override
@@ -47,7 +66,11 @@ public class SurveyConfigServiceImpl implements SurveyConfigService{
             surveyConfig.setMessage_body(surveyConfig.getMessage_body());
             surveyConfig.setSurvey_dealy(surveyConfig.getSurvey_dealy());
             //surveyConfig.setCreatedBy(surveyConfig.getCreatedBy());
-            surveyConfig.setModifiedBy(surveyConfig.getModifiedBy());
+            // surveyConfig.setModifiedBy(surveyConfig.getModifiedBy());
+
+            long id = surveyConfig.getUser().getId();
+            surveyConfig.setModifiedBy(this.userRepository.findById(id).get().getFirstName());
+
             surveyConfig.setActive(surveyConfig.isActive());
 
             value = this.surveyConfigRepository.save(surveyConfig);

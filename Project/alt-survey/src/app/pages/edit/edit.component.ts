@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SurveyModel } from '../../models/survey.model';
 import Swal from 'sweetalert2';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit',
@@ -48,21 +49,35 @@ export class EditComponent implements OnInit {
   survey_id: any;
   survey: SurveyModel = new SurveyModel();
 
+  created_By: any;
+  created_Date: any;
+
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.survey_id = params.get('id');
     });
     this.surveyService.viewSurvey(this.survey_id).subscribe((response) => {
       let res: any = response;
+      this.created_By = res.createdBy;
+      this.created_Date = res.createdDate;
+      console.log(res.createdDate);
+      console.log(this.created_Date);
       this.survey.setValuesEdit(res);
       console.log(this.survey);
     });
   }
 
+  prac: any;
+
   onSubmitSurvey() {
+    this.survey.createdBy = this.created_By;
+    this.survey.createdDate = this.created_Date;
+
+    console.log(this.survey.createdBy);
+    console.log(this.survey.createdDate);
+
     this.surveyService.updateSurvey(this.survey, this.survey_id).subscribe(
       (survey: any) => {
-        //Success
         console.log(survey);
         //alert("Success");
         Swal.fire('Survey Successfully Modified!', 'success');
@@ -78,7 +93,6 @@ export class EditComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        // alert("Something went wrong!");
         this._snack.open('Something went wrong!', 'ok', {
           duration: 2000,
         });
@@ -86,5 +100,31 @@ export class EditComponent implements OnInit {
     );
   }
 
-  onDeleteSurvey() {}
+  onDeleteSurvey() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.surveyService
+          .deleteSurvey(this.survey_id)
+          .subscribe((response) => {
+            console.log(response);
+          });
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        setTimeout(() => {
+          this.router.navigate([':user/home']);
+        }, 1500);
+      }
+    });
+  }
+
+  moveBack() {
+    this.router.navigate([':user/home']);
+  }
 }

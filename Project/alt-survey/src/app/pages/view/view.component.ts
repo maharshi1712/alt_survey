@@ -36,6 +36,6 @@ export class ViewComponent implements OnInit {
   }
 
   moveBack() {
-    this.router.navigate(['/home']);
+    this.router.navigate([':user/home']);
   }
 }

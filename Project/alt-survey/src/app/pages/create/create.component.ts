@@ -44,9 +44,12 @@ export class CreateComponent implements OnInit {
     private router: Router,
     private _snack: MatSnackBar
   ) {}
+
+  user_id:any=localStorage.getItem('user_id');
   survey: SurveyModel = new SurveyModel();
   ngOnInit(): void {}
   formSubmit() {
+    this.survey.user.id=this.user_id;
     this.surveyService.addSurvey(this.survey).subscribe(
       (survey: any) => {
         //Success

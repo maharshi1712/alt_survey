@@ -10,7 +10,7 @@ export class SurveyModel {
   public modifiedBy: any;
   public active: Boolean = false;
   public user: any = {
-    id: Number,
+    id: 1,
   };
 
   setValuesView(response: any) {

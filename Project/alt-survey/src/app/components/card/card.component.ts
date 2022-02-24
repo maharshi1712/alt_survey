@@ -52,7 +52,11 @@ export class CardComponent implements OnInit {
   }
 
   onViewSurvey(suvrey_id: Number) {
-    this.router.navigate([`view/${suvrey_id}/`]);
+    this.router.navigate([
+      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
+        .getItem('last_name')
+        ?.toLocaleLowerCase()}/view/${suvrey_id}/`,
+    ]);
     this.surveyService.viewSurvey(suvrey_id);
   }
 }

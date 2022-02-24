@@ -5,12 +5,12 @@ export class SurveyModel {
   public message_subject: String = '';
   public message_body: String = '';
   public survey_dealy: Number = 0;
-  public created_by: any;
-  public created_date:Date = new Date();
-  public modified_by: any;
+  public createdBy: any;
+  public createdDate:Date = new Date();
+  public modifiedBy: any;
   public active: Boolean = false;
   public user: any = {
-    id: 1,
+    id: Number,
   };
 
   setValuesView(response: any) {
@@ -21,8 +21,8 @@ export class SurveyModel {
     this.message_body = response.message_body;
     this.survey_dealy = response.survey_dealy;
     this.active = response.active;
-    this.created_by = response.createdBy;
-    this.modified_by = response.modifiedBy;
+    this.createdBy = response.createdBy;
+    this.modifiedBy = response.modifiedBy;
     this.user.id = localStorage.getItem('user_id');
   }
   setValuesEdit(response: any) {
@@ -33,9 +33,9 @@ export class SurveyModel {
     this.message_body = response.message_body;
     this.survey_dealy = response.survey_dealy;
     this.active = response.active;
-    this.created_by = response.createdBy;
-    this.created_date = response.createdDate;
-    this.modified_by = localStorage.getItem('first_name');
+    this.createdBy = response.createdBy;
+    this.createdDate = response.createdDate;
+    this.modifiedBy = localStorage.getItem('first_name');
     this.user.id = localStorage.getItem('user_id');
   }
 }

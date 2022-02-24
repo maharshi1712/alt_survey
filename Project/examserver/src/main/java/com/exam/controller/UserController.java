@@ -85,9 +85,18 @@ public class UserController {
     }
 
     @PostMapping("/login")  //ye tb chalega jb /user/login post ki request url me jayega
-    public User loginUser(@RequestBody emailPasswordTemplate user) throws Exception{
+    public ResponseEntity<User> loginUser(@RequestBody emailPasswordTemplate user) throws Exception{
         System.out.println("Logged In");
-        return this.userService.loginUser(user.getEmail(), user.getPassword());
+        try {
+            
+            return ResponseEntity.ok().body(this.userService.loginUser(user.getEmail(), user.getPassword()));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            //TODO: handle exception
+        }
+
+        //return this.userService.loginUser(user.getEmail(), user.getPassword());
     }
 
     @PostMapping("/forgot-password")

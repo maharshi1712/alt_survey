@@ -23,20 +23,18 @@ export class SurveyService {
   }
 
   public updateSurvey(survey: SurveyModel, survey_id: Number) {
-   return this.http.put(`${baseUrl}surveyConfig/${survey_id}`, survey);
+    return this.http.put(`${baseUrl}surveyConfig/${survey_id}`, survey);
   }
 
   public deleteSurvey(survey_id: Number) {
     this.http.delete(`${baseUrl}surveyConfig/${survey_id}`);
   }
 
-  public showAllSurvey()
-  {
+  public showAllSurvey() {
     return this.http.get(`${baseUrl}surveyConfig/`);
   }
 
-  public showUserSurvey(user_id:Number)
-  {
-    return this.http.get(`${baseUrl}surveyConfig/user/${user_id}`)
+  public showMySurvey(user_id: Number) {
+    return this.http.get(`${baseUrl}surveyConfig/user/${user_id}`);
   }
 }

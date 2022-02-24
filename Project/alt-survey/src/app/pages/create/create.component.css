@@ -36,7 +36,7 @@ input {
 }
 .back-button {
   padding-bottom: 20px;
-  margin-top: 20px;
+  padding-top: 20px;
 }
 .back {
   background-color: #46a4e8;
@@ -50,13 +50,20 @@ label {
 }
 .form-heading {
   margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .subject-border {
   margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+
 }
 .inner-card {
   box-shadow: 1px 1px 5px #f1eafb;
   border-radius: 10px;
+  background-color: rgb(233, 233, 233);
 }
 .Delete-btn {
   background-color: #c40e0e;
@@ -78,4 +85,14 @@ label {
 .check-box-style {
   display: flex;
   align-items: flex-end;
+}
+.background{
+  background-image: url("../../../assets/images/MicrosoftTeams-image.png");
+  /* Center and scale the image nicely */
+  /* background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%; */
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center ;
 }

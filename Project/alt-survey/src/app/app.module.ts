@@ -27,6 +27,7 @@ import { ViewComponent } from './pages/view/view.component';
 import { CreateComponent } from './pages/create/create.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { EditComponent } from './pages/edit/edit.component';
 
 @NgModule({
@@ -61,6 +62,7 @@ import { EditComponent } from './pages/edit/edit.component';
     MatSelectModule,
     CKEditorModule,
     AngularEditorModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

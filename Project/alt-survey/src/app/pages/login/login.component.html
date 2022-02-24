@@ -23,14 +23,16 @@
             type="text"
             placeholder="abc@xyz.com"
             name="email"
-            [(ngModel)]="user.email"
+            required autofocus [(ngModel)]="user.email"
+            
           />
           <label for="Password">Password</label>
           <input
             type="password"
             placeholder="Password"
             name="password"
-            [(ngModel)]="user.password"
+            required [(ngModel)]="user.password"
+            
           />
           <a style="margin-top: 25px" href="forgot-password"
             >Forget Password?</a

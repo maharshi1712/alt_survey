@@ -1,86 +1,58 @@
 <app-navbar navItem1="Home" routerLink="/home" navItem2="Logout"></app-navbar>
-
-<div class="bootstrap-wrapper">
-  <div class="back-button">
-    <button mat-raised-button color="primary" class="back">Back</button>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3 inner-card">
-        <h1 class="header-title">Create Survey</h1>
-        <form (ngSubmit)="formSubmit()">
-          <div class="form-heading">
-            <label for="survey-name">Survey Name</label>
-          </div>
-
-          <div class="subject-border">
-            <input
-              [(ngModel)]="survey.surveyName"
-              name="SurveyName"
-              placeholder="Survey Name"
-            />
-          </div>
-          <div class="form-heading">
-            <label for="sruvey-name">Survey Type</label>
-          </div>
-          <div class="subject-border">
-            <input
-              [(ngModel)]="survey.surveyType"
-              name="surveyType"
-              placeholder="Survey Type"
-            />
-          </div>
-          <div class="form-heading">
-            <label for="sruvey-name">Message Subject</label>
-          </div>
-          <div class="subject-border">
-            <input
-              [(ngModel)]="survey.messageSubject"
-              name="Subject"
-              placeholder="Message Subject"
-            />
-          </div>
-          <div class="form-heading">
-            <label for="sruvey-name">Message Body</label>
-
-            <angular-editor
-              [(ngModel)]="survey.messageBody"
-              name="MessageBody"
-              [config]="config"
-            ></angular-editor>
-          </div>
-
-          <div class="form-heading">
-            <label for="sruvey-name">Delay</label>
-            <div class="subject-border">
-              <input
-                [(ngModel)]="survey.delay"
-                name="Delay"
-                placeholder="Delay (No. of Days)"
-              />
+<div class="background">
+  <div class="bootstrap-wrapper">
+    <div class="back-button">
+      <button mat-raised-button color="primary" class="back">Back</button>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 inner-card">
+          <h1 class="header-title">Create Survey</h1>
+          <form (ngSubmit)="formSubmit()">
+            <div class="form-heading">
+              <label for="survey-name">Survey Name</label>
             </div>
-          </div>
 
-          <div class="button-border Centre">
-            <button
-              type="submit"
-              class="save"
-              mat-raised-button
-              color="primary"
-            >
-              Submit
-            </button>
-            <button
-              type="submit"
-              class="Delete-btn"
-              mat-raised-button
-              color="primary"
-            >
-              Discard
-            </button>
-          </div>
-        </form>
+            <div class="subject-border">
+              <input required [(ngModel)]="survey.surveyName" name="SurveyName" placeholder="Survey Name" />
+            </div>
+            <div class="form-heading">
+              <label for="sruvey-name">Survey Type</label>
+            </div>
+            <div class="subject-border">
+              <input required [(ngModel)]="survey.surveyType" name="surveyType" placeholder="Survey Type" />
+            </div>
+            <div class="form-heading">
+              <label for="sruvey-name">Message Subject</label>
+            </div>
+            <div class="subject-border">
+              <input required [(ngModel)]="survey.messageSubject" name="Subject" placeholder="Message Subject" />
+            </div>
+            <div class="form-heading">
+              <label for="sruvey-name">Message Body</label>
+
+              <angular-editor required [(ngModel)]="survey.messageBody" name="MessageBody" [config]="config"></angular-editor>
+            </div>
+
+            <div class="form-heading">
+              <label for="survey-name">Delay</label>
+              <div >
+                <input required [(ngModel)]="survey.delay" name="Delay" placeholder="Delay (No. of Days)" />
+              </div>
+            </div>
+
+            <div class="button-border Centre">
+              <button type="submit" class="save" mat-raised-button color="primary">
+                Submit
+              </button>
+              <button type="submit" class="Delete-btn" mat-raised-button color="primary">
+                Discard
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+
 </div>

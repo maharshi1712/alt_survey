@@ -6,9 +6,8 @@
       <mat-form-field appearance="fill" class="Dropdown">
         <mat-label style="color: #17089b">Select Category</mat-label>
         <mat-select class="panel" [(value)]="selected">
-          <mat-option value="Onboarding">Onboarding</mat-option>
-          <mat-option value="Resignation">Resignation</mat-option>
-          <mat-option value="Other">Other</mat-option>
+          <mat-option value="All Surveys"  (onSelectionChange)="ShowAllSurveys()">All Surveys</mat-option>
+          <mat-option value="User Surveys" (onSelectionChange)="ShowMySurveys()">My Surveys</mat-option>
         </mat-select>
       </mat-form-field>
 

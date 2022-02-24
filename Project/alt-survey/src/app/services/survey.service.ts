@@ -19,14 +19,24 @@ export class SurveyService {
   }
 
   public addSurvey(survey: any) {
-    this.http.post(`${baseUrl}surveyConfig/`, survey);
+    return this.http.post(`${baseUrl}surveyConfig/`, survey);
   }
 
   public updateSurvey(survey: SurveyModel, survey_id: Number) {
-    this.http.put(`${baseUrl}surveyConfig/${survey_id}`, survey);
+   return this.http.put(`${baseUrl}surveyConfig/${survey_id}`, survey);
   }
 
   public deleteSurvey(survey_id: Number) {
     this.http.delete(`${baseUrl}surveyConfig/${survey_id}`);
+  }
+
+  public showAllSurvey()
+  {
+    return this.http.get(`${baseUrl}surveyConfig/`);
+  }
+
+  public showUserSurvey(user_id:Number)
+  {
+    return this.http.get(`${baseUrl}surveyConfig/user/${user_id}`)
   }
 }

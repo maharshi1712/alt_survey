@@ -46,7 +46,7 @@ public class SurveyConfigServiceImpl implements SurveyConfigService{
             surveyConfig.setMessage_subject(surveyConfig.getMessage_subject());
             surveyConfig.setMessage_body(surveyConfig.getMessage_body());
             surveyConfig.setSurvey_dealy(surveyConfig.getSurvey_dealy());
-            surveyConfig.setCreatedBy(surveyConfig.getCreatedBy());
+            //surveyConfig.setCreatedBy(surveyConfig.getCreatedBy());
             surveyConfig.setModifiedBy(surveyConfig.getModifiedBy());
             surveyConfig.setActive(surveyConfig.isActive());
 

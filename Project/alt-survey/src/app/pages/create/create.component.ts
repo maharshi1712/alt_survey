@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SurveyService } from '../../services/survey.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { Router } from '@angular/router';
+import { SurveyModel } from 'src/app/models/survey.model';
+import Swal from 'sweetalert2';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create',
@@ -35,17 +39,31 @@ export class CreateComponent implements OnInit {
     ],
   };
 
-  constructor(private surveyService: SurveyService) {}
-  public survey = {
-    surveyName: '',
-    surveyType: '',
-    messageSubject: '',
-    messageBody: '',
-    delay: '',
-    isActive: '',
-    createdBy: '',
-    modifiedBy: '',
-  };
+  constructor(private surveyService: SurveyService, private router: Router, private _snack:MatSnackBar) {}
+  survey: SurveyModel = new SurveyModel();
   ngOnInit(): void {}
-  formSubmit() {}
+  formSubmit() {
+    this.surveyService.addSurvey(this.survey).subscribe(
+      (survey: any) => {
+        //Success
+        console.log(survey);
+        //alert("Success");
+        Swal.fire('Survey Successfully Modified!', 'success');
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 1500);
+      },
+      (error) => {
+        console.log(error);
+        // alert("Something went wrong!");
+        this._snack.open('Something went wrong!', 'ok', {
+          duration: 2000,
+        });
+      }
+    );
+  }
+
+  moveBack() {
+    this.router.navigate(['/home']);
+  }
 }

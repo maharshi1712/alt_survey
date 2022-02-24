@@ -15,22 +15,22 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   {
     path: ':user/home',
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     component: HomeComponent,
   },
   {
     path: ':user/view/:id',
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     component: ViewComponent,
   },
   {
     path: ':user/create',
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     component: CreateComponent,
   },
   {
     path: ':user/edit/:id',
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     component: EditComponent,
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

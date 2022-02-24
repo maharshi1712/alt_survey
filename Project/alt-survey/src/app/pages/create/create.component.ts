@@ -54,7 +54,13 @@ export class CreateComponent implements OnInit {
         //alert("Success");
         Swal.fire('Your survey has been created!', 'success');
         setTimeout(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate([
+            `${localStorage
+              .getItem('first_name')
+              ?.toLocaleLowerCase()}-${localStorage
+              .getItem('last_name')
+              ?.toLocaleLowerCase()}/home`,
+          ]);
         }, 1200);
       },
       (error) => {
@@ -68,6 +74,10 @@ export class CreateComponent implements OnInit {
   }
 
   moveBack() {
-    this.router.navigate(['/home']);
+    this.router.navigate([
+      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
+        .getItem('last_name')
+        ?.toLocaleLowerCase()}/home`,
+    ]);
   }
 }

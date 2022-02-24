@@ -17,6 +17,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   onCreateNewSurvey() {
-    this.router.navigate(['/create']);
+    this.router.navigate([
+      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
+        .getItem('last_name')
+        ?.toLocaleLowerCase()}/create`,
+    ]);
   }
 }

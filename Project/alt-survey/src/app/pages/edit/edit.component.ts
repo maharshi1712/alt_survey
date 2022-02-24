@@ -43,7 +43,7 @@ export class EditComponent implements OnInit {
     private surveyService: SurveyService,
     private route: ActivatedRoute,
     private router: Router,
-    private _snack: MatSnackBar,
+    private _snack: MatSnackBar
   ) {}
   survey_id: any;
   survey: SurveyModel = new SurveyModel();
@@ -56,23 +56,24 @@ export class EditComponent implements OnInit {
       let res: any = response;
       this.survey.setValuesEdit(res);
       console.log(this.survey);
-      
     });
   }
 
   onSubmitSurvey() {
-    
     this.surveyService.updateSurvey(this.survey, this.survey_id).subscribe(
       (survey: any) => {
         //Success
         console.log(survey);
         //alert("Success");
-        Swal.fire(
-          'Survey Successfully Modified!',
-          'success'
-        );
+        Swal.fire('Survey Successfully Modified!', 'success');
         setTimeout(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate([
+            `${localStorage
+              .getItem('first_name')
+              ?.toLocaleLowerCase()}-${localStorage
+              .getItem('last_name')
+              ?.toLocaleLowerCase()}/home`,
+          ]);
         }, 1500);
       },
       (error) => {
@@ -83,7 +84,6 @@ export class EditComponent implements OnInit {
         });
       }
     );
-    
   }
 
   onDeleteSurvey() {}

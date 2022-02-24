@@ -26,13 +26,16 @@ export class ViewComponent implements OnInit {
       this.survey.setValuesView(res);
     });
     console.log(this.survey);
-    
   }
   onEditSurvey(survey_id: Number) {
-    this.router.navigate([`edit/${survey_id}`]);
+    this.router.navigate([
+      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
+        .getItem('last_name')
+        ?.toLocaleLowerCase()}/edit/${survey_id}`,
+    ]);
   }
 
-  moveBack(){
-    this.router.navigate(['/home'])
+  moveBack() {
+    this.router.navigate(['/home']);
   }
 }

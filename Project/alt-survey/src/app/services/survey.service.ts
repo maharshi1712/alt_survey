@@ -27,7 +27,7 @@ export class SurveyService {
   }
 
   public deleteSurvey(survey_id: Number) {
-    this.http.delete(`${baseUrl}surveyConfig/${survey_id}`);
+    return this.http.delete(`${baseUrl}surveyConfig/${survey_id}`);
   }
 
   public showAllSurvey() {

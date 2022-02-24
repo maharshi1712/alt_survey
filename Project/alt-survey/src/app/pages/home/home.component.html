@@ -5,11 +5,18 @@
     <li>
       <mat-form-field appearance="fill" class="Dropdown">
         <mat-label style="color: #17089b">Select Category</mat-label>
-        <mat-select class="panel" [(value)]="selected">
-          <mat-option value="All Surveys"  (onSelectionChange)="ShowAllSurveys()">All Surveys</mat-option>
-          <mat-option value="User Surveys" (onSelectionChange)="ShowMySurveys()">My Surveys</mat-option>
+        <mat-select
+          value="All Surveys"
+          name="Maharshi"
+          class="panel"
+          [(ngModel)]="selected"
+        >
+          <mat-option value="All Surveys">All Surveys</mat-option>
+          <mat-option value="My Surveys">My Surveys</mat-option>
         </mat-select>
       </mat-form-field>
+
+      <!-- This example requires Tailwind CSS v2.0+ -->
     </li>
     <li>
       <button
@@ -24,5 +31,9 @@
     </li>
   </div>
 
-  <app-card surveyName="Testing survey" surveyType="Resigning"></app-card>
+  <app-card
+    [selectedFilter]="selected"
+    surveyName="Testing survey"
+    surveyType="Resigning"
+  ></app-card>
 </div>

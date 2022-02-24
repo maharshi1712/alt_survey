@@ -39,19 +39,23 @@ export class CreateComponent implements OnInit {
     ],
   };
 
-  constructor(private surveyService: SurveyService, private router: Router, private _snack:MatSnackBar) {}
+  constructor(
+    private surveyService: SurveyService,
+    private router: Router,
+    private _snack: MatSnackBar
+  ) {}
   survey: SurveyModel = new SurveyModel();
   ngOnInit(): void {}
   formSubmit() {
     this.surveyService.addSurvey(this.survey).subscribe(
       (survey: any) => {
         //Success
-        console.log(survey);
+        console.log(this.survey);
         //alert("Success");
-        Swal.fire('Survey Successfully Modified!', 'success');
+        Swal.fire('Your survey has been created!', 'success');
         setTimeout(() => {
           this.router.navigate(['/home']);
-        }, 1500);
+        }, 1200);
       },
       (error) => {
         console.log(error);

@@ -23,7 +23,9 @@ export class LoginComponent implements OnInit {
     password: '',
   };
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    localStorage.clear();
+  }
   formSubmit() {
     if (this.user.email == '' || this.user.password == '') {
       console.log('Please fill your form.');
@@ -42,7 +44,13 @@ export class LoginComponent implements OnInit {
       } else {
         Swal.fire('Logged in Successfully!');
         setTimeout(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate([
+            `${localStorage
+              .getItem('first_name')
+              ?.toLocaleLowerCase()}-${localStorage
+              .getItem('last_name')
+              ?.toLocaleLowerCase()}/home`,
+          ]);
         }, 1500);
       }
     });

@@ -8,7 +8,8 @@ import { SurveyService } from 'src/app/services/survey.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  selected = 'option1';
+  selected: String = 'All Surveys';
+  surveySelected: any;
   @Input() username: String = 'sample';
   constructor(private router: Router, private surveyService: SurveyService) {}
   user: any = localStorage.getItem('first_name');
@@ -17,17 +18,5 @@ export class HomeComponent implements OnInit {
 
   onCreateNewSurvey() {
     this.router.navigate(['/create']);
-  }
-
-  ShowAllSurveys() {
-    console.log('clicked');
-    return this.surveyService.showAllSurvey();
-    console.log("clicked");
-    
-  }
-  ShowMySurveys() {
-    console.log(this.user_id);
-    
-    return this.surveyService.showUserSurvey(this.user_id);
   }
 }

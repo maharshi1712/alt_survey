@@ -61,8 +61,6 @@ export class EditComponent implements OnInit {
       let res: any = response; 
       this.created_By = res.createdBy;
       this.created_Date=res.createdDate;
-      console.log(res.createdDate);
-      console.log(this.created_Date);
       this.survey.setValuesEdit(res);
     });
     

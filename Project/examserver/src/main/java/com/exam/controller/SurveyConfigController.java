@@ -72,6 +72,7 @@ public class SurveyConfigController {
     @PutMapping("/{survey_id}")
     public SurveyConfig updateSurveyConfig(@RequestBody SurveyConfig surveyConfig, @PathVariable("survey_id") int survey_id){
         surveyConfig.setModifiedDate(d1);
+        surveyConfig.setCreatedBy(surveyConfig.getCreatedBy());
         return this.surveyConfigService.updateSurveyConfig(surveyConfig,survey_id);
     }
 

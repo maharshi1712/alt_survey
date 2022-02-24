@@ -23,10 +23,16 @@ export class ViewComponent implements OnInit {
     });
     this.surveyService.viewSurvey(this.survey_id).subscribe((response) => {
       let res: any = response;
-      this.survey.setValues(res);
+      this.survey.setValuesView(res);
     });
+    console.log(this.survey);
+    
   }
   onEditSurvey(survey_id: Number) {
     this.router.navigate([`edit/${survey_id}`]);
+  }
+
+  moveBack(){
+    this.router.navigate(['/home'])
   }
 }

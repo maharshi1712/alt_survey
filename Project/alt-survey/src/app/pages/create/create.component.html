@@ -2,7 +2,7 @@
 
 <div class="bootstrap-wrapper">
   <div class="back-button">
-    <button mat-raised-button color="primary" class="back">Back</button>
+    <button mat-raised-button color="primary" class="back" (click)="moveBack()">Back</button>
   </div>
   <div class="container">
     <div class="row">
@@ -15,7 +15,7 @@
 
           <div class="subject-border">
             <input
-              [(ngModel)]="survey.surveyName"
+              [(ngModel)]="survey.surveyname"
               name="SurveyName"
               placeholder="Survey Name"
             />
@@ -25,7 +25,7 @@
           </div>
           <div class="subject-border">
             <input
-              [(ngModel)]="survey.surveyType"
+              [(ngModel)]="survey.survey_type"
               name="surveyType"
               placeholder="Survey Type"
             />
@@ -35,7 +35,7 @@
           </div>
           <div class="subject-border">
             <input
-              [(ngModel)]="survey.messageSubject"
+              [(ngModel)]="survey.message_subject"
               name="Subject"
               placeholder="Message Subject"
             />
@@ -44,7 +44,7 @@
             <label for="sruvey-name">Message Body</label>
 
             <angular-editor
-              [(ngModel)]="survey.messageBody"
+              [(ngModel)]="survey.message_body"
               name="MessageBody"
               [config]="config"
             ></angular-editor>
@@ -54,7 +54,7 @@
             <label for="sruvey-name">Delay</label>
             <div class="subject-border">
               <input
-                [(ngModel)]="survey.delay"
+                [(ngModel)]="survey.survey_dealy"
                 name="Delay"
                 placeholder="Delay (No. of Days)"
               />

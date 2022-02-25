@@ -46,6 +46,12 @@ export class EditComponent implements OnInit {
     private router: Router,
     private _snack: MatSnackBar
   ) {}
+
+  username: any = `${localStorage
+    .getItem('first_name')
+    ?.toLocaleLowerCase()}-${localStorage
+    .getItem('last_name')
+    ?.toLocaleLowerCase()}`;
   survey_id: any;
   survey: SurveyModel = new SurveyModel();
 
@@ -80,15 +86,9 @@ export class EditComponent implements OnInit {
       (survey: any) => {
         console.log(survey);
         //alert("Success");
-        Swal.fire('Survey Successfully Modified!', 'success');
+        Swal.fire('Survey Successfully Modified!', 'SUCCESS');
         setTimeout(() => {
-          this.router.navigate([
-            `${localStorage
-              .getItem('first_name')
-              ?.toLocaleLowerCase()}-${localStorage
-              .getItem('last_name')
-              ?.toLocaleLowerCase()}/home`,
-          ]);
+          this.router.navigate([`${this.username}/home`]);
         }, 1500);
       },
       (error) => {
@@ -101,9 +101,12 @@ export class EditComponent implements OnInit {
   }
 
   onDeleteSurvey() {
-    if(this.survey.createdBy!=this.survey.modifiedBy)
-    {
-      Swal.fire("You are not authorized person to delete", "you can only modify it");
+    if (this.survey.createdBy != this.survey.modifiedBy) {
+      Swal.fire(
+        'You are not authorized person to delete',
+        'you can only modify it'
+      );
+
       return;
     }
     Swal.fire({
@@ -120,21 +123,20 @@ export class EditComponent implements OnInit {
           .deleteSurvey(this.survey_id)
           .subscribe((response) => {
             console.log(response);
-          }
-        );
+          });
         Swal.fire('Deleted!', 'Your Survey has been deleted.', 'success');
         setTimeout(() => {
-          this.router.navigate([':user/home']);
+          this.router.navigate([`${this.username}/home`]);
         }, 1500);
       }
     });
   }
 
   moveBack() {
-    this.router.navigate([
-      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
-        .getItem('last_name')
-        ?.toLocaleLowerCase()}/home`,
-    ]);
+    this.router.navigate([`${this.username}/home`]);
+  }
+
+  onHome() {
+    this.router.navigate([`${this.username}/home`]);
   }
 }

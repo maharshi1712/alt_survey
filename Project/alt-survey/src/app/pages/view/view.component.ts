@@ -14,6 +14,12 @@ export class ViewComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+
+  username: any = `${localStorage
+    .getItem('first_name')
+    ?.toLocaleLowerCase()}-${localStorage
+    .getItem('last_name')
+    ?.toLocaleLowerCase()}`;
   survey_id: any;
   survey: SurveyModel = new SurveyModel();
 
@@ -28,18 +34,13 @@ export class ViewComponent implements OnInit {
     console.log(this.survey);
   }
   onEditSurvey(survey_id: Number) {
-    this.router.navigate([
-      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
-        .getItem('last_name')
-        ?.toLocaleLowerCase()}/edit/${survey_id}`,
-    ]);
+    this.router.navigate([`${this.username}/edit/${survey_id}`]);
   }
 
   moveBack() {
-    this.router.navigate([
-      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
-        .getItem('last_name')
-        ?.toLocaleLowerCase()}/home`,
-    ]);
+    this.router.navigate([`${this.username}/home`]);
+  }
+  onHome() {
+    this.router.navigate([`${this.username}/home`]);
   }
 }

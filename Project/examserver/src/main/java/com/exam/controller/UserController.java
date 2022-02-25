@@ -38,7 +38,7 @@ public class UserController {
         // Generating 4 digits OTP
         for(int i=0; i<6; i++) OTP += Integer.toString((int) (Math.random() * 10));
 
-        boolean flag = sendEmailService.sendEmail(email, "Please verify OTP", "One Time Password(OTP) is : " + OTP);
+        boolean flag = sendEmailService.sendEmail(email, "Please verify OTP for Registering on alt_survy By PeopleStrong", "One Time Password(OTP) for creating your new Registration on alt_suvey by peoplestrong: " + OTP);
 
         if(flag) return ResponseEntity.ok(OTP);
 

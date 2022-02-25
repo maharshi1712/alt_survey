@@ -1,5 +1,11 @@
-
-<nav class="navbar">
+<nav
+  class="navbar"
+  style="
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    box-shadow: 4px 3px 3px -3px #999;
+  "
+>
   <div class="container-fluid d-flex">
     <div class="logo">
       <img
@@ -12,12 +18,10 @@
     <div class="nav-items">
       <ul class="list-items d-flex">
         <li class="list-item">
-          <button class="btn" routerLink="/home">Home</button>
+          <button class="btn">Home</button>
         </li>
         <li class="list-item">
-          <button class="btn signup-btn">
-            Logout
-          </button>
+          <button class="btn signup-btn" routerLink="/login">Logout</button>
         </li>
       </ul>
     </div>
@@ -25,11 +29,13 @@
 </nav>
 <div class="bootstrap-wrapper">
   <div class="back-button">
-    <button mat-raised-button color="primary" class="back" (click)="moveBack()">Back</button>
+    <button mat-raised-button color="primary" class="back" (click)="moveBack()">
+      Back
+    </button>
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-md-6 offset-md-3 inner-card">
+      <div class="col-md-6 offset-md-3 inner-card" style="margin-bottom: 20px">
         <h1 class="header-title">Create Survey</h1>
         <form>
           <div class="form-heading">
@@ -84,7 +90,6 @@
             </div>
           </div>
 
-          {{ survey.createdBy }}
           <div class="button-border Centre">
             <button
               class="save"

@@ -40,6 +40,7 @@
             >Select Category</mat-label
           >
           <mat-select
+            style="font-size: 22px"
             value="All Surveys"
             name="Maharshi"
             class="panel"
@@ -49,8 +50,6 @@
             <mat-option value="My Surveys">My Surveys</mat-option>
           </mat-select>
         </mat-form-field>
-
-        <!-- This example requires Tailwind CSS v2.0+ -->
       </li>
       <li>
         <button
@@ -59,8 +58,10 @@
           (click)="onCreateNewSurvey()"
           class="create"
           routerLink="/create"
+          style="font-size: 20px; padding: 12px"
         >
-          Create Survey
+          <i class="bi bi-plus" style="padding-bottom: 5px"></i>
+          New Survey
         </button>
       </li>
     </ul>

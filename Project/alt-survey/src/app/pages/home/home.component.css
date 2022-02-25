@@ -40,7 +40,7 @@
   margin-top: 10px;
   background-color: #17089b;
   border: 0.7px solid #17089b;
-  height: 45px;
+
   border-radius: 8px;
 }
 .create:hover {
@@ -116,10 +116,6 @@ nav {
   color: var(--color-purple-primary);
 }
 
-
-
-
 .panel {
   margin-top: 20px;
 }
-

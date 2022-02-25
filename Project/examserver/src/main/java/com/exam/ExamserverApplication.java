@@ -13,7 +13,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 @SpringBootApplication
 public class ExamserverApplication implements CommandLineRunner {
 
@@ -30,9 +29,6 @@ public class ExamserverApplication implements CommandLineRunner {
 	@Autowired
 	private UserRepository userRepository;
 
-
-
-
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -45,10 +41,8 @@ public class ExamserverApplication implements CommandLineRunner {
 		// user.setPassword("123456");
 		// user.setEmail("rahulvdjaiswal@gmail.com");
 
-
 		// User user1 = this.userService.createUser(user);
 		// System.out.println(user1.getEmail());
-
 
 		// User user2 = new User();
 
@@ -59,7 +53,6 @@ public class ExamserverApplication implements CommandLineRunner {
 
 		// User user3 = this.userService.createUser(user2);
 		// System.out.println(user3.getEmail());
-
 
 		// Date d1 = new Date();
 		// SurveyConfig surveyConfig = new SurveyConfig();
@@ -77,7 +70,6 @@ public class ExamserverApplication implements CommandLineRunner {
 		// SurveyConfig s = this.surveyConfigService.createSurvey(surveyConfig);
 		// System.out.println(s.getsurveyname());
 
-
 		// SurveyConfig surveyConfig1 = new SurveyConfig();
 		// surveyConfig1.setsurveyname("Email Survey");
 		// surveyConfig1.setSurvey_type("Onboarding");
@@ -90,12 +82,8 @@ public class ExamserverApplication implements CommandLineRunner {
 		// surveyConfig1.setModifiedBy("Shivam");
 		// surveyConfig1.setModifiedDate(d1);
 
-
-		
 		// SurveyConfig s1 = this.surveyConfigService.createSurvey(surveyConfig1);
 		// System.out.println(s1.getsurveyname());
-
-
 
 		// user1.getSurveyConfigsList().add(surveyConfig);
 		// user1.getSurveyConfigsList().add(surveyConfig1);
@@ -106,11 +94,8 @@ public class ExamserverApplication implements CommandLineRunner {
 		// user3.getSurveyConfigsList().add(surveyConfig);
 		// user3.getSurveyConfigsList().add(surveyConfig1);
 
-
 		// this.userRepository.save(user1);
 		// this.userRepository.save(user3);
-		
-
 
 	}
 }

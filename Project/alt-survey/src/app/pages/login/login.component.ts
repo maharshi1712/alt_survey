@@ -5,12 +5,37 @@ import Swal from 'sweetalert2';
 import { SurveyService } from '../../services/survey.service';
 import { map } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-export interface UserData {}
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  animations: [
+    trigger('myAnimationTriggerForContainer', [
+      state(
+        'hidden',
+        style({
+          opacity: 0,
+          transform: 'translateY(-10%)',
+        })
+      ),
+      state(
+        'shown',
+        style({
+          opacity: 1,
+          transform: 'translateY(0%)',
+        })
+      ),
+      transition('hidden => shown', [animate('0.5s')]),
+    ]),
+  ],
 })
 export class LoginComponent implements OnInit {
   constructor(
@@ -24,8 +49,11 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
   };
-
+  state1 = 'hidden';
   ngOnInit() {
+    setTimeout(() => {
+      this.state1 = 'shown';
+    }, 200);
     localStorage.clear();
   }
   formSubmit() {
@@ -35,12 +63,12 @@ export class LoginComponent implements OnInit {
     }
     this.userService.loginUser(this.user).subscribe((response) => {
       let userData: any = response;
-      if(userData == null) {
+      if (userData == null) {
         this.user.email = '';
         this.user.password = '';
-        this._snack.open("Enter valid credential!", "ok", {
-          duration: 3000
-        })
+        this._snack.open('Enter valid credential!', 'ok', {
+          duration: 3000,
+        });
         return;
       }
       localStorage.setItem('user_id', userData.id);
@@ -63,13 +91,18 @@ export class LoginComponent implements OnInit {
         return;
       } else {
         console.log(userData);
-        
+        this.userService.loggedIn = true;
+
         Swal.fire('Logged in Successfully!');
         setTimeout(() => {
           this.router.navigate([
-            `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage.getItem('last_name')?.toLocaleLowerCase()}/home`,
+            `${localStorage
+              .getItem('first_name')
+              ?.toLocaleLowerCase()}-${localStorage
+              .getItem('last_name')
+              ?.toLocaleLowerCase()}/home`,
           ]);
-        }, 1500);
+        }, 1000);
       }
     });
   }

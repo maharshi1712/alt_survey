@@ -3,18 +3,43 @@ import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.css'],
+  animations: [
+    trigger('myAnimationTriggerForContainer', [
+      state(
+        'hidden',
+        style({
+          opacity: 0,
+          transform: 'translateY(10%)',
+        })
+      ),
+      state(
+        'shown',
+        style({
+          opacity: 1,
+          transform: 'translateX(0%)',
+        })
+      ),
+      transition('hidden => shown', [animate('0.5s')]),
+    ]),
+  ],
 })
 export class ForgotPasswordComponent implements OnInit {
   user = {
     email: '',
     password: '',
-    confirmpassword: ''
+    confirmpassword: '',
   };
 
   isLoading = false;
@@ -22,20 +47,27 @@ export class ForgotPasswordComponent implements OnInit {
   OtpResponse: any;
   OtpEntered: any;
 
+  constructor(
+    private userService: UserService,
+    private _snack: MatSnackBar,
+    private router: Router
+  ) {}
 
-  constructor(private userService: UserService, private _snack: MatSnackBar, private router: Router) {}
+  state1 = 'hidden';
+  ngOnInit() {
+    setTimeout(() => {
+      this.state1 = 'shown';
+    }, 200);
+  }
 
-  ngOnInit(): void {}
-
-public displaySwal(){
-  Swal.fire({
-    title: 'Password changed successfully!',
-    html: 'Success',
-    timer: 1500,
-    timerProgressBar: true,
-    })
-    
-}
+  public displaySwal() {
+    Swal.fire({
+      title: 'Password changed successfully!',
+      html: 'Success',
+      timer: 1500,
+      timerProgressBar: true,
+    });
+  }
 
   formSubmit() {
     console.log(this.user);
@@ -46,10 +78,9 @@ public displaySwal(){
       return;
     }
 
-    if(this.user.password!=this.user.confirmpassword)
-    {
-      this._snack.open('Passsword and Confirm Password do not match', 'ok',{
-        duration:2000
+    if (this.user.password != this.user.confirmpassword) {
+      this._snack.open('Passsword and Confirm Password do not match', 'ok', {
+        duration: 2000,
       });
       return;
     }
@@ -105,17 +136,16 @@ public displaySwal(){
   }
 
   onVerifyOtp() {
-    if(this.OtpEntered!=this.OtpResponse)
-    {
-      this._snack.open('Enter Correct Otp', 'ok',{
-        duration:2000,
+    if (this.OtpEntered != this.OtpResponse) {
+      this._snack.open('Enter Correct Otp', 'ok', {
+        duration: 2000,
       });
       return;
     }
 
     if (this.OtpResponse == this.OtpEntered) {
       this.OtpVerified = true;
-      Swal.fire('Otp verification Successful','Proceed for Password Change')
+      Swal.fire('Otp verification Successful', 'Proceed for Password Change');
       console.log('verified');
     }
   }

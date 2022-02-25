@@ -1,35 +1,67 @@
-<app-navbar navItem1="Home" navItem2="Logout"></app-navbar>
-<div class="container">
-  <h1 class="welcome_note">Welcome! {{ user }}</h1>
-  <div class="header">
-    <li>
-      <mat-form-field appearance="fill" class="Dropdown">
-        <mat-label style="color: #17089b">Select Category</mat-label>
-        <mat-select
-          value="All Surveys"
-          name="Maharshi"
-          class="panel"
-          [(ngModel)]="selected"
-        >
-          <mat-option value="All Surveys">All Surveys</mat-option>
-          <mat-option value="My Surveys">My Surveys</mat-option>
-        </mat-select>
-      </mat-form-field>
 
-      <!-- This example requires Tailwind CSS v2.0+ -->
-    </li>
-    <li>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="onCreateNewSurvey()"
-        class="create"
-        routerLink="/create"
-      >
-        Create Survey
-      </button>
-    </li>
+<nav class="navbar">
+  <div class="container-fluid d-flex">
+    <div class="logo">
+      <img
+        src="../assets/images/PeopleStrong_Logo_Final.png"
+        width="230px"
+        height="40px"
+        alt="PeopleStrong_Logo "
+      />
+    </div>
+    <div class="nav-items">
+      <ul class="list-items d-flex">
+        <li class="list-item">
+          <button class="btn" routerLink="/home">Home</button>
+        </li>
+        <li class="list-item">
+          <button class="btn signup-btn">
+            Logout
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
+</nav>
+
+<div class="container">
+  <h1 class="welcome_note">
+    Welcome! <span style="color: #412cf8">{{ user }}</span>
+  </h1>
+  <div class="header">
+    <ul class="d-flex" style="list-style: none">
+      <li>
+        <mat-form-field class="Dropdown">
+          <mat-label style="color: #17089b; font-size: 20px"
+            >Select Category</mat-label
+          >
+          <mat-select
+            value="All Surveys"
+            name="Maharshi"
+            class="panel"
+            [(ngModel)]="selected"
+          >
+            <mat-option value="All Surveys">All Surveys</mat-option>
+            <mat-option value="My Surveys">My Surveys</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- This example requires Tailwind CSS v2.0+ -->
+      </li>
+      <li>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onCreateNewSurvey()"
+          class="create"
+          routerLink="/create"
+        >
+          Create Survey
+        </button>
+      </li>
+    </ul>
+  </div>
+  <hr />
 
   <app-card
     [selectedFilter]="selected"

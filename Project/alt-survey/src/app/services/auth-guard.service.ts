@@ -14,7 +14,10 @@ import { Router } from '@angular/router';
 })
 export class AuthGuardService implements CanActivate {
   constructor(private userService: UserService, private router: Router) {}
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-      return true;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if (this.userService.loggedIn) return true;
+
+    this.router.navigate(['']);
+    return false;
   }
 }

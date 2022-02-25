@@ -70,6 +70,15 @@ export class CreateComponent implements OnInit {
     );
   }
 
+  discardChange(){
+    this.survey.surveyname="";
+    this.survey.survey_type="";
+    this.survey.message_subject="";
+    this.survey.message_body="";
+    this.survey.survey_dealy=0;
+
+  }
+
   moveBack() {
     this.router.navigate([':user/home']);
   }

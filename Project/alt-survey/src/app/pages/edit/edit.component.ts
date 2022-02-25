@@ -101,6 +101,11 @@ export class EditComponent implements OnInit {
   }
 
   onDeleteSurvey() {
+    if(this.survey.createdDate!=this.survey.modifiedBy)
+    {
+      Swal.fire("You are not authorized person to delete", "you can only modify it");
+      return;
+    }
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -115,8 +120,9 @@ export class EditComponent implements OnInit {
           .deleteSurvey(this.survey_id)
           .subscribe((response) => {
             console.log(response);
-          });
-        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+          }
+        );
+        Swal.fire('Deleted!', 'Your Survey has been deleted.', 'success');
         setTimeout(() => {
           this.router.navigate([':user/home']);
         }, 1500);

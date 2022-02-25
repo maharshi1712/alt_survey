@@ -119,7 +119,7 @@ export class SignupComponent implements OnInit {
     if (this.OtpResponse == this.OtpEntered) {
       this.OtpVerified = true;
       Swal.fire('Otp verification Successful', 'Proceed to Register');
-      console.log('verified');
+      //console.log('verified');
     }
   }
 }

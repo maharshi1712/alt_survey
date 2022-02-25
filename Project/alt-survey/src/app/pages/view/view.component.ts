@@ -36,6 +36,10 @@ export class ViewComponent implements OnInit {
   }
 
   moveBack() {
-    this.router.navigate([':user/home']);
+    this.router.navigate([
+      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
+        .getItem('last_name')
+        ?.toLocaleLowerCase()}/home`,
+    ]);
   }
 }

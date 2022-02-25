@@ -1,4 +1,32 @@
-<!-- <app-navbar navItem1="Home" navItem2="Logout"></app-navbar> -->
+<nav
+  class="navbar"
+  style="
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    box-shadow: 4px 3px 3px -3px #999;
+  "
+>
+  <div class="container-fluid d-flex">
+    <div class="logo">
+      <img
+        src="../assets/images/PeopleStrong_Logo_Final.png"
+        width="230px"
+        height="40px"
+        alt="PeopleStrong_Logo "
+      />
+    </div>
+    <div class="nav-items">
+      <ul class="list-items d-flex">
+        <li class="list-item">
+          <button class="btn">Home</button>
+        </li>
+        <li class="list-item">
+          <button class="btn signup-btn" routerLink="/login">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <div class="header" style="margin-top: 30px">
   <div
@@ -9,7 +37,14 @@
     fxLayoutAlign.xs="start"
   >
     <div>
-      <button mat-raised-button color="primary" class="back" (click)="moveBack()">Back</button>
+      <button
+        mat-raised-button
+        color="primary"
+        class="back"
+        (click)="moveBack()"
+      >
+        Back
+      </button>
     </div>
 
     <div>
@@ -62,10 +97,11 @@
     <div class="subject-border col-9">
       <h4>{{ survey.createdBy }}</h4>
     </div>
-  <div class="form-heading row">
-    <label class="col-3" for="sruvey-name">Modified By</label>
-    <div class="subject-border col-9">
-      <h4>{{ survey.modifiedBy }}</h4>
+    <div class="form-heading row">
+      <label class="col-3" for="sruvey-name">Modified By</label>
+      <div class="subject-border col-9">
+        <h4>{{ survey.modifiedBy }}</h4>
+      </div>
     </div>
   </div>
 </div>

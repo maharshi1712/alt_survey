@@ -101,9 +101,11 @@ export class EditComponent implements OnInit {
   }
 
   onDeleteSurvey() {
-    if(this.survey.createdDate!=this.survey.modifiedBy)
+
+    if(this.survey.createdBy!=this.survey.modifiedBy)
     {
       Swal.fire("You are not authorized person to delete", "you can only modify it");
+
       return;
     }
     Swal.fire({
@@ -120,8 +122,7 @@ export class EditComponent implements OnInit {
           .deleteSurvey(this.survey_id)
           .subscribe((response) => {
             console.log(response);
-          }
-        );
+          });
         Swal.fire('Deleted!', 'Your Survey has been deleted.', 'success');
         setTimeout(() => {
           this.router.navigate([':user/home']);
@@ -131,6 +132,10 @@ export class EditComponent implements OnInit {
   }
 
   moveBack() {
-    this.router.navigate([':user/home']);
+    this.router.navigate([
+      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
+        .getItem('last_name')
+        ?.toLocaleLowerCase()}/home`,
+    ]);
   }
 }

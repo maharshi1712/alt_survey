@@ -28,7 +28,9 @@ import { CreateComponent } from './pages/create/create.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { EditComponent } from './pages/edit/edit.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { AuthGuardService } from './services/auth-guard.service';
+import { SurveyService } from './services/survey.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -62,9 +64,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     CKEditorModule,
     AngularEditorModule,
-    MatDialogModule
   ],
-  providers: [],
+  providers: [AuthGuardService, SurveyService, UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

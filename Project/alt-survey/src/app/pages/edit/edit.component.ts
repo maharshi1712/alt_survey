@@ -44,29 +44,30 @@ export class EditComponent implements OnInit {
     private surveyService: SurveyService,
     private route: ActivatedRoute,
     private router: Router,
-    private _snack: MatSnackBar,
-    public dialog: MatDialog
+    private _snack: MatSnackBar
   ) {}
   survey_id: any;
   survey: SurveyModel = new SurveyModel();
 
-  created_By : any;
-  created_Date:any;
+  created_By: any;
+  created_Date: any;
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.survey_id = params.get('id');
     });
     this.surveyService.viewSurvey(this.survey_id).subscribe((response) => {
-      let res: any = response; 
+      let res: any = response;
       this.created_By = res.createdBy;
-      this.created_Date=res.createdDate;
+      this.created_Date = res.createdDate;
+      console.log(res.createdDate);
+      console.log(this.created_Date);
       this.survey.setValuesEdit(res);
+      console.log(this.survey);
     });
-    
   }
 
-  prac : any;
+  prac: any;
 
   onSubmitSurvey() {
     this.survey.createdBy = this.created_By;
@@ -78,9 +79,16 @@ export class EditComponent implements OnInit {
     this.surveyService.updateSurvey(this.survey, this.survey_id).subscribe(
       (survey: any) => {
         console.log(survey);
+        //alert("Success");
         Swal.fire('Survey Successfully Modified!', 'success');
         setTimeout(() => {
-          this.router.navigate([':user/home']);
+          this.router.navigate([
+            `${localStorage
+              .getItem('first_name')
+              ?.toLocaleLowerCase()}-${localStorage
+              .getItem('last_name')
+              ?.toLocaleLowerCase()}/home`,
+          ]);
         }, 1500);
       },
       (error) => {
@@ -108,8 +116,9 @@ export class EditComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.surveyService.deleteSurvey(this.survey_id).subscribe(
-          response => {
+        this.surveyService
+          .deleteSurvey(this.survey_id)
+          .subscribe((response) => {
             console.log(response);
           }
         );
@@ -119,7 +128,6 @@ export class EditComponent implements OnInit {
         }, 1500);
       }
     });
-    
   }
 
   moveBack() {

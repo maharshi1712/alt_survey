@@ -30,7 +30,14 @@
 <div class="background">
   <div class="bootstrap-wrapper">
     <div class="back-button">
-      <button mat-raised-button color="primary" class="back">Back</button>
+      <button
+        mat-raised-button
+        color="primary"
+        class="back"
+        (click)="moveBack()"
+      >
+        Back
+      </button>
     </div>
     <div class="container">
       <div class="row">

@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -40,7 +39,6 @@ import { AuthGuardBackService } from './services/auth-guard-back.service';
     LoginComponent,
     SignupComponent,
     ForgotPasswordComponent,
-    NavbarComponent,
     LoadingSpinnerComponent,
     HomeComponent,
     CardComponent,

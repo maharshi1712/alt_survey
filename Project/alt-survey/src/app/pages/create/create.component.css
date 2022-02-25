@@ -1,3 +1,67 @@
+label,
+input,
+a {
+  font-family: inherit;
+  text-decoration: none;
+}
+
+a {
+  color: var(--color-blue-primary);
+}
+
+label {
+  margin-top: 25px;
+}
+
+p {
+  margin: 0px;
+}
+
+input {
+  margin-top: 5px;
+  max-width: 400px;
+  height: 50px;
+  padding: 15px;
+  padding-left: 20px;
+  border-radius: 40px;
+  border: 1px solid var(--color-dark-light);
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid var(--color-blue-primary);
+}
+
+nav {
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.list-items {
+  margin: 0;
+  list-style: none;
+}
+
+.list-items > li > button {
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.signup-btn {
+  background-color: var(--color-purple-primary);
+  border-radius: 30px;
+  font-weight: 500;
+  color: white;
+  width: 100%;
+}
+
+.signup-btn:hover {
+  background-color: transparent;
+  border: 1px solid var(--color-purple-primary);
+  color: var(--color-purple-primary);
+}
+
+
 .header-title {
   text-align: center;
   font-family: inherit;
@@ -36,7 +100,7 @@ input {
 }
 .back-button {
   padding-bottom: 20px;
-  margin-top: 20px;
+  padding-top: 20px;
 }
 .back {
   background-color: #46a4e8;
@@ -50,13 +114,20 @@ label {
 }
 .form-heading {
   margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .subject-border {
   margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+
 }
 .inner-card {
   box-shadow: 1px 1px 5px #f1eafb;
   border-radius: 10px;
+  background-color: rgb(233, 233, 233);
 }
 .Delete-btn {
   background-color: #c40e0e;
@@ -78,4 +149,14 @@ label {
 .check-box-style {
   display: flex;
   align-items: flex-end;
+}
+.background{
+  background-image: url("../../../assets/images/MicrosoftTeams-image.png");
+  /* Center and scale the image nicely */
+  /* background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%; */
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center ;
 }

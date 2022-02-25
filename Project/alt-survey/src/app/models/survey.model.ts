@@ -6,7 +6,7 @@ export class SurveyModel {
   public message_body: String = '';
   public survey_dealy: Number = 0;
   public createdBy: any;
-  public createdDate:Date = new Date();
+  public createdDate: Date = new Date();
   public modifiedBy: any;
   public active: Boolean = false;
   public user: any = {

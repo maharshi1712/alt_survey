@@ -45,11 +45,11 @@ export class CreateComponent implements OnInit {
     private _snack: MatSnackBar
   ) {}
 
-  user_id:any=localStorage.getItem('user_id');
+  user_id: any = localStorage.getItem('user_id');
   survey: SurveyModel = new SurveyModel();
   ngOnInit(): void {}
   formSubmit() {
-    this.survey.user.id=this.user_id;
+    this.survey.user.id = this.user_id;
     this.surveyService.addSurvey(this.survey).subscribe(
       (survey: any) => {
         //Success
@@ -76,13 +76,12 @@ export class CreateComponent implements OnInit {
     );
   }
 
-  discardChange(){
-    this.survey.surveyname="";
-    this.survey.survey_type="";
-    this.survey.message_subject="";
-    this.survey.message_body="";
-    this.survey.survey_dealy=0;
-
+  discardChange() {
+    this.survey.surveyname = '';
+    this.survey.survey_type = '';
+    this.survey.message_subject = '';
+    this.survey.message_body = '';
+    this.survey.survey_dealy = 0;
   }
 
   moveBack() {

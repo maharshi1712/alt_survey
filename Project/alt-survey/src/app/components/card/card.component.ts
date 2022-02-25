@@ -3,11 +3,36 @@ import { SurveyService } from '../../services/survey.service';
 import { Router } from '@angular/router';
 import { SurveyModel } from '../../models/survey.model';
 import { HomeComponent } from 'src/app/pages/home/home.component';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  query,
+  stagger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
+  animations: [
+    trigger('listAnimation', [
+      transition('* <=> *', [
+        query(
+          ':enter',
+          [
+            style({ opacity: 0 }),
+            stagger('150ms', animate('300ms ease-in', style({ opacity: 1 }))),
+          ],
+          { optional: true }
+        ),
+        query(':leave', animate('50ms ease-out', style({ opacity: 0 })), {
+          optional: true,
+        }),
+      ]),
+    ]),
+  ],
 })
 export class CardComponent implements OnInit {
   surveys: SurveyModel[] = [];
@@ -22,17 +47,9 @@ export class CardComponent implements OnInit {
     private home: HomeComponent
   ) {}
 
-  ngOnInit() {
-    // this.surveyService.getSurvey().subscribe((response) => {
-    //   let res: any = response;
-    //   res.forEach((element: any) => {
-    //     this.surveys.push(element);
-    //   });
-    // });
-    //cards me values change krna hai
-  }
+  ngOnInit() {}
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges) {
     this.user_id = localStorage.getItem('user_id');
     this.selectedFilter === 'All Surveys'
       ? this.surveyService.getSurvey().subscribe((response) => {

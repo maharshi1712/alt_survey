@@ -1,5 +1,11 @@
-
-<nav class="navbar">
+<nav
+  class="navbar"
+  style="
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    box-shadow: 4px 3px 3px -3px #999;
+  "
+>
   <div class="container-fluid d-flex">
     <div class="logo">
       <img
@@ -15,9 +21,7 @@
           <button class="btn">About us</button>
         </li>
         <li class="list-item">
-          <button class="btn signup-btn" routerLink="/login">
-            Login
-          </button>
+          <button class="btn signup-btn" routerLink="/login">Login</button>
         </li>
       </ul>
     </div>
@@ -25,7 +29,6 @@
 </nav>
 
 <section [@myAnimationTriggerForContainer]="state1" class="section-1">
-
   <div class="main-container d-flex">
     <div class="left-container">
       <div class="login-inner-container">
@@ -57,7 +60,8 @@
             <label for="Email">Email</label>
             <div class="verify-email-inner d-flex position-relative">
               <input
-                required autofocus
+                required
+                autofocus
                 [(ngModel)]="user.email"
                 name="email"
                 type="email"

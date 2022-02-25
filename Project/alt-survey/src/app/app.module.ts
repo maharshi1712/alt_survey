@@ -27,11 +27,12 @@ import { ViewComponent } from './pages/view/view.component';
 import { CreateComponent } from './pages/create/create.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { EditComponent } from './pages/edit/edit.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { SurveyService } from './services/survey.service';
 import { UserService } from './services/user.service';
+import { AuthGuardBackService } from './services/auth-guard-back.service';
 
 @NgModule({
   declarations: [
@@ -65,9 +66,14 @@ import { UserService } from './services/user.service';
     MatSelectModule,
     CKEditorModule,
     AngularEditorModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
-  providers: [AuthGuardService, SurveyService, UserService],
+  providers: [
+    AuthGuardService,
+    SurveyService,
+    UserService,
+    AuthGuardBackService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

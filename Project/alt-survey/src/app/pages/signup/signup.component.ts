@@ -39,7 +39,17 @@ export class SignupComponent implements OnInit {
       });
       return;
     }
-
+     if (
+       this.user.firstName == '' ||
+       this.user.lastName == null ||
+       this.user.firstName == '' ||
+       this.user.lastName == null
+     ) {
+       this._snack.open('Please Fill all the fields properly', 'ok', {
+         duration: 2000,
+       });
+       return;
+     }
     if (this.user.password != this.user.confirmpassword) {
       this._snack.open('Password and Confirm password donot match', 'ok', {
         duration: 2000,
@@ -51,9 +61,7 @@ export class SignupComponent implements OnInit {
 
     this.userService.addUser(this.user).subscribe(
       (data: any) => {
-        //Success
         console.log(data);
-        //alert("Success");
         Swal.fire(
           'Successfully Registered!',
           'User is Registered with userid ' + data.id,
@@ -81,12 +89,13 @@ export class SignupComponent implements OnInit {
       });
       return;
     }
+    
 
     this.userService.verifySignUpUser(this.user.email).subscribe(
       (respone) => {
         this.isLoading = false;
+        Swal.fire("Otp sent","Please verify otp");
         console.log('NOT ERROR  :  ' + respone.body);
-
         if (respone.status == 208) {
           this._snack.open('User already found with this email!', 'ok', {
             duration: 2000,

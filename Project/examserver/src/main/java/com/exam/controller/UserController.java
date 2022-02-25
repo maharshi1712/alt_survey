@@ -1,5 +1,7 @@
 package com.exam.controller;
 
+import java.util.Set;
+
 import com.exam.model.User;
 import com.exam.service.SendEmailService;
 import com.exam.service.UserService;
@@ -76,12 +78,15 @@ public class UserController {
 
     //Creating user
     @PostMapping("/") //ye tb chalega jb /user/post ki request url me jayegi
-    public User createUser(@RequestBody User user) throws Exception {
-
+    public ResponseEntity<User> createUser(@RequestBody User user) throws Exception {
         System.out.println("Posted");
-        //We are not setting profile through web
-        //user.setProfile("default.png");
-        return this.userService.createUser(user);
+        try {
+            return ResponseEntity.ok(this.userService.createUser(user)); 
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).build();
+        }
+        
     }
 
     @PostMapping("/login")  //ye tb chalega jb /user/login post ki request url me jayega
@@ -93,30 +98,45 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-            //TODO: handle exception
         }
-
-        //return this.userService.loginUser(user.getEmail(), user.getPassword());
     }
 
     @PostMapping("/forgot-password")
     public ResponseEntity<?> forgotPassword(@RequestBody emailPasswordTemplate user){
-//        System.out.println("Forgot password " + user.getEmail() +"\t"+user.getPassword() );
-        this.userService.forgotPassword(user.getEmail(), user.getPassword());
+       try {
+           this.userService.forgotPassword(user.getEmail(), user.getPassword());
+           return ResponseEntity.ok().build();
+       } catch (Exception e) {
+           e.printStackTrace();
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+       }
+        
 
-        return ResponseEntity.ok().build();
+        
     }
 
 
     //Fetching user by email
     @GetMapping("/{email}")
-        public User getUser(@PathVariable("email") String email){
-       return this.userService.findByEmail(email);
+        public ResponseEntity<User> getUser(@PathVariable("email") String email){
+       try {
+           return ResponseEntity.ok(this.userService.findByEmail(email)); 
+       } catch (Exception e) {
+           e.printStackTrace();
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+       }
     }
 
     @GetMapping("/")
-    public ResponseEntity<?> getUsers(){
-        return ResponseEntity.ok(this.userService.getUsers());
+    public ResponseEntity<Set<User>> getUsers(){
+
+        try {
+            return ResponseEntity.ok(this.userService.getUsers());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        
     }
 
     //Deleting the user by userId;
@@ -127,9 +147,15 @@ public class UserController {
 
     //updating the user by userId;
     @PutMapping("/{userId}")
-    public User updateUser(@RequestBody User user,@PathVariable("userId") Long userId)
+    public ResponseEntity<User> updateUser(@RequestBody User user,@PathVariable("userId") Long userId)
     {
-        return this.userService.updateUser(user,userId);
+        try {
+            return ResponseEntity.ok(this.userService.updateUser(user, userId));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        
     }
 
 }

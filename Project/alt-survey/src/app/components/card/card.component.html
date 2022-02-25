@@ -1,5 +1,9 @@
 <div class="content">
-  <div fxLayout="row wrap" fxLayoutGap="25px grid">
+  <div
+    fxLayout="row wrap"
+    fxLayoutGap="25px grid"
+    [@listAnimation]="surveys.length"
+  >
     <div
       fxFlex="33%"
       fxFlex.xs="100%"

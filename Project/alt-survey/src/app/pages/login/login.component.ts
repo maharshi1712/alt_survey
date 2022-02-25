@@ -5,12 +5,37 @@ import Swal from 'sweetalert2';
 import { SurveyService } from '../../services/survey.service';
 import { map } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-export interface UserData {}
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  animations: [
+    trigger('myAnimationTriggerForContainer', [
+      state(
+        'hidden',
+        style({
+          opacity: 0,
+          transform: 'translateY(-10%)',
+        })
+      ),
+      state(
+        'shown',
+        style({
+          opacity: 1,
+          transform: 'translateY(0%)',
+        })
+      ),
+      transition('hidden => shown', [animate('0.5s')]),
+    ]),
+  ],
 })
 export class LoginComponent implements OnInit {
   constructor(
@@ -24,8 +49,11 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
   };
-
+  state1 = 'hidden';
   ngOnInit() {
+    setTimeout(() => {
+      this.state1 = 'shown';
+    }, 200);
     localStorage.clear();
   }
   formSubmit() {

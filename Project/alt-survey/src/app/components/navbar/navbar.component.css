@@ -60,3 +60,28 @@ nav {
   border: 1px solid var(--color-purple-primary);
   color: var(--color-purple-primary);
 }
+
+
+
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.logo{
+  margin-left: 30px;
+  margin-top: 10px;
+}
+.nav{
+  background-color: white;
+}
+.button1{
+  margin-right: 25px;
+  font-size: 18px;
+  color: blue;
+}
+.button2{
+  margin-right: 40px;
+  margin-left: 20px;
+  font-size: 18px;
+  color: blue;
+}

@@ -15,40 +15,44 @@
   list-style-type: none;
   /* padding-right: 75px; */
 }
-.create {
-  position: absolute;
-  right: 10px;
-  margin-right: 75px;
-  background-color: #17089b;
-  height: 45px;
-  border-radius: 8px;
-}
+
 .Dropdown {
-  background-color: #f1eafb;
-  margin-left: 75px;
+  margin-left: 10px;
   color: #17089b;
   border-radius: 10px;
   width: 300px;
 }
 
 .welcome_note {
-  padding-left: 75px;
+  padding-left: 40px;
   padding-top: 50px;
   text-align: left;
-  color: #f4563d;
-  font-weight: 400;
-  text-shadow: 2px 2px #eedbaa;
+  color: #fdb714;
+  font-weight: 600;
   font-family: inherit;
   font-size: 30px;
+  text-decoration: dashed;
+}
+.create {
+  position: absolute;
+  right: 10px;
+  margin-right: 25px;
+  margin-top: 10px;
+  background-color: #17089b;
+  border: 0.7px solid #17089b;
+  height: 45px;
+  border-radius: 8px;
 }
 .create:hover {
-  background-color: #46a4e8;
+  background-color: transparent;
+  border: 0.7px solid #17089b;
   color: #17089b;
 }
 .mat-option {
   font-family: inherit;
   color: #03005e;
 }
+
 label,
 input,
 a {
@@ -113,4 +117,9 @@ nav {
 }
 
 
+
+
+.panel {
+  margin-top: 20px;
+}
 

@@ -1,23 +1,18 @@
 package com.exam.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.stereotype.Service;
-
-import net.bytebuddy.asm.Advice.This;
 
 @Entity
 @Service
@@ -34,6 +29,7 @@ public class SurveyConfig {
 
     private String message_subject;
 
+    @Column(length = 5000)
     private String message_body;
 
     private int survey_dealy;

@@ -9,16 +9,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import org.springframework.stereotype.Service;
-
-import net.bytebuddy.agent.builder.AgentBuilder.PoolStrategy.Eager;
 
 @Entity
 @Table(name = "users")

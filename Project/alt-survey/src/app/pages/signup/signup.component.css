@@ -75,8 +75,7 @@ nav {
 }
 
 .main-container {
-  height: 100%;
-  margin-top: 70px;
+  margin-top: 30px;
 }
 
 .left-container {
@@ -84,6 +83,11 @@ nav {
   width: 60%;
   display: flex;
   align-items: center;
+}
+
+.right-container {
+  display: flex;
+  justify-content: center;
 }
 
 .username-row div {

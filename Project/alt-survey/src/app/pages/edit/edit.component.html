@@ -25,13 +25,13 @@
 </nav>
 <div class="bootstrap-wrapper">
   <div class="back-button">
-    <button mat-raised-button color="primary" class="back">Back</button>
+    <button mat-raised-button color="primary" class="back" (click)="moveBack()">Back</button>
   </div>
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3 inner-card">
         <h1 class="header-title">Create Survey</h1>
-        <form (ngSubmit)="onSubmitSurvey()">
+        <form>
           <div class="form-heading">
             <label for="survey-name">Survey Name</label>
           </div>
@@ -84,12 +84,13 @@
             </div>
           </div>
 
+          {{ survey.createdBy }}
           <div class="button-border Centre">
             <button
-              type="submit"
               class="save"
               mat-raised-button
               color="primary"
+              (click)="onSubmitSurvey()"
             >
               Submit
             </button>

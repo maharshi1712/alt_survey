@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SurveyService } from '../../services/survey.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { Router } from '@angular/router';
+import { SurveyModel } from 'src/app/models/survey.model';
+import Swal from 'sweetalert2';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create',
@@ -35,17 +39,56 @@ export class CreateComponent implements OnInit {
     ],
   };
 
-  constructor(private surveyService: SurveyService) {}
-  public survey = {
-    surveyName: '',
-    surveyType: '',
-    messageSubject: '',
-    messageBody: '',
-    delay: '',
-    isActive: '',
-    createdBy: '',
-    modifiedBy: '',
-  };
+  constructor(
+    private surveyService: SurveyService,
+    private router: Router,
+    private _snack: MatSnackBar
+  ) {}
+
+  user_id: any = localStorage.getItem('user_id');
+  survey: SurveyModel = new SurveyModel();
   ngOnInit(): void {}
-  formSubmit() {}
+  formSubmit() {
+    this.survey.user.id = this.user_id;
+    this.surveyService.addSurvey(this.survey).subscribe(
+      (survey: any) => {
+        //Success
+        console.log(this.survey);
+        //alert("Success");
+        Swal.fire('Your survey has been created!', 'success');
+        setTimeout(() => {
+          this.router.navigate([
+            `${localStorage
+              .getItem('first_name')
+              ?.toLocaleLowerCase()}-${localStorage
+              .getItem('last_name')
+              ?.toLocaleLowerCase()}/home`,
+          ]);
+        }, 1200);
+      },
+      (error) => {
+        console.log(error);
+        // alert("Something went wrong!");
+        this._snack.open('Something went wrong!', 'ok', {
+          duration: 2000,
+        });
+      }
+    );
+  }
+
+  discardChange() {
+    this.survey.surveyname = '';
+    this.survey.survey_type = '';
+    this.survey.message_subject = '';
+    this.survey.message_body = '';
+    this.survey.survey_dealy = 0;
+  }
+
+  moveBack() {
+    this.router.navigate([
+      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
+        .getItem('last_name')
+        ?.toLocaleLowerCase()}/home`,
+    ]);
+  }
 }

@@ -3,11 +3,36 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
+  animations: [
+    trigger('myAnimationTriggerForContainer', [
+      state(
+        'hidden',
+        style({
+          opacity: 0,
+          transform: 'translateX(10%)',
+        })
+      ),
+      state(
+        'shown',
+        style({
+          opacity: 1,
+          transform: 'translateX(0%)',
+        })
+      ),
+      transition('hidden => shown', [animate('0.5s')]),
+    ]),
+  ],
 })
 export class SignupComponent implements OnInit {
   isLoading = false;
@@ -29,7 +54,12 @@ export class SignupComponent implements OnInit {
   OtpResponse: any;
   OtpVerified = false;
 
-  ngOnInit(): void {}
+  state1 = 'hidden';
+  ngOnInit() {
+    setTimeout(() => {
+      this.state1 = 'shown';
+    }, 200);
+  }
 
   formSubmit() {
     console.log(this.user);
@@ -119,7 +149,7 @@ export class SignupComponent implements OnInit {
     if (this.OtpResponse == this.OtpEntered) {
       this.OtpVerified = true;
       Swal.fire('Otp verification Successful', 'Proceed to Register');
-      console.log('verified');
+      //console.log('verified');
     }
   }
 }

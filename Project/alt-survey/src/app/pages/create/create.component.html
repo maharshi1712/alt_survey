@@ -1,4 +1,4 @@
-<!-- <app-navbar navItem1="Home" routerLink="/home" navItem2="Logout"></app-navbar> -->
+
 <nav class="navbar">
   <div class="container-fluid d-flex">
     <div class="logo">
@@ -63,18 +63,30 @@
               <div >
                 <input required [(ngModel)]="survey.delay" name="Delay" placeholder="Delay (No. of Days)" />
               </div>
+
             </div>
 
-            <div class="button-border Centre">
-              <button type="submit" class="save" mat-raised-button color="primary">
-                Submit
-              </button>
-              <button type="submit" class="Delete-btn" mat-raised-button color="primary">
-                Discard
-              </button>
-            </div>
-          </form>
-        </div>
+
+          <div class="button-border Centre">
+            <button
+              (click)="formSubmit()"
+              class="save"
+              mat-raised-button
+              color="primary"
+            >
+              Submit
+            </button>
+            <button
+              (click)="discardChange()"
+              class="Delete-btn"
+              mat-raised-button
+              color="primary"
+            >
+              Discard
+            </button>
+          </div>
+        </form>
+
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@ import baseUrl from './helper';
 })
 export class UserService {
   constructor(private http: HttpClient) {}
-
+  loggedIn: boolean = false;
   //Add user through frontEnd;
   public addUser(user: any) {
     return this.http.post(`${baseUrl}user/`, user);

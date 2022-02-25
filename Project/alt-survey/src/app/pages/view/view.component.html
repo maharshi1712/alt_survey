@@ -28,7 +28,7 @@
   </div>
 </nav>
 
-<div class="header" style="padding: 150px; padding-top: 30px">
+<!-- <div class="header" style="padding: 150px; padding-top: 30px">
   <div
     fxLayout="row"
     fxLayout.xs="column"
@@ -107,4 +107,87 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="header" style="margin-top: 30px">
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap.xs="25px"
+    fxLayoutAlign="space-between"
+    fxLayoutAlign.xs="start"
+  >
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        class="back"
+        (click)="moveBack()"
+      >
+        Back
+      </button>
+    </div>
+
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        class="create"
+        (click)="onEditSurvey(survey.survey_id)"
+      >
+        Edit Survey
+      </button>
+    </div>
+  </div>
 </div>
+
+<table
+  border="1"
+  align="center"
+  width="50% "
+  cellpadding="10px"
+  cellspacing="5px"
+>
+  <tr bgcolor="pink" height="60px">
+    <th align="center" valign="middle">Survey Name</th>
+    <td>
+      {{ survey.surveyname }}
+    </td>
+  </tr>
+  <tr bgcolor="pink" height="60px">
+    <th align="center" valign="middle">Survey Type</th>
+    <td>
+      {{ survey.survey_type }}
+    </td>
+  </tr>
+  <tr bgcolor="pink" height="60px">
+    <th align="center" valign="middle">Message Subject</th>
+    <td>
+      {{ survey.message_subject }}
+    </td>
+  </tr>
+  <tr bgcolor="pink" height="60px">
+    <th align="center" valign="middle">Message Body</th>
+    <td>
+      {{ survey.message_body }}
+    </td>
+  </tr>
+  <tr bgcolor="pink" height="60px">
+    <th align="center" valign="middle">Delay</th>
+    <td>
+      {{ survey.survey_dealy }}
+    </td>
+  </tr>
+  <tr bgcolor="pink" height="60px">
+    <th align="center" valign="middle">Created By</th>
+    <td>
+      {{ survey.createdBy }}
+    </td>
+  </tr>
+  <tr bgcolor="pink" height="60px">
+    <th align="center" valign="middle">Modified By</th>
+    <td>
+      {{ survey.modifiedBy }}
+    </td>
+  </tr>
+</table>

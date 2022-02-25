@@ -18,7 +18,7 @@
     <div class="nav-items">
       <ul class="list-items d-flex">
         <li class="list-item">
-          <button class="btn" routerLink="/home">Home</button>
+          <button class="btn" (click)="onHome()">Home</button>
         </li>
         <li class="list-item">
           <button class="btn signup-btn">Logout</button>
@@ -29,23 +29,24 @@
 </nav>
 <div class="background">
   <div class="bootstrap-wrapper">
-    <div class="back-button">
+    <!-- <div class="back-button">
       <button
         mat-raised-button
         color="primary"
         class="back"
         (click)="moveBack()"
       >
+        <i class="bi bi-arrow-left"></i>
         Back
       </button>
-    </div>
-    <div class="container">
+    </div> -->
+    <div class="container" style="margin-top: 30px">
       <div class="row">
-        <div class="col inner-card">
-          <h1 class="header-title">Create Survey</h1>
+        <div class="col-6 inner-card">
+          <h1 class="header-title">CREATE SURVEY</h1>
           <form>
             <div class="row">
-              <div class="col-4">
+              <div class="col-6">
                 <div class="form-heading">
                   <label for="survey-name">Survey Name</label>
                 </div>
@@ -59,7 +60,7 @@
                   />
                 </div>
               </div>
-              <div class="col-4">
+              <div class="col-6">
                 <div class="form-heading">
                   <label for="sruvey-name">Survey Type</label>
                 </div>
@@ -74,7 +75,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-4">
+              <div class="col-6">
                 <div class="form-heading">
                   <label for="sruvey-name">Message Subject</label>
                 </div>
@@ -87,7 +88,7 @@
                   />
                 </div>
               </div>
-              <div class="col-4">
+              <div class="col-6">
                 <div class="form-heading">
                   <label for="survey-name">Delay</label>
                 </div>
@@ -101,7 +102,7 @@
                 </div>
               </div>
 
-              <div class="form-heading col-8">
+              <div class="form-heading col">
                 <label for="sruvey-name" style="margin-bottom: 20px"
                   >Message Body</label
                 >
@@ -114,7 +115,7 @@
                 ></angular-editor>
               </div>
               <div class="row" style="margin-left: 10px">
-                <div class="col-3" style="margin-top: 60px">
+                <div class="col-2" style="margin-top: 60px">
                   <button
                     (click)="formSubmit()"
                     class="save"
@@ -124,7 +125,7 @@
                     Submit
                   </button>
                 </div>
-                <div class="col-3" style="margin-top: 60px">
+                <div class="col-2" style="margin-top: 60px">
                   <button
                     (click)="discardChange()"
                     class="Delete-btn"
@@ -137,6 +138,15 @@
               </div>
             </div>
           </form>
+        </div>
+        <div class="col-6 d-flex justify-content-center align-items-center">
+          <div class="img-container">
+            <img
+              class="img-fluid"
+              src="../../../assets/images/undraw_add_post_re_174w.svg"
+              alt=""
+            />
+          </div>
         </div>
       </div>
     </div>

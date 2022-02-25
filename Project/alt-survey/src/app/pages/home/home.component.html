@@ -1,4 +1,27 @@
-<app-navbar navItem1="Home" navItem2="Logout"></app-navbar>
+<nav class="navbar">
+  <div class="container-fluid d-flex">
+    <div class="logo">
+      <img
+        src="../assets/images/PeopleStrong_Logo_Final.png"
+        width="230px"
+        height="40px"
+        alt="PeopleStrong_Logo "
+      />
+    </div>
+    <div class="nav-items">
+      <ul class="list-items d-flex">
+        <li class="list-item">
+          <button class="btn" routerLink="/home">Home</button>
+        </li>
+        <li class="list-item">
+          <button class="btn signup-btn">
+            Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="container">
   <h1 class="welcome_note">Welcome! {{ user }}</h1>
   <div class="header">

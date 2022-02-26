@@ -45,7 +45,6 @@ import {
   ],
 })
 export class SignupComponent implements OnInit {
-  isLoading = false;
   constructor(
     private userService: UserService,
     private _snack: MatSnackBar,
@@ -61,6 +60,7 @@ export class SignupComponent implements OnInit {
     confirmpassword: '',
   };
 
+  isLoading = false;
   OtpEntered: any;
   OtpResponse: any;
   OtpVerified = false;

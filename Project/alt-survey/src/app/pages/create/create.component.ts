@@ -5,11 +5,37 @@ import { Router } from '@angular/router';
 import { SurveyModel } from 'src/app/models/survey.model';
 import Swal from 'sweetalert2';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css'],
+  animations: [
+    trigger('myAnimationTriggerForContainer', [
+      state(
+        'hidden',
+        style({
+          opacity: 0,
+          transform: 'translateY(10%)',
+        })
+      ),
+      state(
+        'shown',
+        style({
+          opacity: 1,
+          transform: 'translateY(0%)',
+        })
+      ),
+      transition('hidden => shown', [animate('0.4s')]),
+    ]),
+  ],
 })
 export class CreateComponent implements OnInit {
   config: AngularEditorConfig = {
@@ -45,6 +71,8 @@ export class CreateComponent implements OnInit {
     private _snack: MatSnackBar
   ) {}
 
+  state1 = 'hidden';
+
   username: any = `${localStorage
     .getItem('first_name')
     ?.toLocaleLowerCase()}-${localStorage
@@ -52,7 +80,11 @@ export class CreateComponent implements OnInit {
     ?.toLocaleLowerCase()}`;
   user_id: any = localStorage.getItem('user_id');
   survey: SurveyModel = new SurveyModel();
-  ngOnInit(): void {}
+  ngOnInit() {
+    setTimeout(() => {
+      this.state1 = 'shown';
+    }, 200);
+  }
   formSubmit() {
     this.survey.user.id = this.user_id;
     this.surveyService.addSurvey(this.survey).subscribe(

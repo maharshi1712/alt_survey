@@ -21,7 +21,11 @@
   </div>
 </nav>
 
-<div class="container" style="margin-top: 100px">
+<div
+  [@myAnimationTriggerForContainer]="state1"
+  class="container"
+  style="margin-top: 100px"
+>
   <h1 class="welcome_note">
     Welcome! <span style="color: #412cf8">{{ user }}</span>
   </h1>
@@ -60,7 +64,9 @@
     </ul>
   </div>
   <hr />
+</div>
 
+<div [@myAnimationTriggerForContainer]="state1" class="container">
   <app-card
     [selectedFilter]="selected"
     surveyName="Testing survey"

@@ -1,10 +1,6 @@
 <nav
   class="navbar fixed-top navbar-light bg-light"
-  style="
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    box-shadow: 4px 3px 3px -3px #999;
-  "
+  style="padding-top: 2rem; padding-bottom: 2rem"
 >
   <div class="container-fluid d-flex">
     <div class="logo">
@@ -28,110 +24,51 @@
   </div>
 </nav>
 
-<!-- <div class="header">
-  <div
-    fxLayout="row"
-    fxLayout.xs="column"
-    fxLayoutGap.xs="25px"
-    fxLayoutAlign="space-between"
-    fxLayoutAlign.xs="start"
-  >
-    <div>
-      <button
-        mat-raised-button
-        color="primary"
-        class="back"
-        (click)="moveBack()"
-      >
-        <i class="bi bi-arrow-left"></i>
-        Back
-      </button>
-    </div>
-
-    <div>
-      <button
-        mat-raised-button
-        color="primary"
-        class="create"
-        (click)="onEditSurvey(survey.survey_id)"
-      >
-        Edit Survey
-      </button>
-    </div>
-  </div>
-</div> -->
-
-<!-- <table
-  border="1"
-  align="center"
-  width="50% "
-  cellpadding="10px"
-  cellspacing="5px"
+<div
+  [@myAnimationTriggerForContainer]="state1"
+  class="background position-relative"
+  style="margin-top: 130px"
 >
-  <tr colo bgcolor="#17089b" height="60px">
-    <th align="center" valign="middle">Survey Name</th>
-    <td>
-      {{ survey.surveyname }}
-    </td>
-  </tr>
-  <tr bgcolor="pink" height="60px">
-    <th align="center" valign="middle">Survey Type</th>
-    <td>
-      {{ survey.survey_type }}
-    </td>
-  </tr>
-  <tr bgcolor="pink" height="60px">
-    <th align="center" valign="middle">Message Subject</th>
-    <td>
-      {{ survey.message_subject }}
-    </td>
-  </tr>
-  <tr bgcolor="pink" height="60px">
-    <th align="center" valign="middle">Message Body</th>
-    <td>
-      {{ survey.message_body }}
-    </td>
-  </tr>
-  <tr bgcolor="pink" height="60px">
-    <th align="center" valign="middle">Delay</th>
-    <td>
-      {{ survey.survey_dealy }}
-    </td>
-  </tr>
-  <tr bgcolor="pink" height="60px">
-    <th align="center" valign="middle">Created By</th>
-    <td>
-      {{ survey.createdBy }}
-    </td>
-  </tr>
-  <tr bgcolor="pink" height="60px">
-    <th align="center" valign="middle">Modified By</th>
-    <td>
-      {{ survey.modifiedBy }}
-    </td>
-  </tr>
-</table> -->
-
-<div class="background position-relative" style="margin-top: 100px">
   <div class="bootstrap-wrapper">
     <div class="container">
       <div class="row">
+        <div class="col-6 d-flex align-items-center">
+          <button
+            (click)="moveBack()"
+            style="background-color: transparent; border: none"
+          >
+            <i
+              style="color: #17089b; font-size: 26px"
+              class="bi bi-arrow-left"
+            ></i>
+          </button>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+          <button
+            mat-raised-button
+            color="primary"
+            class="create btn"
+            (click)="onEditSurvey(survey.survey_id)"
+          >
+            Edit Survey
+          </button>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
         <div class="col-6 inner-card">
           <form>
-            <div class="row">
+            <div class="row" style="margin-top: 0">
               <div class="col-6">
-                <div class="form-heading">
-                  <label for="survey-name"><h2>Survey Name</h2></label>
-                </div>
+                <label for="survey-name"><h2>Survey Name</h2></label>
 
                 <div class="subject-border">
                   <p>{{ survey.surveyname }}</p>
                 </div>
               </div>
               <div class="col-6">
-                <div class="form-heading">
-                  <label for="sruvey-name"><h2>Survey Type</h2></label>
-                </div>
+                <label for="survey-name"><h2>Survey Type</h2></label>
+
                 <div class="subject-border">
                   <p>{{ survey.survey_type }}</p>
                 </div>
@@ -176,18 +113,6 @@
                 </div>
                 <div class="subject-border">
                   <p>{{ survey.modifiedBy }}</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-heading">
-                  <button
-                    mat-raised-button
-                    color="primary"
-                    class="create"
-                    (click)="onEditSurvey(survey.survey_id)"
-                  >
-                    Edit Survey
-                  </button>
                 </div>
               </div>
             </div>

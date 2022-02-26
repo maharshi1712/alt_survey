@@ -1,6 +1,5 @@
 .content {
   padding: 45px;
-  
 }
 .mat-elevation-z8 {
   border-radius: 10px;
@@ -44,4 +43,11 @@
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.text-truncate {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

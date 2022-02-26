@@ -2,11 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { SurveyService } from '../../services/survey.service';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { SurveyModel } from '../../models/survey.model';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
+  animations: [
+    trigger('myAnimationTriggerForContainer', [
+      state(
+        'hidden',
+        style({
+          opacity: 0,
+          transform: 'translateX(-10%)',
+        })
+      ),
+      state(
+        'shown',
+        style({
+          opacity: 1,
+          transform: 'translateX(0%)',
+        })
+      ),
+      transition('hidden => shown', [animate('0.4s')]),
+    ]),
+  ],
 })
 export class ViewComponent implements OnInit {
   constructor(
@@ -14,6 +40,8 @@ export class ViewComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+
+  state1 = 'hidden';
 
   username: any = `${localStorage
     .getItem('first_name')
@@ -24,6 +52,9 @@ export class ViewComponent implements OnInit {
   survey: SurveyModel = new SurveyModel();
 
   ngOnInit() {
+    setTimeout(() => {
+      this.state1 = 'shown';
+    }, 200);
     this.route.paramMap.subscribe((params) => {
       this.survey_id = params.get('id');
     });

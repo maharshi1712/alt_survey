@@ -75,7 +75,6 @@ export class LoginComponent implements OnInit {
   }
 
   formSubmit() {
-    console.log(this.loginForm.get('email'));
     this.loginForm.get('email')?.errors;
     this.user.email = this.loginForm.value.email;
     this.user.password = this.loginForm.value.password;

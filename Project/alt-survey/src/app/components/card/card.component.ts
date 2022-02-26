@@ -23,11 +23,11 @@ import {
           ':enter',
           [
             style({ opacity: 0 }),
-            stagger('50ms', animate('200ms ease-in', style({ opacity: 1 }))),
+            stagger('100ms', animate('200ms ease-in', style({ opacity: 1 }))),
           ],
           { optional: true }
         ),
-        query(':leave', animate('10ms ease-out', style({ opacity: 0 })), {
+        query(':leave', animate('100ms ease-out', style({ opacity: 0 })), {
           optional: true,
         }),
       ]),
@@ -37,6 +37,7 @@ import {
 export class CardComponent implements OnInit {
   isSurveyFound = true;
   surveys: SurveyModel[] = [];
+  surveys_copy: SurveyModel[] = [];
   user_id: any;
   @Input() selectedFilter: String = '';
   @Input() surveyName: String = '';
@@ -54,24 +55,27 @@ export class CardComponent implements OnInit {
     this.user_id = localStorage.getItem('user_id');
     this.selectedFilter === 'All Surveys'
       ? this.surveyService.getSurvey().subscribe((response) => {
-          this.surveys = [];
           let res: any = response;
           res.length === 0
             ? (this.isSurveyFound = false)
             : (this.isSurveyFound = true);
           res.forEach((element: any) => {
-            this.surveys.push(element);
+            this.surveys_copy.push(element);
           });
+          this.surveys = this.surveys_copy;
         })
       : this.surveyService.showMySurvey(this.user_id).subscribe((response) => {
-          this.surveys = [];
+          this.surveys = this.surveys.filter(
+            (s) => s.createdBy === localStorage.getItem('firstname')
+          );
+          console.log(this.surveys);
           let res: any = response;
           res.length === 0
             ? (this.isSurveyFound = false)
             : (this.isSurveyFound = true);
-          res.forEach((element: any) => {
-            this.surveys.push(element);
-          });
+          // res.forEach((element: any) => {
+          //   this.surveys.push(element);
+          // });
         });
   }
 

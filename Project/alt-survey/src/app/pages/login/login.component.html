@@ -1,4 +1,3 @@
-
 <nav class="navbar">
   <div class="container-fluid d-flex">
     <div class="logo">
@@ -15,18 +14,14 @@
           <button class="btn">About us</button>
         </li>
         <li class="list-item">
-          <button class="btn signup-btn" routerLink="/signup">
-            Sign up
-          </button>
+          <button class="btn signup-btn" routerLink="/signup">Sign up</button>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-
 <section [@myAnimationTriggerForContainer]="state1" class="section-1">
-
   <div class="main-container d-flex">
     <div class="left-container">
       <div class="illu-image">
@@ -46,17 +41,22 @@
             type="text"
             placeholder="abc@xyz.com"
             name="email"
-            required autofocus [(ngModel)]="user.email"
-            
+            required
+            autofocus
+            [(ngModel)]="user.email"
           />
           <label for="Password">Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            required [(ngModel)]="user.password"
-            
-          />
+          <div class="show-hide-pass1">
+            <mat-icon matSuffix>visibility</mat-icon>
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+              [(ngModel)]="user.password"
+            />
+          </div>
+
           <a style="margin-top: 25px" href="forgot-password"
             >Forget Password?</a
           >

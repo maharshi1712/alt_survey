@@ -4,6 +4,14 @@
     fxLayoutGap="25px grid"
     [@listAnimation]="surveys.length"
   >
+    <div *ngIf="surveys.length === 0" class="no-surey-found-style">
+      <img
+        src="../assets/images/survey-not-found-svg.svg"
+        width="500px"
+        height="500px"
+      />
+      <h3>No surveys found</h3>
+    </div>
     <div
       fxFlex="33%"
       fxFlex.xs="100%"

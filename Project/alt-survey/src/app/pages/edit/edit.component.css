@@ -1,84 +1,4 @@
-.header-title {
-  text-align: center;
-  font-family: inherit;
-  color: #f4563d;
-  font-weight: 400;
-  text-shadow: 2px 2px #eedbaa;
-  font-family: inherit;
-  font-size: 30px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-input {
-  width: 100%;
-  height: 40px;
-  border-radius: 5px;
-  border: 1px solid gainsboro;
-}
-.button-border {
-  text-align: center;
-  margin-top: 20px;
-}
-#checkbox {
-  height: min-content;
-  margin-inline: 2px;
-}
-.save {
-  background-color: #17089b;
-  height: 45px;
-  border-radius: 8px;
-  width: 100px;
-}
-.save:hover {
-  height: 45px;
-  background-color: #46a4e8;
-  color: #17089b;
-}
-.back-button {
-  padding-bottom: 20px;
-  margin-top: 20px;
-}
-.back {
-  background-color: #46a4e8;
-  margin-left: 75px;
-}
-label {
-  font-family: inherit;
-  font-weight: 300;
-
-  font-size: 18px;
-}
-.form-heading {
-  margin-top: 15px;
-}
-.subject-border {
-  margin-top: 10px;
-}
-.inner-card {
-  box-shadow: 1px 1px 5px #f1eafb;
-  border-radius: 10px;
-}
-.Delete-btn {
-  background-color: #c40e0e;
-  height: 45px;
-  border-radius: 8px;
-  width: 100px;
-}
-.Centre {
-  display: flex;
-  justify-content: space-around;
-}
-
-.Delete-btn:hover {
-  height: 45px;
-  background-color: #ff5252;
-  color: #17089b;
-}
-
-.check-box-style {
-  display: flex;
-  align-items: flex-end;
-}
+/*------------------------------------------------------ */
 
 label,
 input,
@@ -93,6 +13,7 @@ a {
 
 label {
   margin-top: 25px;
+  color: #17089b;
 }
 
 p {
@@ -101,12 +22,12 @@ p {
 
 input {
   margin-top: 5px;
-  max-width: 400px;
+  /* max-width: 400px; */
   height: 50px;
   padding: 15px;
   padding-left: 20px;
   border-radius: 40px;
-  border: 1px solid var(--color-dark-light);
+  border: 1px solid var(--color-purple-primary);
 }
 
 input:focus {
@@ -143,3 +64,107 @@ nav {
   color: var(--color-purple-primary);
 }
 
+.header-title {
+  font-family: inherit;
+  color: #f4563d;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-left: 18px;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+}
+.button-border {
+  text-align: center;
+  margin-top: 20px;
+}
+#checkbox {
+  height: min-content;
+  margin-inline: 2px;
+}
+.save {
+  background-color: #17089b;
+  height: 45px;
+  border-radius: 8px;
+  width: 100px;
+}
+.save:hover {
+  height: 45px;
+  background-color: #46a4e8;
+  color: #17089b;
+}
+.back-button {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-left: 120px;
+}
+.back {
+  background-color: #46a4e8;
+}
+label {
+  font-family: inherit;
+  font-weight: 300;
+
+  font-size: 18px;
+}
+.form-heading {
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.subject-border {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.inner-card {
+  border-radius: 20px;
+  background-color: white;
+  padding-bottom: 50px;
+  /* border: 1px solid #f4563d; */
+  margin-bottom: 30px;
+}
+.Delete-btn {
+  background-color: #c40e0e;
+  height: 45px;
+  border-radius: 8px;
+  width: 100px;
+}
+.Centre {
+  display: flex;
+  justify-content: space-around;
+}
+
+.Delete-btn:hover {
+  height: 45px;
+  background-color: #ff5252;
+  color: #17089b;
+}
+
+.check-box-style {
+  display: flex;
+  align-items: flex-end;
+}
+.background {
+  /* background-image: url("../../../assets/images/MicrosoftTeams-image.png"); */
+  /* Center and scale the image nicely */
+  /* background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%; */
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-container {
+  width: 75%;
+  height: 70%;
+}

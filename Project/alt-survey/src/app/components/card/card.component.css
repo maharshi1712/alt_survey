@@ -1,5 +1,6 @@
 .content {
   padding: 45px;
+  
 }
 .mat-elevation-z8 {
   border-radius: 10px;
@@ -8,6 +9,7 @@
 }
 .content > mat-card {
   max-width: 300px;
+  max-height: 200px;
 }
 .boundary {
   padding-left: 25px;

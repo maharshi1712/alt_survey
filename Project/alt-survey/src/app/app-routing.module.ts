@@ -8,11 +8,24 @@ import { ViewComponent } from './pages/view/view.component';
 import { CreateComponent } from './pages/create/create.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuardBackService } from './services/auth-guard-back.service';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
+  {
+    path: 'login',
+    canActivate: [AuthGuardBackService],
+    component: LoginComponent,
+  },
+  {
+    path: 'signup',
+    canActivate: [AuthGuardBackService],
+    component: SignupComponent,
+  },
+  {
+    path: 'forgot-password',
+    canActivate: [AuthGuardBackService],
+    component: ForgotPasswordComponent,
+  },
   {
     path: ':user/home',
     canActivate: [AuthGuardService],
@@ -34,7 +47,7 @@ const routes: Routes = [
     component: EditComponent,
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  // { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({

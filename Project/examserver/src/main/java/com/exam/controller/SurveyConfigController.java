@@ -5,12 +5,11 @@ import java.util.Set;
 
 import com.exam.model.SurveyConfig;
 import com.exam.model.User;
-import com.exam.repo.SurveyConfigRepository;
-import com.exam.repo.UserRepository;
 import com.exam.service.SurveyConfigService;
 import com.exam.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,12 +37,6 @@ public class SurveyConfigController {
     private UserService userService;
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private SurveyConfigRepository surveyConfigRepository;
-
-    @Autowired
     private SurveyConfigService surveyConfigService;
 
     //Adding Survey
@@ -58,37 +51,66 @@ public class SurveyConfigController {
 
     //Getting survey by Id
     @GetMapping("/{survey_id}")
-    public SurveyConfig getSurveyConfig(@PathVariable("survey_id") int survey_id){
-        return this.surveyConfigService.getSurveyConfig(survey_id);
+    public ResponseEntity<SurveyConfig> getSurveyConfig(@PathVariable("survey_id") int survey_id){
+        try {
+            return ResponseEntity.ok(this.surveyConfigService.getSurveyConfig(survey_id));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        
     }
 
     //Getting all survey
-
     @GetMapping("/")
     public ResponseEntity<?>getSurveyConfigs(){
-        return ResponseEntity.ok(this.surveyConfigService.getSurveyConfigs());
+        try {
+            return ResponseEntity.ok(this.surveyConfigService.getSurveyConfigs());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        
     }
 
     @GetMapping("/user/{user_id}")
-    public ResponseEntity<Set<SurveyConfig>> getAllJobsByCompany(@PathVariable("user_id") long user_id) {
+    public ResponseEntity<Set<SurveyConfig>> getAllSurveyByUser(@PathVariable("user_id") long user_id) {
 
         User user = this.userService.getUser(user_id);
-        return ResponseEntity.ok(this.surveyConfigService.getAllSurveyConfigByUser(user));
+        try {
+            return ResponseEntity.ok(this.surveyConfigService.getAllSurveyConfigByUser(user));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        
     }
 
     //updating survey
     @PutMapping("/{survey_id}")
-    public SurveyConfig updateSurveyConfig(@RequestBody SurveyConfig surveyConfig, @PathVariable("survey_id") int survey_id){
+    public ResponseEntity<SurveyConfig> updateSurveyConfig(@RequestBody SurveyConfig surveyConfig, @PathVariable("survey_id") int survey_id){
         surveyConfig.setModifiedDate(d1);
         surveyConfig.setCreatedBy(surveyConfig.getCreatedBy());
-        return this.surveyConfigService.updateSurveyConfig(surveyConfig,survey_id);
+        try {
+            return ResponseEntity.ok(this.surveyConfigService.updateSurveyConfig(surveyConfig, survey_id));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        
     }
 
     //deleting survey
     @DeleteMapping("/{survey_id}")
-    public void deleteSurveyConfig(@PathVariable("survey_id") int survey_id){
+    public ResponseEntity<?> deleteSurveyConfig(@PathVariable("survey_id") int survey_id){
        
-        this.surveyConfigService.deleteSurveyConfig(survey_id);
+        try {
+            this.surveyConfigService.deleteSurveyConfig(survey_id);
+           return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+        } catch (Exception e) {
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        
     }
 
 }

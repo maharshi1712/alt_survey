@@ -45,6 +45,11 @@ export class CreateComponent implements OnInit {
     private _snack: MatSnackBar
   ) {}
 
+  username: any = `${localStorage
+    .getItem('first_name')
+    ?.toLocaleLowerCase()}-${localStorage
+    .getItem('last_name')
+    ?.toLocaleLowerCase()}`;
   user_id: any = localStorage.getItem('user_id');
   survey: SurveyModel = new SurveyModel();
   ngOnInit(): void {}
@@ -57,13 +62,7 @@ export class CreateComponent implements OnInit {
         //alert("Success");
         Swal.fire('Your survey has been created!', 'success');
         setTimeout(() => {
-          this.router.navigate([
-            `${localStorage
-              .getItem('first_name')
-              ?.toLocaleLowerCase()}-${localStorage
-              .getItem('last_name')
-              ?.toLocaleLowerCase()}/home`,
-          ]);
+          this.router.navigate([`${this.username}/home`]);
         }, 1200);
       },
       (error) => {
@@ -85,10 +84,10 @@ export class CreateComponent implements OnInit {
   }
 
   moveBack() {
-    this.router.navigate([
-      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
-        .getItem('last_name')
-        ?.toLocaleLowerCase()}/home`,
-    ]);
+    this.router.navigate([`${this.username}/home`]);
+  }
+
+  onHome() {
+    this.router.navigate([`${this.username}/home`]);
   }
 }

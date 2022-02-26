@@ -23,11 +23,11 @@ import {
           ':enter',
           [
             style({ opacity: 0 }),
-            stagger('150ms', animate('300ms ease-in', style({ opacity: 1 }))),
+            stagger('50ms', animate('200ms ease-in', style({ opacity: 1 }))),
           ],
           { optional: true }
         ),
-        query(':leave', animate('50ms ease-out', style({ opacity: 0 })), {
+        query(':leave', animate('10ms ease-out', style({ opacity: 0 })), {
           optional: true,
         }),
       ]),

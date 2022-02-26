@@ -6,12 +6,22 @@
   height: 45px;
   border-radius: 8px;
 }
+
+h2 {
+  font-weight: 400;
+}
+
+.inner-card {
+  margin-bottom: 50px;
+}
 .back {
+  height: 45px;
   background-color: #46a4e8;
 }
 .header {
   padding: 30px;
-  padding-left: 75px;
+  padding-left: 135px;
+  padding-right: 135px;
 }
 .content {
   padding-top: 75px;
@@ -20,4 +30,92 @@
 
 .row {
   margin-top: 30px;
+}
+label,
+input,
+a {
+  font-family: inherit;
+  text-decoration: none;
+}
+
+a {
+  color: var(--color-blue-primary);
+}
+
+label {
+  margin-top: 25px;
+}
+
+p {
+  margin: 0px;
+}
+
+input {
+  margin-top: 5px;
+  max-width: 400px;
+  height: 50px;
+  padding: 15px;
+  padding-left: 20px;
+  border-radius: 40px;
+  border: 1px solid var(--color-dark-light);
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid var(--color-blue-primary);
+}
+
+nav {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.list-items {
+  margin: 0;
+  list-style: none;
+}
+
+.list-items > li > button {
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.signup-btn {
+  background-color: var(--color-purple-primary);
+  border-radius: 30px;
+  font-weight: 500;
+  color: white;
+  width: 100%;
+}
+
+.signup-btn:hover {
+  background-color: transparent;
+  border: 1px solid var(--color-purple-primary);
+  color: var(--color-purple-primary);
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.logo {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+.nav {
+  background-color: white;
+}
+.button1 {
+  margin-right: 25px;
+  font-size: 18px;
+  color: blue;
+}
+.button2 {
+  margin-right: 40px;
+  margin-left: 20px;
+  font-size: 18px;
+  color: blue;
+}
+.img-container {
+  width: 75%;
+  height: 80%;
 }

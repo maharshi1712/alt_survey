@@ -1,4 +1,9 @@
-<nav class="navbar">
+
+<nav
+  class="navbar fixed-top navbar-light bg-light"
+  style="padding-top: 2rem; padding-bottom: 2rem"
+>
+
   <div class="container-fluid d-flex">
     <div class="logo">
       <img
@@ -11,9 +16,8 @@
     <div class="nav-items">
       <ul class="list-items d-flex">
         <li class="list-item">
-          <button class="btn" routerLink="/home">Home</button>
-        </li>
-        <li class="list-item">
+
+
           <button class="btn signup-btn">Logout</button>
         </li>
       </ul>
@@ -21,7 +25,7 @@
   </div>
 </nav>
 
-<div class="container">
+<div class="container" style="margin-top: 100px">
   <h1 class="welcome_note">
     Welcome! <span style="color: #412cf8">{{ user }}</span>
   </h1>
@@ -33,6 +37,7 @@
             >Select Category</mat-label
           >
           <mat-select
+            style="font-size: 22px"
             value="All Surveys"
             name="Maharshi"
             class="panel"
@@ -42,8 +47,6 @@
             <mat-option value="My Surveys">My Surveys</mat-option>
           </mat-select>
         </mat-form-field>
-
-        <!-- This example requires Tailwind CSS v2.0+ -->
       </li>
       <li>
         <button
@@ -52,8 +55,10 @@
           (click)="onCreateNewSurvey()"
           class="create"
           routerLink="/create"
+          style="font-size: 20px; padding: 10px"
         >
-          Create Survey
+          <i class="bi bi-plus" style="padding-bottom: 5px"></i>
+          New Survey
         </button>
       </li>
     </ul>

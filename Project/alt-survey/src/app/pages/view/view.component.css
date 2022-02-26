@@ -9,6 +9,7 @@
 
 h2 {
   font-weight: 400;
+  color: #17089b;
 }
 
 .inner-card {
@@ -118,4 +119,8 @@ nav {
 .img-container {
   width: 75%;
   height: 80%;
+}
+
+.form-heading {
+  margin-top: 20px;
 }

@@ -1,5 +1,5 @@
 <nav
-  class="navbar"
+  class="navbar fixed-top navbar-light bg-light"
   style="
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -28,7 +28,11 @@
   </div>
 </nav>
 
-<section [@myAnimationTriggerForContainer]="state1" class="section-1">
+<section
+  [@myAnimationTriggerForContainer]="state1"
+  class="section-1"
+  style="margin-top: 100px"
+>
   <div class="main-container d-flex">
     <div class="left-container">
       <div class="login-inner-container">
@@ -106,9 +110,7 @@
           <div class="verify-email-div d-flex flex-column" *ngIf="OtpResponse">
             <label for="OTP" *ngIf="!OtpVerified">Verify OTP</label>
             <label for="OTP" *ngIf="OtpVerified">OTP Verified</label>
-            <div
-              class="verify-email-inner d-flex position-relative"
-            >
+            <div class="verify-email-inner d-flex position-relative">
               <input
                 required
                 [(ngModel)]="OtpEntered"
@@ -161,11 +163,7 @@
             type="password"
             placeholder="Confirm Password"
           />
-          <button
-            type="submit"
-            style="margin-top: 25px"
-            class="login-btn"
-          >
+          <button type="submit" style="margin-top: 25px" class="login-btn">
             Sign up
           </button>
         </form>

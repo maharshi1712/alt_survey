@@ -35,6 +35,7 @@ import {
   ],
 })
 export class CardComponent implements OnInit {
+  isSurveyFound = true;
   surveys: SurveyModel[] = [];
   user_id: any;
   @Input() selectedFilter: String = '';
@@ -55,6 +56,9 @@ export class CardComponent implements OnInit {
       ? this.surveyService.getSurvey().subscribe((response) => {
           this.surveys = [];
           let res: any = response;
+          res.length === 0
+            ? (this.isSurveyFound = false)
+            : (this.isSurveyFound = true);
           res.forEach((element: any) => {
             this.surveys.push(element);
           });
@@ -62,6 +66,9 @@ export class CardComponent implements OnInit {
       : this.surveyService.showMySurvey(this.user_id).subscribe((response) => {
           this.surveys = [];
           let res: any = response;
+          res.length === 0
+            ? (this.isSurveyFound = false)
+            : (this.isSurveyFound = true);
           res.forEach((element: any) => {
             this.surveys.push(element);
           });

@@ -12,6 +12,12 @@ import {
   transition,
   animate,
 } from '@angular/animations';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -50,13 +56,29 @@ export class LoginComponent implements OnInit {
     password: '',
   };
   state1 = 'hidden';
+
+  loginForm: FormGroup = new FormGroup({});
+
   ngOnInit() {
     setTimeout(() => {
       this.state1 = 'shown';
     }, 200);
     localStorage.clear();
+
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+    });
   }
+
   formSubmit() {
+    console.log(this.loginForm.get('email'));
+    this.loginForm.get('email')?.errors;
+    this.user.email = this.loginForm.value.email;
+    this.user.password = this.loginForm.value.password;
     if (this.user.email == '' || this.user.password == '') {
       console.log('Please fill your form.');
       return;
@@ -71,9 +93,7 @@ export class LoginComponent implements OnInit {
         });
         return;
       }
-      localStorage.setItem('user_id', userData.id);
-      localStorage.setItem('first_name', userData.firstName);
-      localStorage.setItem('last_name', userData.lastName);
+
       if (!response) {
         this.user.email = '';
         this.user.password = '';
@@ -92,6 +112,9 @@ export class LoginComponent implements OnInit {
       } else {
         console.log(userData);
         this.userService.loggedIn = true;
+        localStorage.setItem('user_id', userData.id);
+        localStorage.setItem('first_name', userData.firstName);
+        localStorage.setItem('last_name', userData.lastName);
 
         Swal.fire('Logged in Successfully!');
         setTimeout(() => {

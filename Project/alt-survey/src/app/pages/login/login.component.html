@@ -1,4 +1,3 @@
-
 <nav
   class="navbar fixed-top navbar-light bg-light"
   style="
@@ -7,7 +6,6 @@
     box-shadow: 4px 3px 3px -3px #999;
   "
 >
-
   <div class="container-fluid d-flex">
     <div class="logo">
       <img
@@ -48,7 +46,11 @@
     <div class="right-container">
       <div class="login-inner-container">
         <h2 style="font-weight: 600">Login</h2>
-        <form (ngSubmit)="formSubmit()" class="d-flex flex-column">
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="formSubmit()"
+          class="d-flex flex-column"
+        >
           <label for="Email">Email</label>
           <input
             type="text"
@@ -56,17 +58,54 @@
             name="email"
             required
             autofocus
-            [(ngModel)]="user.email"
+            formControlName="email"
           />
+          <div
+            *ngIf="
+              (loginForm.get('email')?.invalid &&
+                loginForm.get('email')?.touched) ||
+              loginForm.get('email')?.dirty
+            "
+          >
+            <small class="text-danger" *ngIf="loginForm.value.email === ''"
+              >Email address is required</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="
+                loginForm.get('email')?.invalid && loginForm.value.email !== ''
+              "
+              >Email address is invalid</small
+            >
+          </div>
           <label for="Password">Password</label>
 
           <input
             type="password"
             placeholder="Password"
             name="password"
+            formControlName="password"
             required
-            [(ngModel)]="user.password"
           />
+          <div
+            *ngIf="
+              (loginForm.get('password')?.invalid &&
+                loginForm.get('password')?.touched) ||
+              loginForm.get('password')?.dirty
+            "
+          >
+            <small class="text-danger" *ngIf="loginForm.value.password === ''"
+              >Password is required</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="
+                loginForm.get('password')?.invalid &&
+                loginForm.value.password !== ''
+              "
+              >Password is invalid</small
+            >
+          </div>
           <a style="margin-top: 25px" href="forgot-password"
             >Forget Password?</a
           >

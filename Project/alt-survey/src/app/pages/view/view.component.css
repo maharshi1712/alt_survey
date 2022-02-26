@@ -6,13 +6,22 @@
   height: 45px;
   border-radius: 8px;
 }
+
+h2 {
+  font-weight: 400;
+}
+
+.inner-card {
+  margin-bottom: 50px;
+}
 .back {
   height: 45px;
   background-color: #46a4e8;
 }
 .header {
   padding: 30px;
-  padding-left: 75px;
+  padding-left: 135px;
+  padding-right: 135px;
 }
 .content {
   padding-top: 75px;
@@ -105,4 +114,8 @@ nav {
   margin-left: 20px;
   font-size: 18px;
   color: blue;
+}
+.img-container {
+  width: 75%;
+  height: 80%;
 }

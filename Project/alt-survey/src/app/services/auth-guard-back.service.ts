@@ -12,11 +12,12 @@ import {
 export class AuthGuardBackService {
   constructor(private userService: UserService, private router: Router) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.userService.loggedIn === false) {
-      return true;
-    }
+    // if (this.userService.loggedIn === false) {
+    //   return true;
+    // }
 
-    this.router.navigate(['']);
-    return false;
+    // this.router.navigate(['']);
+    // return false;
+    return true;
   }
 }

@@ -18,17 +18,17 @@
     <div class="nav-items">
       <ul class="list-items d-flex">
         <li class="list-item">
-          <button class="btn">Home</button>
+          <button class="btn" (click)="onHome()">Home</button>
         </li>
         <li class="list-item">
-          <button class="btn signup-btn" routerLink="/login">Logout</button>
+          <button class="btn signup-btn">Logout</button>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- <div class="header" style="padding: 150px; padding-top: 30px">
+<!-- <div class="header">
   <div
     fxLayout="row"
     fxLayout.xs="column"
@@ -43,7 +43,7 @@
         class="back"
         (click)="moveBack()"
       >
-        <i class="bi bi-arrow-left-short"></i>
+        <i class="bi bi-arrow-left"></i>
         Back
       </button>
     </div>
@@ -57,98 +57,18 @@
       >
         Edit Survey
       </button>
-    </div>
-  </div>
-  <hr />
-  <hr />
-  <div class="form-heading row">
-    <label class="col-3" for="survey-name">Survey Name</label>
-    <div class="subject-border col-9">
-      <h4>{{ survey.surveyname }}</h4>
-    </div>
-  </div>
-
-  <div class="form-heading row">
-    <label class="col-3" for="sruvey-name">Survey Type</label>
-    <div class="subject-border col-9">
-      <h4>{{ survey.survey_type }}</h4>
-    </div>
-  </div>
-
-  <div class="form-heading row">
-    <label class="col-3" for="sruvey-name">Message Subject</label>
-    <div class="subject-border col-9">
-      <h4>{{ survey.message_subject }}</h4>
-    </div>
-  </div>
-
-  <div class="form-heading row">
-    <label class="col-3" for="sruvey-name">Message Body</label>
-    <div class="subject-border col-9">
-      <h4>{{ survey.message_body }}</h4>
-    </div>
-  </div>
-
-  <div class="form-heading row">
-    <label class="col-3" for="sruvey-name">Delay</label>
-    <div class="subject-border col-9">
-      <h4>{{ survey.survey_dealy }}</h4>
-    </div>
-  </div>
-  <div class="form-heading row">
-    <label class="col-3" for="sruvey-name">Created By</label>
-    <div class="subject-border col-9">
-      <h4>{{ survey.createdBy }}</h4>
-    </div>
-    <div class="form-heading row">
-      <label class="col-3" for="sruvey-name">Modified By</label>
-      <div class="subject-border col-9">
-        <h4>{{ survey.modifiedBy }}</h4>
-      </div>
     </div>
   </div>
 </div> -->
 
-<div class="header" style="margin-top: 30px">
-  <div
-    fxLayout="row"
-    fxLayout.xs="column"
-    fxLayoutGap.xs="25px"
-    fxLayoutAlign="space-between"
-    fxLayoutAlign.xs="start"
-  >
-    <div>
-      <button
-        mat-raised-button
-        color="primary"
-        class="back"
-        (click)="moveBack()"
-      >
-        Back
-      </button>
-    </div>
-
-    <div>
-      <button
-        mat-raised-button
-        color="primary"
-        class="create"
-        (click)="onEditSurvey(survey.survey_id)"
-      >
-        Edit Survey
-      </button>
-    </div>
-  </div>
-</div>
-
-<table
+<!-- <table
   border="1"
   align="center"
   width="50% "
   cellpadding="10px"
   cellspacing="5px"
 >
-  <tr bgcolor="pink" height="60px">
+  <tr colo bgcolor="#17089b" height="60px">
     <th align="center" valign="middle">Survey Name</th>
     <td>
       {{ survey.surveyname }}
@@ -190,4 +110,99 @@
       {{ survey.modifiedBy }}
     </td>
   </tr>
-</table>
+</table> -->
+
+<div class="background position-relative">
+  <div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 inner-card">
+          <form>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-heading">
+                  <label for="survey-name"><h2>Survey Name</h2></label>
+                </div>
+
+                <div class="subject-border">
+                  <p>{{ survey.surveyname }}</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-heading">
+                  <label for="sruvey-name"><h2>Survey Type</h2></label>
+                </div>
+                <div class="subject-border">
+                  <p>{{ survey.survey_type }}</p>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-heading">
+                  <label for="sruvey-name"><h2>Message Subject</h2></label>
+                </div>
+                <div class="subject-border">
+                  <p>{{ survey.message_subject }}</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-heading">
+                  <label for="survey-name"><h2>Delay</h2></label>
+                </div>
+                <div class="subject-border">
+                  <p>{{ survey.survey_dealy }}</p>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-heading">
+                  <label for="sruvey-name"><h2>Message Body</h2></label>
+                  <div class="subject-border">
+                    <p>{{ survey.message_body }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-heading">
+                  <label for="survey-name"><h2>Created By</h2></label>
+                </div>
+
+                <div class="subject-border">
+                  <p>{{ survey.createdBy }}</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-heading">
+                  <label for="sruvey-name"><h2>Modified By</h2></label>
+                </div>
+                <div class="subject-border">
+                  <p>{{ survey.modifiedBy }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-heading">
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    class="create"
+                    (click)="onEditSurvey(survey.survey_id)"
+                  >
+                    Edit Survey
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-6 d-flex justify-content-center align-items-center">
+          <div class="img-container">
+            <img
+              class="img-fluid"
+              src="../../../assets/images/undraw_survey_05s5.svg"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

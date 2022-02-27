@@ -16,7 +16,7 @@
       fxFlex="33%"
       fxFlex.xs="100%"
       fxFlex.sm="50%"
-      *ngFor="let survey of surveys"
+      *ngFor="let survey of surveys | appFilter: searchInput"
     >
       <mat-card class="mat-elevation-z8">
         <div class="boundary">

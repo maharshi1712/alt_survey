@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { SurveyService } from 'src/app/services/survey.service';
+
 import {
   trigger,
   state,
@@ -34,6 +35,7 @@ import {
   ],
 })
 export class HomeComponent implements OnInit {
+  search: string = '';
   selected: String = 'All Surveys';
   surveySelected: any;
   @Input() username: String = 'sample';

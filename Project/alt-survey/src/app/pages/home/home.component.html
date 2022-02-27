@@ -30,8 +30,11 @@
     Welcome! <span style="color: #412cf8">{{ user }}</span>
   </h1>
   <div class="header">
-    <ul class="d-flex" style="list-style: none">
-      <li>
+    <ul
+      class="d-flex justify-content-between align-content-center row"
+      style="list-style: none"
+    >
+      <li class="col">
         <mat-form-field class="Dropdown">
           <mat-label style="color: #17089b; font-size: 20px"
             >Select Category</mat-label
@@ -48,7 +51,22 @@
           </mat-select>
         </mat-form-field>
       </li>
-      <li>
+      <li class="d-flex col justify-content-center align-items-center">
+        <form class="search">
+          <div class="search__wrapper">
+            <input
+              type="text"
+              name=""
+              placeholder="Search by Survey Name..."
+              class="search__field"
+              [(ngModel)]="search"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <button type="submit" class="bi bi-search search__icon"></button>
+          </div>
+        </form>
+      </li>
+      <li class="col">
         <button
           mat-raised-button
           color="primary"
@@ -71,5 +89,6 @@
     [selectedFilter]="selected"
     surveyName="Testing survey"
     surveyType="Resigning"
+    [searchInput]="search"
   ></app-card>
 </div>

@@ -32,6 +32,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { SurveyService } from './services/survey.service';
 import { UserService } from './services/user.service';
 import { AuthGuardBackService } from './services/auth-guard-back.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterPipe } from './pages/home/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { AuthGuardBackService } from './services/auth-guard-back.service';
     ViewComponent,
     CreateComponent,
     EditComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { AuthGuardBackService } from './services/auth-guard-back.service';
     CKEditorModule,
     AngularEditorModule,
     MatToolbarModule,
+    Ng2SearchPipeModule,
   ],
   providers: [
     AuthGuardService,

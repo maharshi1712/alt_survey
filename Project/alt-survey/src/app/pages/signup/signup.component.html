@@ -1,5 +1,5 @@
 <nav
-  class="navbar"
+  class="navbar fixed-top navbar-light bg-light"
   style="
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -28,31 +28,59 @@
   </div>
 </nav>
 
-<section [@myAnimationTriggerForContainer]="state1" class="section-1">
+<section
+  [@myAnimationTriggerForContainer]="state1"
+  class="section-1"
+  style="margin-top: 150px"
+>
   <div class="main-container d-flex">
     <div class="left-container">
       <div class="login-inner-container">
         <h2 style="font-weight: 600">Sign up</h2>
 
-        <form (ngSubmit)="formSubmit()" class="d-flex flex-column">
+        <form
+          [formGroup]="signupForm"
+          (ngSubmit)="formSubmit()"
+          class="d-flex flex-column"
+        >
           <div class="username-row d-flex" style="width: 100%">
             <div class="firstname d-flex flex-column">
               <label for="FirstName">First Name</label>
               <input
                 required
-                [(ngModel)]="user.firstName"
+                formControlName="firstname"
                 name="firstName"
                 placeholder="FirstName"
               />
+              <div style="width: 100%">
+                <small
+                  *ngIf="
+                    signupForm.value.firstname === '' &&
+                    signupForm.get('firstname')?.touched
+                  "
+                  class="text-danger"
+                  >First Name is required!
+                </small>
+              </div>
             </div>
             <div class="lastname d-flex flex-column">
               <label for="LastName">Last Name</label>
               <input
                 required
-                [(ngModel)]="user.lastName"
+                formControlName="lastname"
                 name="lastName"
                 placeholder="LastName"
               />
+              <div style="width: 100%">
+                <small
+                  *ngIf="
+                    signupForm.value.lastname === '' &&
+                    signupForm.get('lastname')?.touched
+                  "
+                  class="text-danger"
+                  >Last Name is required!
+                </small>
+              </div>
             </div>
           </div>
 
@@ -62,17 +90,19 @@
               <input
                 required
                 autofocus
-                [(ngModel)]="user.email"
                 name="ema"
                 type="email"
                 placeholder="Email"
                 style="width: 100%"
+                formControlName="email"
               />
+
               <button
                 type="button"
+                style="cursor: pointer"
                 class="verify-btn text-center"
                 (click)="onVerifyUser()"
-                [disabled]="!user.email"
+                [disabled]="!signupForm.value.email"
                 *ngIf="!OtpResponse"
               >
                 Verify
@@ -96,6 +126,25 @@
                 </svg>
               </button>
             </div>
+            <div
+              *ngIf="
+                (signupForm.get('email')?.invalid &&
+                  signupForm.get('email')?.touched) ||
+                signupForm.get('email')?.dirty
+              "
+            >
+              <small class="text-danger" *ngIf="signupForm.value.email === ''"
+                >Email address is required</small
+              >
+              <small
+                class="text-danger"
+                *ngIf="
+                  signupForm.get('email')?.invalid &&
+                  signupForm.value.email !== ''
+                "
+                >Email address is invalid</small
+              >
+            </div>
           </div>
           <!-- <div *ngIf="isLoading" style="text-align: center">
             <app-loading-spinner></app-loading-spinner>
@@ -106,14 +155,11 @@
           <div class="verify-email-div d-flex flex-column" *ngIf="OtpResponse">
             <label for="OTP" *ngIf="!OtpVerified">Verify OTP</label>
             <label for="OTP" *ngIf="OtpVerified">OTP Verified</label>
-            <div
-              class="verify-email-inner d-flex position-relative"
-            >
+            <div class="verify-email-inner d-flex position-relative">
               <input
                 required
-                [(ngModel)]="OtpEntered"
-                name="email"
-                type="number"
+                formControlName="otp"
+                name="otp"
                 placeholder="Enter Your OTP"
                 style="width: 100%"
               />
@@ -148,24 +194,50 @@
           <label for="Password">Password</label>
           <input
             required
-            [(ngModel)]="user.password"
             name="password"
             type="password"
             placeholder="Password"
+            formControlName="password"
           />
+          <div
+            *ngIf="
+              (signupForm.get('password')?.invalid &&
+                signupForm.get('password')?.touched) ||
+              signupForm.get('password')?.dirty
+            "
+          >
+            <small class="text-danger" *ngIf="signupForm.value.password === ''"
+              >Password is required</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="
+                signupForm.get('password')?.invalid &&
+                signupForm.value.password !== ''
+              "
+              >Password must be 8 character long</small
+            >
+          </div>
           <label for="Confirm-Password">Confirm Password</label>
           <input
             required
-            [(ngModel)]="user.confirmpassword"
             name="password"
             type="password"
             placeholder="Confirm Password"
+            formControlName="confirmPassword"
           />
-          <button
-            type="submit"
-            style="margin-top: 25px"
-            class="login-btn"
-          >
+
+          <div>
+            <small
+              *ngIf="
+                signupForm.value.password !== signupForm.value.confirmPassword
+              "
+              class="text-danger"
+              >Passwords do not match
+            </small>
+          </div>
+
+          <button type="submit" style="margin-top: 25px" class="login-btn">
             Sign up
           </button>
         </form>

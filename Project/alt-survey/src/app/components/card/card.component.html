@@ -4,18 +4,31 @@
     fxLayoutGap="25px grid"
     [@listAnimation]="surveys.length"
   >
+    <div *ngIf="!isSurveyFound" class="no-surey-found-style">
+      <img
+        src="../assets/images/survey-not-found-svg.svg"
+        width="500px"
+        height="500px"
+      />
+      <h3>No surveys found</h3>
+    </div>
     <div
       fxFlex="33%"
       fxFlex.xs="100%"
       fxFlex.sm="50%"
-      *ngFor="let survey of surveys"
+      *ngFor="let survey of surveys | appFilter: searchInput"
     >
       <mat-card class="mat-elevation-z8">
         <div class="boundary">
           <mat-card-title
             style="color: #edf8ff; font-size: 22px; font-family: inherit"
-            >{{ survey.surveyname }}</mat-card-title
-          >
+            ><span
+              class="d-inline-block text-truncate"
+              style="max-width: 230px"
+            >
+              {{ survey.surveyname }}
+            </span>
+          </mat-card-title>
           <br />
 
           <mat-card-subtitle

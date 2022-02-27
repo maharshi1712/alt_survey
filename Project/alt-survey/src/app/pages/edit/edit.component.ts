@@ -6,11 +6,37 @@ import { SurveyModel } from '../../models/survey.model';
 import Swal from 'sweetalert2';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css'],
+  animations: [
+    trigger('myAnimationTriggerForContainer', [
+      state(
+        'hidden',
+        style({
+          opacity: 0,
+          transform: 'translateX(10%)',
+        })
+      ),
+      state(
+        'shown',
+        style({
+          opacity: 1,
+          transform: 'translateX(0%)',
+        })
+      ),
+      transition('hidden => shown', [animate('0.4s')]),
+    ]),
+  ],
 })
 export class EditComponent implements OnInit {
   config: AngularEditorConfig = {
@@ -47,6 +73,7 @@ export class EditComponent implements OnInit {
     private _snack: MatSnackBar
   ) {}
 
+  state1 = 'hidden';
   username: any = `${localStorage
     .getItem('first_name')
     ?.toLocaleLowerCase()}-${localStorage
@@ -59,6 +86,9 @@ export class EditComponent implements OnInit {
   created_Date: any;
 
   ngOnInit() {
+    setTimeout(() => {
+      this.state1 = 'shown';
+    }, 200);
     this.route.paramMap.subscribe((params) => {
       this.survey_id = params.get('id');
     });
@@ -133,7 +163,7 @@ export class EditComponent implements OnInit {
   }
 
   moveBack() {
-    this.router.navigate([`${this.username}/home`]);
+    this.router.navigate([`${this.username}/view/${this.survey_id}`]);
   }
 
   onHome() {

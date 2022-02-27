@@ -1,10 +1,6 @@
 <nav
-  class="navbar"
-  style="
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    box-shadow: 4px 3px 3px -3px #999;
-  "
+  class="navbar fixed-top navbar-light bg-light"
+  style="padding-top: 2rem; padding-bottom: 2rem"
 >
   <div class="container-fluid d-flex">
     <div class="logo">
@@ -25,19 +21,26 @@
   </div>
 </nav>
 
-<div class="container">
+<div
+  [@myAnimationTriggerForContainer]="state1"
+  class="container"
+  style="margin-top: 100px"
+>
   <h1 class="welcome_note">
     Welcome! <span style="color: #412cf8">{{ user }}</span>
   </h1>
   <div class="header">
-    <ul class="d-flex" style="list-style: none">
-      <li>
+    <ul
+      class="ul-list d-flex justify-content-between align-content-center row"
+      style="list-style: none"
+    >
+      <li class="col-4">
         <mat-form-field class="Dropdown">
           <mat-label style="color: #17089b; font-size: 20px"
             >Select Category</mat-label
           >
           <mat-select
-            style="font-size: 22px"
+            style="font-size: 20px"
             value="All Surveys"
             name="Maharshi"
             class="panel"
@@ -48,7 +51,22 @@
           </mat-select>
         </mat-form-field>
       </li>
-      <li>
+      <li class="d-flex col-4 justify-content-center align-items-center">
+        <form class="search">
+          <div class="search__wrapper">
+            <input
+              type="text"
+              name=""
+              placeholder="Search by Survey Name..."
+              class="search__field"
+              [(ngModel)]="search"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <button type="submit" class="bi bi-search search__icon"></button>
+          </div>
+        </form>
+      </li>
+      <li class="d-flex col-4 justify-content-center align-items-center">
         <button
           mat-raised-button
           color="primary"
@@ -64,10 +82,13 @@
     </ul>
   </div>
   <hr />
+</div>
 
+<div [@myAnimationTriggerForContainer]="state1" class="container">
   <app-card
     [selectedFilter]="selected"
     surveyName="Testing survey"
     surveyType="Resigning"
+    [searchInput]="search"
   ></app-card>
 </div>

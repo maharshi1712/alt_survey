@@ -1,24 +1,39 @@
 .create {
-  /* position: absolute; */
-  /* right: 10px; */
-  /* margin-right: 75px; */
   background-color: #17089b;
-  height: 45px;
+  border: 0.7px solid #17089b;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px;
   border-radius: 8px;
 }
+.create:hover {
+  background-color: transparent;
+  border: 0.7px solid #17089b;
+  color: #17089b;
+}
+
+h2 {
+  font-weight: 400;
+  color: #17089b;
+}
+
 .back {
   height: 45px;
   background-color: #46a4e8;
 }
 .header {
   padding: 30px;
-  padding-left: 75px;
+  padding-left: 135px;
+  padding-right: 135px;
 }
 .content {
   padding-top: 75px;
   padding: 75px;
 }
-
+nav {
+  padding-left: 70px;
+  padding-right: 70px;
+}
 .row {
   margin-top: 30px;
 }
@@ -56,11 +71,6 @@ input:focus {
   border: 1px solid var(--color-blue-primary);
 }
 
-nav {
-  padding-left: 60px;
-  padding-right: 60px;
-}
-
 .list-items {
   margin: 0;
   list-style: none;
@@ -92,9 +102,7 @@ nav {
   margin-left: 30px;
   margin-top: 10px;
 }
-.nav {
-  background-color: white;
-}
+
 .button1 {
   margin-right: 25px;
   font-size: 18px;
@@ -105,4 +113,16 @@ nav {
   margin-left: 20px;
   font-size: 18px;
   color: blue;
+}
+.img-container {
+  width: 75%;
+  height: 80%;
+}
+
+.form-heading {
+  margin-top: 20px;
+}
+
+.inner-card {
+  padding: 20px;
 }

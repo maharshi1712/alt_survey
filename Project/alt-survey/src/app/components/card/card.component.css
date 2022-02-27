@@ -1,6 +1,5 @@
 .content {
   padding: 45px;
-  
 }
 .mat-elevation-z8 {
   border-radius: 10px;
@@ -28,4 +27,27 @@
 }
 .view:hover {
   background-color: #ffe9af;
+}
+
+.no-surey-found-style {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  font-family: inherit;
+  color: #f4563d;
+  font-weight: 400;
+  text-shadow: 2px 2px #ffffc9;
+  font-family: inherit;
+  font-size: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.text-truncate {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

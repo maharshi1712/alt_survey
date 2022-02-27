@@ -73,7 +73,6 @@ nav {
   margin-top: 20px;
   margin-left: 18px;
   margin-bottom: 20px;
-  text-decoration: underline;
 }
 input {
   width: 100%;
@@ -166,5 +165,5 @@ label {
 
 .img-container {
   width: 75%;
-  height: 85%;
+  height: 70%;
 }

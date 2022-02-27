@@ -10,6 +10,7 @@ import {
   transition,
   animate,
 } from '@angular/animations';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-forgot-password',
@@ -36,6 +37,12 @@ import {
   ],
 })
 export class ForgotPasswordComponent implements OnInit {
+  constructor(
+    private userService: UserService,
+    private _snack: MatSnackBar,
+    private router: Router
+  ) {}
+
   user = {
     email: '',
     password: '',
@@ -47,29 +54,37 @@ export class ForgotPasswordComponent implements OnInit {
   OtpResponse: any;
   OtpEntered: any;
 
-  constructor(
-    private userService: UserService,
-    private _snack: MatSnackBar,
-    private router: Router
-  ) {}
+  forgotpasswordForm: FormGroup = new FormGroup({});
 
   state1 = 'hidden';
   ngOnInit() {
     setTimeout(() => {
       this.state1 = 'shown';
     }, 200);
+    this.forgotpasswordForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      otp: new FormControl('', Validators.required),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+      confirmPassword: new FormControl('', [Validators.minLength(8)]),
+    });
   }
 
   public displaySwal() {
     Swal.fire({
       title: 'Password changed successfully!',
       html: 'Success',
-      timer: 1500,
+      timer: 1200,
       timerProgressBar: true,
     });
   }
 
   formSubmit() {
+    this.user.email = this.forgotpasswordForm.value.email;
+    this.user.password = this.forgotpasswordForm.value.password;
+    this.user.confirmpassword = this.forgotpasswordForm.value.confirmPassword;
     console.log(this.user);
     if (this.user.email == '' || this.user.password == null) {
       this._snack.open('Email or Password Can not be empty', 'ok', {
@@ -89,9 +104,6 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.userService.forgotPassword(this.user).subscribe(
       (data: any) => {
-        //Success
-        console.log(data);
-        //alert("Success");
         this.displaySwal();
         setTimeout(() => {
           this.router.navigate(['/']);
@@ -109,41 +121,44 @@ export class ForgotPasswordComponent implements OnInit {
 
   onVerifyEmail() {
     this.isLoading = true;
-    if (this.user.email == null) {
+    if (this.forgotpasswordForm.value.email == null) {
       this._snack.open('Email cannot be empty!', 'ok', {
         duration: 2000,
       });
       return;
     }
 
-    this.userService.verifyForgotPasswordOtp(this.user.email).subscribe(
-      (respone) => {
-        this.isLoading = false;
-        //console.log('NOT ERROR  :  ' + respone);
+    this.userService
+      .verifyForgotPasswordOtp(this.forgotpasswordForm.value.email)
+      .subscribe(
+        (respone) => {
+          this.isLoading = false;
+          //console.log('NOT ERROR  :  ' + respone);
 
-        if (respone.status == 500) {
-          this._snack.open('User not found with this email!', 'ok', {
-            duration: 2000,
-          });
-        } else if (respone.status == 200) {
-          this.OtpResponse = respone.body;
+          if (respone.status == 500) {
+            this._snack.open('User not found with this email!', 'ok', {
+              duration: 2000,
+            });
+          } else if (respone.status == 200) {
+            Swal.fire('Otp sent', 'Please verify OTP');
+            this.OtpResponse = respone.body;
+          }
+        },
+        (error) => {
+          console.log('ERROR   :    ' + error);
         }
-      },
-      (error) => {
-        console.log('ERROR   :    ' + error);
-      }
-    );
+      );
   }
 
   onVerifyOtp() {
-    if (this.OtpEntered != this.OtpResponse) {
+    if (this.forgotpasswordForm.value.otp != this.OtpResponse) {
       this._snack.open('Enter Correct Otp', 'ok', {
         duration: 2000,
       });
       return;
     }
 
-    if (this.OtpResponse == this.OtpEntered) {
+    if (this.OtpResponse == this.forgotpasswordForm.value.otp) {
       this.OtpVerified = true;
       Swal.fire('Otp verification Successful', 'Proceed for Password Change');
       console.log('verified');

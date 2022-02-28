@@ -84,6 +84,8 @@ export class CardComponent implements OnInit {
     if (this.selectedFilter === 'All Surveys') {
       this.isLoaderShow = true;
       this.showContent = false;
+      this.surveyNotFound = false;
+      this.pageNotFound = false;
       this.surveyService.getSurvey().subscribe(
         (response) => {
           setTimeout(() => {
@@ -112,6 +114,8 @@ export class CardComponent implements OnInit {
     } else {
       this.isLoaderShow = true;
       this.showContent = false;
+      this.surveyNotFound = false;
+      this.pageNotFound = false;
       setTimeout(() => {
         this.isLoaderShow = false;
         this.pageNotFound = false;

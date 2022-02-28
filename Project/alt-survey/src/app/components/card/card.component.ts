@@ -17,26 +17,27 @@ import {
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
-  animations: [
-    trigger('listAnimation', [
-      transition('* <=> *', [
-        query(
-          ':enter',
-          [
-            style({ opacity: 0 }),
-            stagger('100ms', animate('200ms ease-in', style({ opacity: 1 }))),
-          ],
-          { optional: true }
-        ),
-        query(':leave', animate('20ms ease-out', style({ opacity: 0 })), {
-          optional: true,
-        }),
-      ]),
-    ]),
-  ],
+  // animations: [
+  //   trigger('listAnimation', [
+  //     transition('* <=> *', [
+  //       query(
+  //         ':enter',
+  //         [
+  //           style({ opacity: 0 }),
+  //           stagger('100ms', animate('200ms ease-in', style({ opacity: 1 }))),
+  //         ],
+  //         { optional: true }
+  //       ),
+  //       query(':leave', animate('20ms ease-out', style({ opacity: 0 })), {
+  //         optional: true,
+  //       }),
+  //     ]),
+  //   ]),
+  // ],
 })
 export class CardComponent implements OnInit {
-  isLoaderShow = false;
+  showContent = false;
+  isLoaderShow = true;
   surveyNotFound = false;
   pageNotFound = false;
   surveys: SurveyModel[] = [];
@@ -56,55 +57,52 @@ export class CardComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     this.user_id = localStorage.getItem('user_id');
-    // if (changes['selectedFilter'].currentValue === 'All Surveys') {
-    //   this.surveyService.getSurvey().subscribe((response) => {
-    //     let res: any = response;
-    //     this.surveys = [];
-    //     res.length === 0
-    //       ? (this.isSurveyFound = false)
-    //       : (this.isSurveyFound = true);
-    //     res.forEach((element: any) => {
-    //       this.surveys.push(element);
-    //     });
-    //   });
-    // } else {
-    //   this.surveyService.showMySurvey(this.user_id).subscribe((response) => {
-    //     this.surveys = this.surveys.filter(
-    //       (s) => s.createdBy === localStorage.getItem('firstname')
-    //     );
-    //     console.log(this.surveys);
-    //     let res: any = response;
-    //     res.length === 0
-    //       ? (this.isSurveyFound = false)
-    //       : (this.isSurveyFound = true);
-    //   });
-    // }
 
     if (this.selectedFilter === 'All Surveys') {
+      this.isLoaderShow = true;
+      this.showContent = false;
       this.surveyService.getSurvey().subscribe(
         (response) => {
-          let res: any = response;
-          if (res.length === 0) {
-            this.surveyNotFound = true;
-          } else {
-            this.surveyNotFound = false;
-            this.surveys = [];
-            res.forEach((element: any) => {
-              this.surveys.push(element);
-            });
-          }
+          setTimeout(() => {
+            this.isLoaderShow = false;
+
+            this.pageNotFound = false;
+            let res: any = response;
+            if (res.length === 0) {
+              this.surveyNotFound = true;
+            } else {
+              this.surveyNotFound = false;
+              this.surveys = [];
+              res.forEach((element: any) => {
+                this.surveys.push(element);
+              });
+              this.showContent = true;
+            }
+          }, 2000);
         },
         (error) => {
+          this.isLoaderShow = false;
+          this.pageNotFound = true;
           console.log(error);
         }
       );
     } else {
-      this.surveys = [];
-      if (this.surveys.length === 0) {
-        this.surveyNotFound = true;
-      } else {
-        this.surveyNotFound = false;
-      }
+      this.isLoaderShow = true;
+      this.showContent = false;
+      setTimeout(() => {
+        this.isLoaderShow = false;
+
+        this.pageNotFound = false;
+        this.surveys = this.surveys.filter(
+          (s) => s.createdBy === localStorage.getItem('firstname')
+        );
+        this.showContent = true;
+        if (this.surveys.length === 0) {
+          this.surveyNotFound = true;
+        } else {
+          this.surveyNotFound = false;
+        }
+      }, 1200);
     }
 
     console.log(this.surveys);

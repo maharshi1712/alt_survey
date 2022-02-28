@@ -1,9 +1,5 @@
 <div class="content">
-  <div
-    fxLayout="row wrap"
-    fxLayoutGap="25px grid"
-    [@listAnimation]="surveys.length"
-  >
+  <div fxLayout="row wrap" fxLayoutGap="25px grid">
     <!-- SURVEY NOT FOUND ILLUSTRATION -->
     <div *ngIf="surveyNotFound" class="no-surey-found-style">
       <img
@@ -25,7 +21,11 @@
     </div>
 
     <!-- LOADER -->
-    <div *ngIf="isLoaderShow" class="no-surey-found-style">
+    <div
+      *ngIf="isLoaderShow"
+      class="no-surey-found-style"
+      style="margin-top: 50px"
+    >
       <img src="../assets/images/loader.gif" width="100px" height="100px" />
     </div>
 
@@ -34,7 +34,9 @@
       fxFlex="33%"
       fxFlex.xs="100%"
       fxFlex.sm="50%"
-      *ngFor="let survey of surveys | appFilter: searchInput"
+      *ngFor="
+        let survey of (showContent ? surveys : []) | appFilter: searchInput
+      "
     >
       <mat-card class="mat-elevation-z8">
         <div class="boundary">

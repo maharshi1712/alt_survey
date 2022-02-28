@@ -57,6 +57,29 @@ export class CardComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     this.user_id = localStorage.getItem('user_id');
+    // if (changes['selectedFilter'].currentValue === 'All Surveys') {
+    //   this.surveyService.getSurvey().subscribe((response) => {
+    //     let res: any = response;
+    //     this.surveys = [];
+    //     res.length === 0
+    //       ? (this.isSurveyFound = false)
+    //       : (this.isSurveyFound = true);
+    //     res.forEach((element: any) => {
+    //       this.surveys.push(element);
+    //     });
+    //   });
+    // } else {
+    //   this.surveyService.showMySurvey(this.user_id).subscribe((response) => {
+    //     this.surveys = this.surveys.filter(
+    //       (s) => s.createdBy === localStorage.getItem('firstname')
+    //     );
+    //     console.log(this.surveys);
+    //     let res: any = response;
+    //     res.length === 0
+    //       ? (this.isSurveyFound = false)
+    //       : (this.isSurveyFound = true);
+    //   });
+    // }
 
     if (this.selectedFilter === 'All Surveys') {
       this.isLoaderShow = true;
@@ -91,7 +114,6 @@ export class CardComponent implements OnInit {
       this.showContent = false;
       setTimeout(() => {
         this.isLoaderShow = false;
-
         this.pageNotFound = false;
         this.surveys = this.surveys.filter(
           (s) => s.createdBy === localStorage.getItem('firstname')

@@ -1,4 +1,13 @@
 <div class="content">
+  <mat-paginator
+    *ngIf="searchInput == ''"
+    [length]="surveys.length"
+    [pageSize]="6"
+    [pageSizeOptions]="[6, 12, 18, 30]"
+    (page)="onPageChange($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
   <div fxLayout="row wrap" fxLayoutGap="25px grid">
     <!-- SURVEY NOT FOUND ILLUSTRATION -->
     <div *ngIf="surveyNotFound" class="no-surey-found-style">
@@ -35,7 +44,12 @@
       fxFlex.xs="100%"
       fxFlex.sm="50%"
       *ngFor="
-        let survey of (showContent ? surveys : []) | appFilter: searchInput
+        let survey of (showContent
+          ? searchInput == ''
+            ? surveysSlice
+            : surveys
+          : []
+        ) | appFilter: (searchInput != '' ? searchInput : '')
       "
     >
       <mat-card class="mat-elevation-z8">

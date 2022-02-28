@@ -12,6 +12,7 @@ import {
   query,
   stagger,
 } from '@angular/animations';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-card',
@@ -41,6 +42,7 @@ export class CardComponent implements OnInit {
   surveyNotFound = false;
   pageNotFound = false;
   surveys: SurveyModel[] = [];
+  surveysSlice: SurveyModel[] = [];
   user_id: any;
   @Input() selectedFilter: String = '';
   @Input() surveyName: String = '';
@@ -54,6 +56,8 @@ export class CardComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
+
+  pageEvent: PageEvent = new PageEvent();
 
   ngOnChanges(changes: SimpleChanges) {
     this.user_id = localStorage.getItem('user_id');
@@ -90,7 +94,6 @@ export class CardComponent implements OnInit {
         (response) => {
           setTimeout(() => {
             this.isLoaderShow = false;
-
             this.pageNotFound = false;
             let res: any = response;
             if (res.length === 0) {
@@ -101,6 +104,7 @@ export class CardComponent implements OnInit {
               res.forEach((element: any) => {
                 this.surveys.push(element);
               });
+              this.surveysSlice = this.surveys.slice(0, 6);
               this.showContent = true;
             }
           }, 2000);
@@ -119,19 +123,24 @@ export class CardComponent implements OnInit {
       setTimeout(() => {
         this.isLoaderShow = false;
         this.pageNotFound = false;
-        this.surveys = this.surveys.filter(
-          (s) => s.createdBy === localStorage.getItem('firstname')
-        );
-        this.showContent = true;
-        if (this.surveys.length === 0) {
-          this.surveyNotFound = true;
-        } else {
-          this.surveyNotFound = false;
-        }
+        this.surveyService.showMySurvey(this.user_id).subscribe((response) => {
+          let res: any = response;
+          if (res.length === 0) {
+            this.surveyNotFound = true;
+          } else {
+            this.surveyNotFound = false;
+            this.surveys = [];
+            res.forEach((element: any) => {
+              this.surveys.push(element);
+            });
+            this.surveysSlice = this.surveys.slice(0, 6);
+            this.showContent = true;
+          }
+        });
       }, 1200);
     }
 
-    console.log(this.surveys);
+    console.log(this.surveysSlice);
   }
 
   onViewSurvey(suvrey_id: Number) {
@@ -141,5 +150,14 @@ export class CardComponent implements OnInit {
         ?.toLocaleLowerCase()}/view/${suvrey_id}/`,
     ]);
     this.surveyService.viewSurvey(suvrey_id);
+  }
+
+  onPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > this.surveys.length) {
+      endIndex = this.surveys.length;
+    }
+    this.surveysSlice = this.surveys.slice(startIndex, endIndex);
   }
 }

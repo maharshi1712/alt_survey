@@ -32,6 +32,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { SurveyService } from './services/survey.service';
 import { UserService } from './services/user.service';
 import { AuthGuardBackService } from './services/auth-guard-back.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { AuthGuardBackService } from './services/auth-guard-back.service';
     CKEditorModule,
     AngularEditorModule,
     MatToolbarModule,
+    NgxPaginationModule,
   ],
   providers: [
     AuthGuardService,

@@ -4,14 +4,32 @@
     fxLayoutGap="25px grid"
     [@listAnimation]="surveys.length"
   >
-    <div *ngIf="!isSurveyFound" class="no-surey-found-style">
+    <!-- SURVEY NOT FOUND ILLUSTRATION -->
+    <div *ngIf="surveyNotFound" class="no-surey-found-style">
       <img
         src="../assets/images/survey-not-found-svg.svg"
         width="500px"
         height="500px"
       />
-      <h3>No surveys found</h3>
+      <h3>No surveys Found</h3>
     </div>
+
+    <!-- PAGE NOT FOUND ILLUSTRATION -->
+    <div *ngIf="pageNotFound" class="no-surey-found-style">
+      <img
+        src="../assets/images/page_not_found.svg"
+        width="500px"
+        height="500px"
+      />
+      <h3>No Page Found | Connection Error</h3>
+    </div>
+
+    <!-- LOADER -->
+    <div *ngIf="isLoaderShow" class="no-surey-found-style">
+      <img src="../assets/images/loader.gif" width="100px" height="100px" />
+    </div>
+
+    <!-- CARD DETAILS -->
     <div
       fxFlex="33%"
       fxFlex.xs="100%"

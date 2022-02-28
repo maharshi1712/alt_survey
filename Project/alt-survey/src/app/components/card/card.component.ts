@@ -28,7 +28,7 @@ import {
           ],
           { optional: true }
         ),
-        query(':leave', animate('100ms ease-out', style({ opacity: 0 })), {
+        query(':leave', animate('20ms ease-out', style({ opacity: 0 })), {
           optional: true,
         }),
       ]),
@@ -36,10 +36,10 @@ import {
   ],
 })
 export class CardComponent implements OnInit {
-  isSurveyFound = true;
+  isLoaderShow = false;
+  surveyNotFound = false;
+  pageNotFound = false;
   surveys: SurveyModel[] = [];
-  surveys_copy1: SurveyModel[] = [];
-  surveys_copy2: SurveyModel[] = [];
   user_id: any;
   @Input() selectedFilter: String = '';
   @Input() surveyName: String = '';
@@ -52,21 +52,9 @@ export class CardComponent implements OnInit {
     private home: HomeComponent
   ) {}
 
-  ngOnInit() {
-    this.surveyService.getSurvey().subscribe((response) => {
-      let res: any = response;
-      this.surveys = [];
-      res.length === 0
-        ? (this.isSurveyFound = false)
-        : (this.isSurveyFound = true);
-      res.forEach((element: any) => {
-        this.surveys.push(element);
-      });
-    });
-  }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
     this.user_id = localStorage.getItem('user_id');
     // if (changes['selectedFilter'].currentValue === 'All Surveys') {
     //   this.surveyService.getSurvey().subscribe((response) => {
@@ -92,27 +80,34 @@ export class CardComponent implements OnInit {
     //   });
     // }
 
-    this.selectedFilter === 'All Surveys'
-      ? this.surveyService.getSurvey().subscribe((response) => {
+    if (this.selectedFilter === 'All Surveys') {
+      this.surveyService.getSurvey().subscribe(
+        (response) => {
           let res: any = response;
-          this.surveys = [];
-          res.length === 0
-            ? (this.isSurveyFound = false)
-            : (this.isSurveyFound = true);
-          res.forEach((element: any) => {
-            this.surveys.push(element);
-          });
-        })
-      : this.surveyService.showMySurvey(this.user_id).subscribe((response) => {
-          this.surveys = this.surveys.filter(
-            (s) => s.createdBy === localStorage.getItem('firstname')
-          );
-          console.log(this.surveys);
-          let res: any = response;
-          res.length === 0
-            ? (this.isSurveyFound = false)
-            : (this.isSurveyFound = true);
-        });
+          if (res.length === 0) {
+            this.surveyNotFound = true;
+          } else {
+            this.surveyNotFound = false;
+            this.surveys = [];
+            res.forEach((element: any) => {
+              this.surveys.push(element);
+            });
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.surveys = [];
+      if (this.surveys.length === 0) {
+        this.surveyNotFound = true;
+      } else {
+        this.surveyNotFound = false;
+      }
+    }
+
+    console.log(this.surveys);
   }
 
   onViewSurvey(suvrey_id: Number) {

@@ -57,7 +57,7 @@
             ></i>
           </button>
           <h1 class="header-title">CREATE SURVEY</h1>
-          <form>
+          <form [formGroup]="createForm">
             <div class="row">
               <div class="col-6">
                 <div class="form-heading">
@@ -67,10 +67,22 @@
                 <div class="subject-border">
                   <input
                     required
-                    [(ngModel)]="survey.surveyname"
+                    formControlName="surveyname"
                     name="SurveyName"
                     placeholder="Survey Name"
                   />
+                  <div
+                    *ngIf="
+                      createForm.get('surveyname')?.invalid &&
+                      createForm.get('surveyname')?.touched
+                    "
+                  >
+                    <small
+                      class="text-danger"
+                      *ngIf="createForm.value.surveyname === ''"
+                      >Survey Name is required</small
+                    >
+                  </div>
                 </div>
               </div>
               <div class="col-6">
@@ -80,10 +92,22 @@
                 <div class="subject-border">
                   <input
                     required
-                    [(ngModel)]="survey.survey_type"
+                    formControlName="survey_type"
                     name="surveyType"
                     placeholder="Survey Type"
                   />
+                  <div
+                    *ngIf="
+                      createForm.get('survey_type')?.invalid &&
+                      createForm.get('survey_type')?.touched
+                    "
+                  >
+                    <small
+                      class="text-danger"
+                      *ngIf="createForm.value.survey_type === ''"
+                      >Survey Type is required</small
+                    >
+                  </div>
                 </div>
               </div>
             </div>
@@ -95,10 +119,22 @@
                 <div class="subject-border">
                   <input
                     required
-                    [(ngModel)]="survey.message_subject"
+                    formControlName="message_subject"
                     name="Subject"
                     placeholder="Message Subject"
                   />
+                  <div
+                    *ngIf="
+                      createForm.get('message_subject')?.invalid &&
+                      createForm.get('message_subject')?.touched
+                    "
+                  >
+                    <small
+                      class="text-danger"
+                      *ngIf="createForm.value.message_subject === ''"
+                      >Message Subject is required</small
+                    >
+                  </div>
                 </div>
               </div>
               <div class="col-6">
@@ -107,11 +143,22 @@
                 </div>
                 <div class="subject-border">
                   <input
+                    type="number"
+                    min="0"
+                    oninput="this.value=this.value.replace(/[^\d]/,'0')"
                     required
-                    [(ngModel)]="survey.survey_dealy"
+                    formControlName="survey_dealy"
                     name="Delay"
                     placeholder="Delay (No. of Days)"
                   />
+                  <div
+                    *ngIf="
+                      createForm.get('survey_dealy')?.invalid &&
+                      createForm.get('survey_dealy')?.touched
+                    "
+                  >
+                    <small class="text-danger">Enter Valid Number</small>
+                  </div>
                 </div>
               </div>
               <div class="form-heading col">
@@ -121,10 +168,22 @@
 
                 <angular-editor
                   required
-                  [(ngModel)]="survey.message_body"
+                  formControlName="message_body"
                   name="MessageBody"
                   [config]="config"
                 ></angular-editor>
+                <div
+                  *ngIf="
+                    createForm.get('message_body')?.invalid &&
+                    createForm.get('message_body')?.touched
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="createForm.value.message_body === ''"
+                    >Message Body is required</small
+                  >
+                </div>
               </div>
               <div class="row" style="margin-left: 10px">
                 <div class="col-2" style="margin-top: 60px">
@@ -133,16 +192,19 @@
                     class="save"
                     mat-raised-button
                     color="primary"
+                    [disabled]="
+                      createForm.value.message_body === '' ||
+                      createForm.value.message_subject === '' ||
+                      createForm.value.surveyname === '' ||
+                      createForm.get('survey_dealy')?.invalid ||
+                      createForm.value.survey_type === ''
+                    "
                   >
                     Submit
                   </button>
                 </div>
                 <div class="col-2" style="margin-top: 60px">
-                  <button
-                    (click)="discardChange()"
-                    class="Discard"
-                    
-                  >
+                  <button (click)="discardChange()" class="Discard">
                     Discard
                   </button>
                 </div>

@@ -107,20 +107,25 @@ export class CardComponent implements OnInit {
       setTimeout(() => {
         this.isLoaderShow = false;
         this.pageNotFound = false;
-        this.surveyService.showMySurvey(this.user_id).subscribe((response) => {
-          let res: any = response;
-          if (res.length === 0) {
-            this.surveyNotFound = true;
-          } else {
-            this.surveyNotFound = false;
-            this.surveys = [];
-            res.forEach((element: any) => {
-              this.surveys.push(element);
-            });
-            this.surveysSlice = this.surveys.slice(0, 6);
-            this.showContent = true;
+        this.surveyService.showMySurvey(this.user_id).subscribe(
+          (response) => {
+            let res: any = response;
+            if (res.length === 0) {
+              this.surveyNotFound = true;
+            } else {
+              this.surveyNotFound = false;
+              this.surveys = [];
+              res.forEach((element: any) => {
+                this.surveys.push(element);
+              });
+              this.surveysSlice = this.surveys.slice(0, 6);
+              this.showContent = true;
+            }
+          },
+          (error) => {
+            console.log(error);
           }
-        });
+        );
       }, 1200);
     }
 

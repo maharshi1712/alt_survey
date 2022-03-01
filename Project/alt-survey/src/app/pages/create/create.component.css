@@ -91,7 +91,7 @@ input {
   border-radius: 8px;
   width: 100px;
 }
-.save:hover {
+.save:hover:enabled {
   height: 45px;
   background-color: #0d0363;
 }
@@ -168,6 +168,8 @@ label {
 .Discard {
   border: 2px solid black;
   border-color: #f44336;
+  color: #f44336;
+  background-color: white;
   height: 45px;
   border-radius: 8px;
   width: 100px;

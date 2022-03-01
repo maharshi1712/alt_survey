@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
   state1 = 'hidden';
 
   loginForm: FormGroup = new FormGroup({});
+  hide = true;
 
   ngOnInit() {
     setTimeout(() => {

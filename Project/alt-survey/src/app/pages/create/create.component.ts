@@ -142,10 +142,35 @@ export class CreateComponent implements OnInit {
   }
 
   onHome() {
-    this.router.navigate([`${this.username}/home`]);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Any unsaved changes will be deleted',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Navigate to Home',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate([`${this.username}/home`]);
+      }
+    });
   }
+
   onLogout() {
-    localStorage.clear();
-    this.router.navigate(['/login']);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Any unsaved changes will be deleted',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Log out',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.clear();
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }

@@ -133,8 +133,8 @@ export class EditComponent implements OnInit {
   onDeleteSurvey() {
     if (this.survey.createdBy != this.survey.modifiedBy) {
       Swal.fire(
-        'You are not authorized person to delete',
-        'you can only modify it'
+        'You are not authorized to delete this survey',
+        'You can only Delete surveys created by you'
       );
 
       return;

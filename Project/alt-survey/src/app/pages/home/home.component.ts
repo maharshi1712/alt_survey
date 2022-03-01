@@ -9,6 +9,7 @@ import {
   transition,
   animate,
 } from '@angular/animations';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -58,8 +59,20 @@ export class HomeComponent implements OnInit {
         ?.toLocaleLowerCase()}/create`,
     ]);
   }
-  onLogout(){
-    localStorage.clear();
-    this.router.navigate(['/login']);
+  onLogout() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Any unsaved changes will be deleted',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Log out',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.clear();
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }

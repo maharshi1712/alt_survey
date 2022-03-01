@@ -123,6 +123,7 @@ export class CreateComponent implements OnInit {
     this.survey.message_subject = '';
     this.survey.message_body = '';
     this.survey.survey_dealy = 0;
+    this.router.navigate([`${this.username}/home`]);
   }
 
   moveBack() {

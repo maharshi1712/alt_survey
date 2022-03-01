@@ -185,8 +185,8 @@
                   >
                 </div>
               </div>
-              <div class="row" style="margin-left: 10px">
-                <div class="col-2" style="margin-top: 60px">
+              <div class="d-flex" style="margin-left: 10px">
+                <div style="margin-top: 60px">
                   <button
                     (click)="formSubmit()"
                     class="save"
@@ -200,10 +200,10 @@
                       createForm.value.survey_type === ''
                     "
                   >
-                    Submit
+                    Create
                   </button>
                 </div>
-                <div class="col-2" style="margin-top: 60px">
+                <div style="margin-top: 60px; margin-left: 10px">
                   <button (click)="discardChange()" class="Discard">
                     Discard
                   </button>
@@ -212,7 +212,9 @@
             </div>
           </form>
         </div>
-        <div class="col-6 d-flex justify-content-center align-items-center">
+        <div
+          class="col-6 image-container d-flex justify-content-center align-items-center"
+        >
           <div class="img-container">
             <img
               class="img-fluid"

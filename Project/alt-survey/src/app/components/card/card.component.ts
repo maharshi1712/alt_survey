@@ -24,6 +24,7 @@ import {
   MatPaginatorModule,
 } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-card',
@@ -50,6 +51,7 @@ import { PageEvent } from '@angular/material/paginator';
 export class CardComponent implements OnInit {
   constructor(private surveyService: SurveyService, private router: Router) {}
 
+  showPlaceholder = false;
   showContent = false;
   isLoaderShow = true;
   surveyNotFound = false;
@@ -61,6 +63,11 @@ export class CardComponent implements OnInit {
   @Input() surveyName: String = '';
   @Input() surveyType: String = '';
   @Input() searchInput: string = '';
+  username: any = `${localStorage
+    .getItem('first_name')
+    ?.toLocaleLowerCase()}-${localStorage
+    .getItem('last_name')
+    ?.toLocaleLowerCase()}`;
   ngOnInit() {}
 
   pageEvent: PageEvent = new PageEvent();
@@ -133,20 +140,55 @@ export class CardComponent implements OnInit {
   }
 
   onViewSurvey(suvrey_id: Number) {
-    this.router.navigate([
-      `${localStorage.getItem('first_name')?.toLocaleLowerCase()}-${localStorage
-        .getItem('last_name')
-        ?.toLocaleLowerCase()}/view/${suvrey_id}/`,
-    ]);
+    this.router.navigate([`${this.username}/view/${suvrey_id}/`]);
     this.surveyService.viewSurvey(suvrey_id);
   }
 
   onPageChange(event: PageEvent) {
+    this.showPlaceholder = true;
+    setTimeout(() => {
+      this.showPlaceholder = false;
+    }, 1200);
     const startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
     if (endIndex > this.surveys.length) {
       endIndex = this.surveys.length;
     }
     this.surveysSlice = this.surveys.slice(startIndex, endIndex);
+  }
+
+  onDeleteSurvey(survey: SurveyModel, survey_id: Number) {
+    if (survey.createdBy != survey.modifiedBy) {
+      Swal.fire(
+        'You are not authorized person to delete',
+        'You can Only Modify it!'
+      );
+
+      return;
+    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.surveyService.deleteSurvey(survey_id).subscribe((response) => {
+          console.log(response);
+        });
+        Swal.fire('Deleted!', 'Your Survey has been deleted.');
+        setTimeout(() => {
+          let currentUrl = this.router.url;
+          this.router
+            .navigateByUrl('/', { skipLocationChange: true })
+            .then(() => {
+              this.router.navigate([currentUrl]);
+            });
+        }, 1500);
+      }
+    });
   }
 }

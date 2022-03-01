@@ -94,7 +94,7 @@ export class CreateComponent implements OnInit {
       survey_type: new FormControl('', Validators.required),
       message_subject: new FormControl('', Validators.required),
       message_body: new FormControl('', Validators.required),
-      survey_dealy: new FormControl(2, [
+      survey_dealy: new FormControl(0, [
         Validators.required,
         Validators.pattern('^[0-9]*$'),
         Validators.min(0),

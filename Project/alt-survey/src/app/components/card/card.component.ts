@@ -51,6 +51,7 @@ import Swal from 'sweetalert2';
 export class CardComponent implements OnInit {
   constructor(private surveyService: SurveyService, private router: Router) {}
 
+  showPlaceholder = false;
   showContent = false;
   isLoaderShow = true;
   surveyNotFound = false;
@@ -144,6 +145,10 @@ export class CardComponent implements OnInit {
   }
 
   onPageChange(event: PageEvent) {
+    this.showPlaceholder = true;
+    setTimeout(() => {
+      this.showPlaceholder = false;
+    }, 1200);
     const startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
     if (endIndex > this.surveys.length) {

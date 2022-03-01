@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -60,6 +61,7 @@ import { FilterPipe } from './pages/home/filter.pipe';
     MatSnackBarModule,
     MatCardModule,
     MatIconModule,
+    MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,

@@ -1,22 +1,58 @@
-<div class="content">
-  <div
-    fxLayout="row wrap"
-    fxLayoutGap="25px grid"
-    [@listAnimation]="surveys.length"
+<div class="content d-flex flex-column justify-content-center">
+  <!-- Pagination -->
+  <mat-paginator
+    *ngIf="searchInput == ''"
+    [length]="surveys.length"
+    [pageSize]="6"
+    [pageSizeOptions]="[6, 12, 18, 30]"
+    (page)="onPageChange($event)"
+    aria-label="Select page"
   >
-    <div *ngIf="!isSurveyFound" class="no-surey-found-style">
+  </mat-paginator>
+
+  <div fxLayout="row wrap" fxLayoutGap="25px grid">
+    <!-- SURVEY NOT FOUND ILLUSTRATION -->
+    <div *ngIf="surveyNotFound" class="no-surey-found-style">
       <img
         src="../assets/images/survey-not-found-svg.svg"
         width="500px"
         height="500px"
       />
-      <h3>No surveys found</h3>
+      <h2>No surveys Found</h2>
     </div>
+
+    <!-- PAGE NOT FOUND ILLUSTRATION -->
+    <div *ngIf="pageNotFound" class="no-surey-found-style">
+      <img
+        src="../assets/images/page_not_found.svg"
+        width="500px"
+        height="500px"
+      />
+      <h2>No Page Found | Connection Error</h2>
+    </div>
+
+    <!-- LOADER -->
+    <div
+      *ngIf="isLoaderShow"
+      class="no-surey-found-style"
+      style="margin-top: 50px"
+    >
+      <img src="../assets/images/loader.gif" width="100px" height="100px" />
+    </div>
+
+    <!-- CARD DETAILS -->
     <div
       fxFlex="33%"
       fxFlex.xs="100%"
       fxFlex.sm="50%"
-      *ngFor="let survey of surveys | appFilter: searchInput"
+      *ngFor="
+        let survey of (showContent
+          ? searchInput == ''
+            ? surveysSlice
+            : surveys
+          : []
+        ) | appFilter: (searchInput != '' ? searchInput : '')
+      "
     >
       <mat-card class="mat-elevation-z8">
         <div class="boundary">

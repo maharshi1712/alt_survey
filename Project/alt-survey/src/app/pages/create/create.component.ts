@@ -48,15 +48,8 @@ export class CreateComponent implements OnInit {
     defaultParagraphSeparator: 'p',
     defaultFontName: 'Arial',
     toolbarHiddenButtons: [
-      [
-        'superscript'
-      ],
-      [
-        'insertImage',
-        'insertVideo',
-        'link',
-        'unlink'
-      ]
+      ['superscript'],
+      ['insertImage', 'insertVideo', 'link', 'unlink'],
     ],
     customClasses: [
       {
@@ -132,5 +125,9 @@ export class CreateComponent implements OnInit {
 
   onHome() {
     this.router.navigate([`${this.username}/home`]);
+  }
+  onLogout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

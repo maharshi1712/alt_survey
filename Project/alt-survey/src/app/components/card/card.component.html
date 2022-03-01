@@ -1,4 +1,5 @@
-<div class="content">
+<div class="content d-flex flex-column justify-content-center">
+  <!-- Pagination -->
   <mat-paginator
     *ngIf="searchInput == ''"
     [length]="surveys.length"
@@ -8,6 +9,7 @@
     aria-label="Select page"
   >
   </mat-paginator>
+
   <div fxLayout="row wrap" fxLayoutGap="25px grid">
     <!-- SURVEY NOT FOUND ILLUSTRATION -->
     <div *ngIf="surveyNotFound" class="no-surey-found-style">

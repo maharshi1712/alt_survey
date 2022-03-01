@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  SimpleChanges,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { SurveyService } from '../../services/survey.service';
 import { Router } from '@angular/router';
 import { SurveyModel } from '../../models/survey.model';
@@ -12,6 +19,10 @@ import {
   query,
   stagger,
 } from '@angular/animations';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -37,6 +48,8 @@ import { PageEvent } from '@angular/material/paginator';
   // ],
 })
 export class CardComponent implements OnInit {
+  constructor(private surveyService: SurveyService, private router: Router) {}
+
   showContent = false;
   isLoaderShow = true;
   surveyNotFound = false;
@@ -48,42 +61,13 @@ export class CardComponent implements OnInit {
   @Input() surveyName: String = '';
   @Input() surveyType: String = '';
   @Input() searchInput: string = '';
-
-  constructor(
-    private surveyService: SurveyService,
-    private router: Router,
-    private home: HomeComponent
-  ) {}
-
   ngOnInit() {}
 
   pageEvent: PageEvent = new PageEvent();
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
     this.user_id = localStorage.getItem('user_id');
-    // if (changes['selectedFilter'].currentValue === 'All Surveys') {
-    //   this.surveyService.getSurvey().subscribe((response) => {
-    //     let res: any = response;
-    //     this.surveys = [];
-    //     res.length === 0
-    //       ? (this.isSurveyFound = false)
-    //       : (this.isSurveyFound = true);
-    //     res.forEach((element: any) => {
-    //       this.surveys.push(element);
-    //     });
-    //   });
-    // } else {
-    //   this.surveyService.showMySurvey(this.user_id).subscribe((response) => {
-    //     this.surveys = this.surveys.filter(
-    //       (s) => s.createdBy === localStorage.getItem('firstname')
-    //     );
-    //     console.log(this.surveys);
-    //     let res: any = response;
-    //     res.length === 0
-    //       ? (this.isSurveyFound = false)
-    //       : (this.isSurveyFound = true);
-    //   });
-    // }
 
     if (this.selectedFilter === 'All Surveys') {
       this.isLoaderShow = true;

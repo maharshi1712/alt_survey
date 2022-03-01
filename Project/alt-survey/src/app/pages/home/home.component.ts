@@ -58,4 +58,8 @@ export class HomeComponent implements OnInit {
         ?.toLocaleLowerCase()}/create`,
     ]);
   }
+  onLogout(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }

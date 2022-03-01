@@ -144,4 +144,8 @@ export class CreateComponent implements OnInit {
   onHome() {
     this.router.navigate([`${this.username}/home`]);
   }
+  onLogout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }

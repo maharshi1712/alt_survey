@@ -80,6 +80,9 @@ export class LoginComponent implements OnInit {
     this.user.password = this.loginForm.value.password;
     if (this.user.email == '' || this.user.password == '') {
       console.log('Please fill your form.');
+      this._snack.open('Please fill all field','ok',{
+        duration: 1500,
+      })
       return;
     }
     this.userService.loginUser(this.user).subscribe((response) => {

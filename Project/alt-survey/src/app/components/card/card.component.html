@@ -1,6 +1,7 @@
 <div class="content d-flex flex-column justify-content-center">
   <!-- Pagination -->
   <mat-paginator
+    #paginator
     *ngIf="searchInput == ''"
     [length]="surveys.length"
     [pageSize]="6"
@@ -54,7 +55,7 @@
         ) | appFilter: (searchInput != '' ? searchInput : '')
       "
     >
-      <mat-card class="mat-elevation-z8">
+      <mat-card class="mat-elevation-z8" *ngIf="!showPlaceholder">
         <div class="boundary">
           <mat-card-title
             style="color: #edf8ff; font-size: 22px; font-family: inherit"
@@ -80,9 +81,66 @@
             >
               VIEW
             </button>
+            <button
+              mat-button
+              class="delete"
+              (click)="onDeleteSurvey(survey, survey.survey_id)"
+            >
+              DELETE
+            </button>
           </mat-card-actions>
         </div>
       </mat-card>
+
+      <!-- SHOWING SKELETON PLACEHOLDER -->
+      <mat-card *ngIf="showPlaceholder" class="mat-elevation-z8">
+        <div class="boundary">
+          <mat-card-title
+            style="color: #edf8ff; font-size: 22px; font-family: inherit"
+            ><ngx-skeleton-loader
+              animation="pulse"
+              appearance="line"
+              [theme]="{ height: '18px', color: 'gray' }"
+            ></ngx-skeleton-loader>
+          </mat-card-title>
+          <br />
+
+          <mat-card-subtitle
+            style="font-size: 15px; font-family: inherit; color: #edf8ff"
+            ><ngx-skeleton-loader
+              animation="pulse"
+              appearance="line"
+              [theme]="{ width: '100px', height: '18px', color: 'gray' }"
+            ></ngx-skeleton-loader
+          ></mat-card-subtitle>
+          <br />
+          <mat-card-actions>
+            <ngx-skeleton-loader
+              style="margin-left: 10px"
+              animation="pulse"
+              appearance="line"
+              [theme]="{
+                'border-radius': '40px',
+                height: '30px',
+                width: '70px',
+                color: 'gray'
+              }"
+            ></ngx-skeleton-loader>
+            <ngx-skeleton-loader
+              style="margin-left: 10px"
+              animation="pulse"
+              appearance="line"
+              [theme]="{
+                'border-radius': '40px',
+                height: '30px',
+                width: '70px',
+                color: 'gray'
+              }"
+            ></ngx-skeleton-loader>
+          </mat-card-actions>
+        </div>
+      </mat-card>
+      <!-- SHOW SKELETON PLACEHOLDER -->
     </div>
   </div>
 </div>

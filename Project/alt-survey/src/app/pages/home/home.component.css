@@ -34,10 +34,8 @@
   text-decoration: dashed;
 }
 .create {
-  position: absolute;
-  right: 10px;
   margin-right: 25px;
-  margin-top: 10px;
+  margin-top: 20px;
   background-color: #17089b;
   border: 0.7px solid #17089b;
 
@@ -236,8 +234,22 @@ nav {
   visibility: visible !important;
 }
 
-@media only screen and (max-width: 830px) {
+.ul-list li:first-child {
+  width: 25%;
+}
+
+@media only screen and (max-width: 1000px) {
   .ul-list {
     flex-direction: column;
   }
+  .ul-list li {
+    width: 100%;
+  }
 }
+
+/* 
+@media only screen and (max-width: 700px) {
+  .background {
+    margin-top: 170px;
+  }
+} */

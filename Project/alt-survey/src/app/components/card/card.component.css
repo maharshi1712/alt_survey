@@ -24,9 +24,22 @@
   border-radius: 35px;
   width: 80px;
   color: #03005e;
+  transition: all 0.3s;
 }
 .view:hover {
-  background-color: #ffe9af;
+  background-color: white;
+}
+
+.delete {
+  background-color: #fd4f3c;
+  border-radius: 35px;
+  width: 80px;
+  color: white;
+  transition: all 0.3s;
+}
+.delete:hover {
+  background-color: white;
+  color: #fd4f3c;
 }
 
 .no-surey-found-style {

@@ -35,6 +35,7 @@ import { UserService } from './services/user.service';
 import { AuthGuardBackService } from './services/auth-guard-back.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipe } from './pages/home/filter.pipe';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { FilterPipe } from './pages/home/filter.pipe';
     AngularEditorModule,
     MatToolbarModule,
     Ng2SearchPipeModule,
+    NgxSkeletonLoaderModule,
   ],
   providers: [
     AuthGuardService,

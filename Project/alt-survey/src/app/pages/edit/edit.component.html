@@ -17,7 +17,7 @@
           <button class="btn" (click)="onHome()">Home</button>
         </li>
         <li class="list-item">
-          <button class="btn signup-btn">Logout</button>
+          <button class="btn signup-btn" (click)="onLogout()">Logout</button>
         </li>
       </ul>
     </div>
@@ -57,7 +57,7 @@
       <div class="row">
         <div class="col-6 inner-card">
           <h1 class="header-title">EDIT SURVEY</h1>
-          <form>
+          <form *ngIf="load" [formGroup]="editForm">
             <div class="row">
               <div class="col-6">
                 <div class="form-heading">
@@ -66,11 +66,22 @@
 
                 <div class="subject-border">
                   <input
-                    required
-                    [(ngModel)]="survey.surveyname"
-                    name="SurveyName"
+                    formControlName="surveyname"
+                    name="surveyName"
                     placeholder="Survey Name"
                   />
+                  <div
+                    *ngIf="
+                      editForm.get('surveyname')?.invalid ||
+                      editForm.get('surveyname')?.touched
+                    "
+                  >
+                    <small
+                      class="text-danger"
+                      *ngIf="editForm.value.surveyname === ''"
+                      >Survey Name is required</small
+                    >
+                  </div>
                 </div>
               </div>
               <div class="col-6">
@@ -80,10 +91,22 @@
                 <div class="subject-border">
                   <input
                     required
-                    [(ngModel)]="survey.survey_type"
+                    formControlName="survey_type"
                     name="surveyType"
                     placeholder="Survey Type"
                   />
+                  <div
+                    *ngIf="
+                      editForm.get('survey_type')?.invalid ||
+                      editForm.get('survey_type')?.touched
+                    "
+                  >
+                    <small
+                      class="text-danger"
+                      *ngIf="editForm.value.survey_type === ''"
+                      >Survey Type is required</small
+                    >
+                  </div>
                 </div>
               </div>
             </div>
@@ -95,10 +118,22 @@
                 <div class="subject-border">
                   <input
                     required
-                    [(ngModel)]="survey.message_subject"
+                    formControlName="message_subject"
                     name="Subject"
                     placeholder="Message Subject"
                   />
+                  <div
+                    *ngIf="
+                      editForm.get('message_subject')?.invalid ||
+                      editForm.get('message_subject')?.touched
+                    "
+                  >
+                    <small
+                      class="text-danger"
+                      *ngIf="editForm.value.message_subject === ''"
+                      >Message Subject is required</small
+                    >
+                  </div>
                 </div>
               </div>
               <div class="col-6">
@@ -108,10 +143,22 @@
                 <div class="subject-border">
                   <input
                     required
-                    [(ngModel)]="survey.survey_dealy"
+                    type="number"
+                    min="0"
+                    oninput="this.value=this.value.replace(/[^\d]/,'0')"
+                    required
+                    formControlName="survey_dealy"
                     name="Delay"
                     placeholder="Delay (No. of Days)"
                   />
+                  <div
+                    *ngIf="
+                      editForm.get('survey_dealy')?.invalid &&
+                      editForm.get('survey_dealy')?.touched
+                    "
+                  >
+                    <small class="text-danger">Enter Valid Number</small>
+                  </div>
                 </div>
               </div>
 
@@ -122,13 +169,25 @@
 
                 <angular-editor
                   required
-                  [(ngModel)]="survey.message_body"
+                  formControlName="message_body"
                   name="MessageBody"
                   [config]="config"
                 ></angular-editor>
+                <div
+                  *ngIf="
+                    editForm.get('message_body')?.invalid &&
+                    editForm.get('message_body')?.touched
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="editForm.value.message_body === ''"
+                    >Message Body is required</small
+                  >
+                </div>
               </div>
-              <div class="row" style="margin-left: 10px">
-                <div class="col-2" style="margin-top: 60px">
+              <div class="d-flex" style="margin-left: 10px">
+                <div style="margin-top: 60px">
                   <button
                     (click)="onSubmitSurvey()"
                     class="save"
@@ -138,7 +197,7 @@
                     Save
                   </button>
                 </div>
-                <div class="col-2" style="margin-top: 60px">
+                <div style="margin-top: 60px; margin-left: 10px">
                   <button
                     (click)="onDeleteSurvey()"
                     class="Delete-btn"
@@ -152,7 +211,9 @@
             </div>
           </form>
         </div>
-        <div class="col-6 d-flex justify-content-center align-items-center">
+        <div
+          class="col-6 image-container d-flex justify-content-center align-items-center"
+        >
           <div class="img-container">
             <img
               class="img-fluid"

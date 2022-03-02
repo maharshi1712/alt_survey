@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { SurveyModel } from 'src/app/models/survey.model';
 import Swal from 'sweetalert2';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {
   trigger,
   state,
@@ -75,6 +76,7 @@ export class CreateComponent implements OnInit {
   ) {}
 
   state1 = 'hidden';
+  createForm: FormGroup = new FormGroup({});
 
   username: any = `${localStorage
     .getItem('first_name')
@@ -87,9 +89,25 @@ export class CreateComponent implements OnInit {
     setTimeout(() => {
       this.state1 = 'shown';
     }, 200);
+    this.createForm = new FormGroup({
+      surveyname: new FormControl('', Validators.required),
+      survey_type: new FormControl('', Validators.required),
+      message_subject: new FormControl('', Validators.required),
+      message_body: new FormControl('', Validators.required),
+      survey_dealy: new FormControl(0, [
+        Validators.required,
+        Validators.pattern('^[0-9]*$'),
+        Validators.min(0),
+      ]),
+    });
   }
   formSubmit() {
     this.survey.user.id = this.user_id;
+    this.survey.surveyname = this.createForm.value.surveyname;
+    this.survey.survey_type = this.createForm.value.survey_type;
+    this.survey.message_body = this.createForm.value.message_body;
+    this.survey.message_subject = this.createForm.value.message_subject;
+    this.survey.survey_dealy = this.createForm.value.suvrey_dealy;
     this.surveyService.addSurvey(this.survey).subscribe(
       (survey: any) => {
         //Success
@@ -111,11 +129,11 @@ export class CreateComponent implements OnInit {
   }
 
   discardChange() {
-    this.survey.surveyname = '';
-    this.survey.survey_type = '';
-    this.survey.message_subject = '';
-    this.survey.message_body = '';
-    this.survey.survey_dealy = 0;
+    this.createForm.value.surveyname = '';
+    this.createForm.value.survey_type = '';
+    this.createForm.value.message_subject = '';
+    this.createForm.value.message_body = '';
+    this.createForm.value.survey_dealy = 0;
     this.router.navigate([`${this.username}/home`]);
   }
 
@@ -124,10 +142,35 @@ export class CreateComponent implements OnInit {
   }
 
   onHome() {
-    this.router.navigate([`${this.username}/home`]);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Any unsaved changes will be deleted',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Navigate to Home',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate([`${this.username}/home`]);
+      }
+    });
   }
+
   onLogout() {
-    localStorage.clear();
-    this.router.navigate(['/login']);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Any unsaved changes will be deleted',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Log out',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.clear();
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }

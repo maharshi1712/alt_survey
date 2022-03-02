@@ -29,6 +29,7 @@
     "jquery": "^3.6.0",
     "mylib-meetbha": "^0.0.1",
     "ng2-search-filter": "^0.5.1",
+    "ngx-skeleton-loader": "^5.0.0",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.4.0",
     "tslib": "^2.3.0",

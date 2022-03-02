@@ -93,10 +93,9 @@ input {
   border-radius: 8px;
   width: 100px;
 }
-.save:hover {
+.save:hover:enabled {
   height: 45px;
-  background-color: #46a4e8;
-  color: #17089b;
+  background-color: #0d0363;
 }
 .back-button {
   padding-bottom: 20px;
@@ -148,6 +147,22 @@ label {
   color: #17089b;
 }
 
+.Delete-btn {
+  border: 2px solid black;
+  border-color: #f44336;
+  color: #f44336;
+  background-color: white;
+  height: 45px;
+  border-radius: 8px;
+  width: 100px;
+}
+
+.Delete-btn:hover {
+  height: 45px;
+  background: #f44336;
+  color: white;
+}
+
 .check-box-style {
   display: flex;
   align-items: flex-end;
@@ -166,4 +181,15 @@ label {
 .img-container {
   width: 75%;
   height: 70%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .image-container {
+    width: 0;
+    margin-top: 0;
+    padding-left: 0;
+  }
+  .inner-card {
+    width: 100%;
+  }
 }

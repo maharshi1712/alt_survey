@@ -50,9 +50,7 @@ import Swal from 'sweetalert2';
   // ],
 })
 export class CardComponent implements OnInit {
-  constructor(private surveyService: SurveyService, private router: Router) {
-    this.paginator;
-  }
+  constructor(private surveyService: SurveyService, private router: Router) {}
 
   showPlaceholder = false;
   showContent = false;
@@ -66,7 +64,7 @@ export class CardComponent implements OnInit {
   @Input() surveyName: String = '';
   @Input() surveyType: String = '';
   @Input() searchInput: string = '';
-  @ViewChild('paginator') paginator: any;
+  // @ViewChild('paginator') paginator: any;
   username: any = `${localStorage
     .getItem('first_name')
     ?.toLocaleLowerCase()}-${localStorage
@@ -104,7 +102,7 @@ export class CardComponent implements OnInit {
               res.forEach((element: any) => {
                 this.surveys.push(element);
               });
-              this.paginator.firstPage();
+              // this.paginator.firstPage();
               this.surveysSlice = this.surveys.slice(0, 6);
               this.showContent = true;
             }
@@ -135,7 +133,7 @@ export class CardComponent implements OnInit {
               res.forEach((element: any) => {
                 this.surveys.push(element);
               });
-              this.paginator.firstPage();
+              // this.paginator.firstPage();
               this.surveysSlice = this.surveys.slice(0, 6);
               this.showContent = true;
             }

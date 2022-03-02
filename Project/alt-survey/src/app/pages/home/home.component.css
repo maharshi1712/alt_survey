@@ -234,8 +234,8 @@ nav {
   visibility: visible !important;
 }
 
-.ul-list li {
-  width: 33%;
+.ul-list li:first-child {
+  width: 25%;
 }
 
 @media only screen and (max-width: 1000px) {

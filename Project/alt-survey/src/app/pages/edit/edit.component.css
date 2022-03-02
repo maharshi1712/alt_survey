@@ -93,10 +93,9 @@ input {
   border-radius: 8px;
   width: 100px;
 }
-.save:hover {
+.save:hover:enabled {
   height: 45px;
-  background-color: #46a4e8;
-  color: #17089b;
+  background-color: #0d0363;
 }
 .back-button {
   padding-bottom: 20px;
@@ -146,6 +145,22 @@ label {
   height: 45px;
   background-color: #ff5252;
   color: #17089b;
+}
+
+.Delete-btn {
+  border: 2px solid black;
+  border-color: #f44336;
+  color: #f44336;
+  background-color: white;
+  height: 45px;
+  border-radius: 8px;
+  width: 100px;
+}
+
+.Delete-btn:hover {
+  height: 45px;
+  background: #f44336;
+  color: white;
 }
 
 .check-box-style {

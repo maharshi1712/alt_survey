@@ -1,6 +1,7 @@
 <div class="content d-flex flex-column justify-content-center">
   <!-- Pagination -->
   <mat-paginator
+    #paginator
     *ngIf="searchInput == ''"
     [length]="surveys.length"
     [pageSize]="6"

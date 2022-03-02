@@ -20,6 +20,7 @@ import {
   stagger,
 } from '@angular/animations';
 import {
+  MatPaginator,
   MatPaginatorIntl,
   MatPaginatorModule,
 } from '@angular/material/paginator';
@@ -49,7 +50,9 @@ import Swal from 'sweetalert2';
   // ],
 })
 export class CardComponent implements OnInit {
-  constructor(private surveyService: SurveyService, private router: Router) {}
+  constructor(private surveyService: SurveyService, private router: Router) {
+    this.paginator;
+  }
 
   showPlaceholder = false;
   showContent = false;
@@ -63,12 +66,18 @@ export class CardComponent implements OnInit {
   @Input() surveyName: String = '';
   @Input() surveyType: String = '';
   @Input() searchInput: string = '';
+  @ViewChild('paginator') paginator: any;
   username: any = `${localStorage
     .getItem('first_name')
     ?.toLocaleLowerCase()}-${localStorage
     .getItem('last_name')
     ?.toLocaleLowerCase()}`;
-  ngOnInit() {}
+  ngOnInit() {
+    this.showPlaceholder = true;
+    setTimeout(() => {
+      this.showPlaceholder = false;
+    }, 3000);
+  }
 
   pageEvent: PageEvent = new PageEvent();
 
@@ -95,6 +104,7 @@ export class CardComponent implements OnInit {
               res.forEach((element: any) => {
                 this.surveys.push(element);
               });
+              this.paginator.firstPage();
               this.surveysSlice = this.surveys.slice(0, 6);
               this.showContent = true;
             }
@@ -125,6 +135,7 @@ export class CardComponent implements OnInit {
               res.forEach((element: any) => {
                 this.surveys.push(element);
               });
+              this.paginator.firstPage();
               this.surveysSlice = this.surveys.slice(0, 6);
               this.showContent = true;
             }

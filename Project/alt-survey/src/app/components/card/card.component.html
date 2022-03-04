@@ -1,7 +1,6 @@
 <div class="content d-flex flex-column justify-content-center">
   <!-- Pagination -->
   <mat-paginator
-    #paginator
     *ngIf="searchInput == ''"
     [length]="surveys.length"
     [pageSize]="6"
@@ -55,7 +54,7 @@
         ) | appFilter: (searchInput != '' ? searchInput : '')
       "
     >
-      <mat-card class="mat-elevation-z8" *ngIf="!showPlaceholder">
+      <mat-card *ngIf="!showPlaceholder" class="mat-elevation-z8">
         <div class="boundary">
           <mat-card-title
             style="color: #edf8ff; font-size: 22px; font-family: inherit"

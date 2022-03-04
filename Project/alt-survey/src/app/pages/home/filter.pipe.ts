@@ -19,7 +19,7 @@ export class FilterPipe implements PipeTransform {
     searchText = searchText.toLocaleLowerCase();
 
     return items.filter((it) => {
-      return it.surveyname.toLowerCase().startsWith(searchText);
+      return it.surveyname.toLocaleLowerCase().startsWith(searchText);
     });
   }
 }

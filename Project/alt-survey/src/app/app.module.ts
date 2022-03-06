@@ -15,7 +15,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterModule } from '@angular/router';
@@ -43,7 +42,6 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     LoginComponent,
     SignupComponent,
     ForgotPasswordComponent,
-    LoadingSpinnerComponent,
     HomeComponent,
     CardComponent,
     ViewComponent,

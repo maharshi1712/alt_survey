@@ -193,6 +193,13 @@
                     class="save"
                     mat-raised-button
                     color="primary"
+                    [disabled]="
+                      editForm.value.message_body === '' ||
+                      editForm.value.message_subject === '' ||
+                      editForm.value.surveyname === '' ||
+                      editForm.get('survey_dealy')?.invalid ||
+                      editForm.value.survey_type === ''
+                    "
                   >
                     Save
                   </button>

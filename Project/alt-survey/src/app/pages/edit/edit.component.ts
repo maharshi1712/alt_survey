@@ -153,7 +153,9 @@ export class EditComponent implements OnInit {
         console.log(survey);
         Swal.fire('Survey Successfully Modified!', 'SUCCESS');
         setTimeout(() => {
-          this.router.navigate([`${this.username}/home`]);
+          this.router.navigate([
+            `${this.username}/view/${this.survey.survey_id}/`,
+          ]);
         }, 1500);
       },
       (error) => {

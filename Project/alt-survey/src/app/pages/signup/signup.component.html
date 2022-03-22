@@ -18,9 +18,6 @@
     <div class="nav-items">
       <ul class="list-items d-flex">
         <li class="list-item">
-          <button class="btn">About us</button>
-        </li>
-        <li class="list-item">
           <button class="btn signup-btn" routerLink="/login">Login</button>
         </li>
       </ul>
@@ -102,7 +99,7 @@
                 style="cursor: pointer"
                 class="verify-btn text-center"
                 (click)="onVerifyUser()"
-                [disabled]="!signupForm.value.email"
+                [disabled]="signupForm.get('email')?.invalid"
                 *ngIf="!OtpResponse"
               >
                 Verify
@@ -237,7 +234,12 @@
             </small>
           </div>
 
-          <button type="submit" style="margin-top: 25px" class="login-btn">
+          <button
+            type="submit"
+            style="margin-top: 25px"
+            class="login-btn"
+            [disabled]="!OtpVerified"
+          >
             Sign up
           </button>
         </form>

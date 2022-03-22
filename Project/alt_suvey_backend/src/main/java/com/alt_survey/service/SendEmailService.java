@@ -1,4 +1,4 @@
-package com.exam.service;
+package com.alt_survey.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailAuthenticationException;

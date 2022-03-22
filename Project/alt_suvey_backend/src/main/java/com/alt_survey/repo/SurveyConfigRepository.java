@@ -1,9 +1,9 @@
-package com.exam.repo;
+package com.alt_survey.repo;
 
 import java.util.Set;
 
-import com.exam.model.SurveyConfig;
-import com.exam.model.User;
+import com.alt_survey.model.SurveyConfig;
+import com.alt_survey.model.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

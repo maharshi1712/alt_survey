@@ -1,12 +1,12 @@
-package com.exam.controller;
+package com.alt_survey.controller;
 
 import java.util.Date;
 import java.util.Set;
 
-import com.exam.model.SurveyConfig;
-import com.exam.model.User;
-import com.exam.service.SurveyConfigService;
-import com.exam.service.UserService;
+import com.alt_survey.model.SurveyConfig;
+import com.alt_survey.model.User;
+import com.alt_survey.service.SurveyConfigService;
+import com.alt_survey.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

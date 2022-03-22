@@ -1,9 +1,9 @@
-package com.exam.service;
+package com.alt_survey.service;
 
 import java.util.Set;
 
-import com.exam.model.SurveyConfig;
-import com.exam.model.User;
+import com.alt_survey.model.SurveyConfig;
+import com.alt_survey.model.User;
 
 import org.springframework.stereotype.Service;
 

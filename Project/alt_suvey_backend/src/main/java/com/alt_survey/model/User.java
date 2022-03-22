@@ -1,4 +1,4 @@
-package com.exam.model;
+package com.alt_survey.model;
 
 import java.util.ArrayList;
 import java.util.Collection;

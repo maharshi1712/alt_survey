@@ -8,13 +8,13 @@
 		<version>2.6.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.alt_survey</groupId>
-	<artifactId>alt_survey</artifactId>
+	<groupId>com.exam</groupId>
+	<artifactId>examserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>alt_survey</name>
-	<description>Backend project of alt survey</description>
+	<name>examserver</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,7 +45,6 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 		</dependency>
-	
 
 	</dependencies>
 

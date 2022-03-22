@@ -1,11 +1,10 @@
-package com.alt_survey.controller;
+package com.exam.controller;
 
 import java.util.Set;
 
-import com.alt_survey.model.User;
-import com.alt_survey.service.SendEmailService;
-import com.alt_survey.service.UserService;
-
+import com.exam.model.User;
+import com.exam.service.SendEmailService;
+import com.exam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

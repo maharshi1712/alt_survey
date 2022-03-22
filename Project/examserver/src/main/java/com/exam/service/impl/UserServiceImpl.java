@@ -1,12 +1,11 @@
-package com.alt_survey.service.impl;
+package com.exam.service.impl;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import com.alt_survey.model.User;
-import com.alt_survey.repo.UserRepository;
-import com.alt_survey.service.UserService;
-
+import com.exam.model.User;
+import com.exam.repo.UserRepository;
+import com.exam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

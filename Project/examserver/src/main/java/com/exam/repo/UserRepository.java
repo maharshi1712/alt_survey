@@ -1,7 +1,6 @@
-package com.alt_survey.repo;
+package com.exam.repo;
 
-import com.alt_survey.model.User;
-
+import com.exam.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

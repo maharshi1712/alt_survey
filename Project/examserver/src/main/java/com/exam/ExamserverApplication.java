@@ -1,8 +1,12 @@
-package com.alt_survey;
+package com.exam;
 
-import com.alt_survey.repo.UserRepository;
-import com.alt_survey.service.SurveyConfigService;
-import com.alt_survey.service.UserService;
+import java.util.Date;
+
+import com.exam.model.SurveyConfig;
+import com.exam.model.User;
+import com.exam.repo.UserRepository;
+import com.exam.service.SurveyConfigService;
+import com.exam.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ExamserverApplication implements CommandLineRunner {
 
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) {
 		SpringApplication.run(ExamserverApplication.class, args);
 	}
 
